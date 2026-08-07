@@ -68,7 +68,7 @@
       <p class="hero-desc">一家开在 1985 年的独立游戏厅。288 款像素游戏，1 枚硬币，无限条命。现在——按下一个键，开始你的回合。</p>
 
       <div class="hero-actions">
-        <a href="#games" class="btn btn-primary">▶ 开始游戏</a>
+        <button type="button" class="btn btn-primary js-play">▶ 开始游戏</button>
         <button type="button" class="btn btn-ghost coin-btn">投币区</button>
       </div>
 
@@ -155,7 +155,7 @@
             <span class="chip">双人</span>
           </div>
           <div class="game-actions">
-            <button type="button" class="btn btn-sm btn-primary" data-start>开始</button>
+            <button type="button" class="btn btn-sm btn-primary js-play">▶ 开始</button>
             <button type="button" class="btn btn-sm btn-ghost" data-beep>试玩 30s</button>
           </div>
         </div>
@@ -401,6 +401,32 @@
 <!-- 全局音效用按钮区 -->
 <div class="sr-only" aria-hidden="true">
   <button type="button" id="sound-unlock"></button>
+</div>
+
+<!-- ============ 街机游戏舱：星穹入侵者（可玩） ============ -->
+<div class="arcade-cabinet" id="arcadeCabinet" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="arcadeTitle">
+  <div class="cabinet-frame">
+    <div class="cabinet-head">
+      <h2 id="arcadeTitle" class="cabinet-title">★ 星穹入侵者 ★</h2>
+      <button type="button" class="cabinet-close" id="cabinetClose" aria-label="关闭游戏舱">✕</button>
+    </div>
+    <div class="cabinet-hud" aria-hidden="true">
+      <span class="hud-item">分数 <b id="hudScore">000000</b></span>
+      <span class="hud-item">最高 <b id="hudHi">000000</b></span>
+      <span class="hud-item">波次 <b id="hudWave">01</b></span>
+      <span class="hud-item">生命 <b id="hudLives">×3</b></span>
+    </div>
+    <div class="cabinet-screen">
+      <canvas id="gameCanvas" width="320" height="240" tabindex="0" aria-label="星穹入侵者游戏画面"></canvas>
+    </div>
+    <p class="cabinet-status" id="cabinetStatus" role="status" aria-live="polite">READY</p>
+    <p class="cabinet-hint">← → / A D 移动 · 空格 射击 · P 暂停 · Esc 退出</p>
+    <div class="cabinet-touch" aria-hidden="true">
+      <button type="button" class="touch-btn" data-touch="left">◀</button>
+      <button type="button" class="touch-btn touch-fire" data-touch="fire">FIRE</button>
+      <button type="button" class="touch-btn" data-touch="right">▶</button>
+    </div>
+  </div>
 </div>
 
 <script src="script.js"></script>
