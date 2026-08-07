@@ -1053,6 +1053,9 @@ body.egg-mode::after {
   overflow: auto;
 }
 
+/* hidden 属性必须压过 display:flex，否则覆盖层会一直挡住页面 */
+.arcade-cabinet[hidden] { display: none !important; }
+
 body.cabinet-locked { overflow: hidden; }
 
 .cabinet-frame {
