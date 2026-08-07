@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>时尚杂志 · MONO 文化月刊</title>
+  <meta name="description" content="MONO——一本关于时装、人物、文化与摄影的独立文化月刊。总第 128 期，2026 年 8 月号。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">跳到正文</a>
+
+  <!-- 阅读进度条 -->
+  <div class="progress" aria-hidden="true"><span class="progress__bar" id="progressBar"></span></div>
+
+  <!-- 顶部新闻条 -->
+  <div class="ticker" role="region" aria-label="杂志快讯">
+    <div class="ticker__track" id="tickerTrack">
+      <span class="ticker__item">巴黎时装周 2027 春夏日程公布</span>
+      <span class="ticker__item">专访：裁缝的女儿与她的三百年工坊</span>
+      <span class="ticker__item">旧衣橱里的现代性——本期封面专题</span>
+      <span class="ticker__item">灰度世界里的十二种红 · 摄影栏目</span>
+      <span class="ticker__item">报纸消亡之后，杂志为什么还活着</span>
+      <span class="ticker__item">快时尚的账单，该由谁来付</span>
+    </div>
+  </div>
+
+  <!-- 报头 masthead -->
+  <header class="masthead">
+    <div class="masthead__meta">
+      <span>总第 128 期</span>
+      <span class="masthead__meta-sep" aria-hidden="true">✦</span>
+      <span>2026 年 8 月号</span>
+      <span class="masthead__meta-sep" aria-hidden="true">✦</span>
+      <span>VOL. 128 · AUGUST</span>
+    </div>
+    <h1 class="logo">
+      <span class="logo__mono">MONO</span>
+      <span class="logo__sub">时尚 · 人物 · 文化 · 摄影</span>
+    </h1>
+    <div class="masthead__tools">
+      <span class="masthead__price">定价 ¥20 / 电子刊 ¥12</span>
+      <button class="btn-subscribe masthead__cta" id="openSubscribeBtn" type="button">订阅电子刊</button>
+    </div>
+  </header>
+
+  <!-- 导航 -->
+  <nav class="navbar" aria-label="栏目导航">
+    <ul class="navbar__list">
+      <li><a href="#cover">封面</a></li>
+      <li><a href="#columns">时装</a></li>
+      <li><a href="#columns">人物</a></li>
+      <li><a href="#columns">文化</a></li>
+      <li><a href="#columns">摄影</a></li>
+      <li><a href="#feature">专题</a></li>
+      <li><a href="#stories">目录</a></li>
+      <li><a href="#subscribe" class="navbar__last">订阅</a></li>
+    </ul>
+  </nav>
+
+  <main id="main">
+
+    <!-- 封面故事 -->
+    <section class="cover" id="cover" aria-labelledby="coverTitle">
+      <div class="cover__issue" aria-hidden="true">
+        <span>01</span>
+        <span>ISSUE</span>
+      </div>
+
+      <div class="cover__art" aria-hidden="true">
+        <span class="cover__art-num">128</span>
+        <span class="cover__art-letter">M</span>
+        <span class="cover__art-grid"></span>
+        <span class="cover__art-red"></span>
+      </div>
+
+      <div class="cover__text">
+        <p class="cover__kicker">封面故事 · 本期主题</p>
+        <h2 class="cover__title" id="coverTitle">穿着时间的人</h2>
+        <p class="cover__sub">城市的褶皱、时代的针脚，与那些把身份穿在身上的人。<br>我们从一间三百年的裁缝工坊出发，追问一件衣服能够寄存多少记忆。</p>
+        <div class="cover__actions">
+          <a class="btn btn--solid" href="#feature">阅读封面专题</a>
+          <a class="btn btn--line" href="#stories">浏览本期目录</a>
+        </div>
+      </div>
+
+      <aside class="cover__note" aria-label="本期编者按">
+        <p class="cover__note-label">编者按 EDITOR&rsquo;S NOTE</p>
+        <blockquote>&ldquo;衣服不说话，我们替它说。&rdquo;<cite>——总编辑 沈与光</cite></blockquote>
+      </aside>
+    </section>
+
+    <!-- 栏目导航 -->
+    <section class="sections" id="columns" aria-labelledby="columnsTitle">
+      <header class="section-head">
+        <h2 class="section-head__num" aria-hidden="true">02</h2>
+        <h3 class="section-head__title" id="columnsTitle">四大栏目 <span lang="en">THE DEPARTMENTS</span></h3>
+        <p class="section-head__note">本月，我们重新为每个栏目选了一个关键词。</p>
+      </header>
+      <div class="sections__grid">
+        <a class="dept" href="#stories">
+          <span class="dept__tag">FASHION</span>
+          <span class="dept__char" aria-hidden="true">裳</span>
+          <span class="dept__body">
+            <b>时装</b>
+            <i>裙摆如何度量一个城市的夏天。</i>
+          </span>
+        </a>
+        <a class="dept" href="#stories">
+          <span class="dept__tag">PEOPLE</span>
+          <span class="dept__char" aria-hidden="true">人</span>
+          <span class="dept__body">
+            <b>人物</b>
+            <i>把一生缝进针脚里的手艺人们。</i>
+          </span>
+        </a>
+        <a class="dept" href="#stories">
+          <span class="dept__tag">CULTURE</span>
+          <span class="dept__char" aria-hidden="true">文</span>
+          <span class="dept__body">
+            <b>文化</b>
+            <i>媒介更迭，阅读的姿态如何改变。</i>
+          </span>
+        </a>
+        <a class="dept" href="#stories">
+          <span class="dept__tag">PHOTOGRAPHY</span>
+          <span class="dept__char" aria-hidden="true">影</span>
+          <span class="dept__body">
+            <b>摄影</b>
+            <i>在去色的世界里，寻找红色。</i>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 封面专题 · 多栏报纸式 -->
+    <article class="feature" id="feature" aria-labelledby="featureTitle">
+      <header class="feature__head">
+        <div class="feature__pages" aria-hidden="true">
+          <span>P.</span><b>04</b>
+        </div>
+        <p class="feature__kicker">封面专题 · 2026 年 8 月号</p>
+        <h2 class="feature__title" id="featureTitle">旧衣橱里的现代性</h2>
+        <p class="feature__dek">一件晚礼服在柜子里躺了六十年，依旧烫得像一句未说出口的话。我们打开三个家庭的旧衣橱，在樟脑与棉布里，找到这个时代丢失的耐心。</p>
+        <p class="feature__byline">文 / 林以澄　摄影 / 陈默　视觉 / 周叙</p>
+      </header>
+
+      <div class="feature__columns">
+        <p class="feature__lead">如果说建筑是凝固的音乐，那么衣橱，大概是流动的档案。它不是刻意书写的历史，却在每一次开合之间，泄露一个家庭、一座城市、乃至一个时代的审美体温。我们以为时装是朝前跑的，翻阅祖母的衣橱后才发现，真正好看的，往往在后头等着。</p>
+        <p>在中山路的旧宅里，六十三岁的冯阿姨为我们拉开展柜的那一刻，樟脑的气味像一声遥远的问候。一件 1962 年的旗袍，腰身只有一巴掌宽，衣料上的提花已经微微泛黄，却依然挺括。她把它挂出来，又小心地抚平肩头的褶皱：&ldquo;母亲只在重要的日子穿它，每年一次。&rdquo;这件旗袍等过除夕，等过婚礼，也等过一场没有人来的晚宴。</p>
+        <p>时装史的写法，常常是设计师的独角戏。但在旧衣橱面前，历史换了演员：是买布的姐姐，是量体的师傅，是镶边的学徒，是改过三次腰身的裁缝。他们都不署名，却合力把一件衣服穿成了传家之物。现代性因此有了另一副面孔——不是淘汰，而是保管；不是更快，而是更久。</p>
+        <p>年轻设计师方晚在巴黎学成归来，第一站就拜访了这家工坊。她说自己最惊讶的不是那些繁复的刺绣，而是老师傅桌上那把用了四十年的剪刀：&ldquo;所有厉害的东西，最后都简单到只剩一把趁手的工具。&rdquo;我们问她，慢下来做衣服，在这个时代还来得及吗？她只是把剪刀合上，笑了笑。</p>
+        <p>或许这就是本期专题想回答的问题：当衣柜里的旧衣重新被看见，我们丢失的不只是式样，更是一种对待物品的态度。衣物教会我们的，从来不只是如何穿得好看，而是如何有尊严地、缓慢地生活。毕竟，真正的现代性，从不急着告别过去。</p>
+      </div>
+
+      <div class="feature__foot">
+        <p class="feature__pull">真正的现代性，从不急着告别过去。</p>
+        <span class="feature__continue"><a href="#subscribe">下期预告：纺织机前的长夜 →</a></span>
+      </div>
+    </article>
+
+    <!-- 本期目录 · 文章行列表 -->
+    <section class="stories" id="stories" aria-labelledby="storiesTitle">
+      <header class="section-head">
+        <h2 class="section-head__num" aria-hidden="true">03</h2>
+        <h3 class="section-head__title" id="storiesTitle">本期目录 <span lang="en">IN THIS ISSUE</span></h3>
+        <p class="section-head__note">把鼠标移到某一行上，跟它一起走。</p>
+      </header>
+
+      <ol class="stories__list" id="storyList">
+        <li class="story-row">
+          <a href="#subscribe">
+            <span class="story-row__no">01</span>
+            <span class="story-row__cat">时装</span>
+            <span class="story-row__title">巴黎，把裙摆借给夏天</span>
+            <span class="story-row__by">文 / 方晚</span>
+            <span class="story-row__page">P. 12</span>
+          </a>
+        </li>
+        <li class="story-row">
+          <a href="#subscribe">
+            <span class="story-row__no">02</span>
+            <span class="story-row__cat">人物</span>
+            <span class="story-row__title">裁缝的女儿，和她的三百年工坊</span>
+            <span class="story-row__by">文 / 沈与光</span>
+            <span class="story-row__page">P. 28</span>
+          </a>
+        </li>
+        <li class="story-row">
+          <a href="#subscribe">
+            <span class="story-row__no">03</span>
+            <span class="story-row__cat">文化</span>
+            <span class="story-row__title">报纸消亡之后，杂志为什么还活着</span>
+            <span class="story-row__by">文 / 顾知遥</span>
+            <span class="story-row__page">P. 44</span>
+          </a>
+        </li>
+        <li class="story-row">
+          <a href="#subscribe">
+            <span class="story-row__no">04</span>
+            <span class="story-row__cat">摄影</span>
+            <span class="story-row__title">灰度世界里的十二种红</span>
+            <span class="story-row__by">摄影 / 陈默</span>
+            <span class="story-row__page">P. 56</span>
+          </a>
+        </li>
+        <li class="story-row">
+          <a href="#subscribe">
+            <span class="story-row__no">05</span>
+            <span class="story-row__cat">观点</span>
+            <span class="story-row__title">快时尚的账单，该由谁来付</span>
+            <span class="story-row__by">文 / 陆一川</span>
+            <span class="story-row__page">P. 70</span>
+          </a>
+        </li>
+        <li class="story-row">
+          <a href="#subscribe">
+            <span class="story-row__no">06</span>
+            <span class="story-row__cat">时装</span>
+            <span class="story-row__title">一双旧鞋的漫长旅程</span>
+            <span class="story-row__by">文 / 纪南</span>
+            <span class="story-row__page">P. 82</span>
+          </a>
+        </li>
+      </ol>
+      <span class="stories__cursor" id="storyCursor" aria-hidden="true">↳</span>
+    </section>
+
+    <!-- 引言 / 引用 -->
+    <section class="quote" id="quote" aria-label="本期引言">
+      <span class="quote__mark" aria-hidden="true">”</span>
+      <blockquote class="quote__text">
+        我们穿衣服，不只是为了蔽体，<br>
+        更是为了告诉世界——
+        <span class="quote__red">我们是谁，又将要成为谁。</span>
+      </blockquote>
+      <p class="quote__by">—— 时装评论人 米兰达 · 严，<cite>《穿衣与做人》</cite>，2003</p>
+    </section>
+
+    <!-- 订阅 CTA -->
+    <section class="subscribe" id="subscribe" aria-labelledby="subscribeTitle">
+      <div class="subscribe__ghost" aria-hidden="true">SUBSCRIBE</div>
+      <h2 class="subscribe__title" id="subscribeTitle">每周一封，把世界寄给你。</h2>
+      <p class="subscribe__desc">订阅 MONO 电子刊：每周五出刊，覆盖时装、人物、文化与摄影四个栏目，附独家编者按与城市观察。随时随地，翻一本没有纸页的杂志。</p>
+      <form class="subscribe__form" id="subscribeForm" novalidate>
+        <label class="visually-hidden" for="subEmail">电子邮箱</label>
+        <input class="subscribe__input" type="email" id="subEmail" name="email" placeholder="your@email.com" autocomplete="email" required>
+        <button class="btn btn--solid" type="submit">免费订阅</button>
+      </form>
+      <p class="subscribe__fine" id="subMessage" role="status">首月免费，随时可退订。我们不会将你的邮箱分享给任何人。</p>
+    </section>
+
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer__brand">
+      <span class="footer__logo">MONO</span>
+      <p>一本关于时装、人物、文化与摄影的独立文化月刊。<br>创刊于 1998 年 · 总第 128 期</p>
+    </div>
+    <nav class="footer__col" aria-label="页脚栏目">
+      <p class="footer__head">栏目</p>
+      <ul>
+        <li><a href="#columns">时装</a></li>
+        <li><a href="#columns">人物</a></li>
+        <li><a href="#columns">文化</a></li>
+        <li><a href="#columns">摄影</a></li>
+      </ul>
+    </nav>
+    <nav class="footer__col" aria-label="页脚信息">
+      <p class="footer__head">杂志</p>
+      <ul>
+        <li><a href="#cover">本期封面</a></li>
+        <li><a href="#feature">封面专题</a></li>
+        <li><a href="#subscribe">订阅电子刊</a></li>
+        <li><a href="#quote">编者按</a></li>
+      </ul>
+    </nav>
+    <div class="footer__col footer__col--wide">
+      <p class="footer__head">联系我们</p>
+      <ul>
+        <li><a href="mailto:hello@mono.example">hello@mono.example</a></li>
+        <li><a href="mailto:submit@mono.example">投稿与合作</a></li>
+      </ul>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 MONO 文化月刊 · 保留所有权利</span>
+      <span>京ICP备 00000001 号</span>
+      <span lang="en">SET IN PLAYFAIR DISPLAY &amp; INTER</span>
+    </div>
+  </footer>
+
+  <!-- 订阅弹层 -->
+  <div class="modal" id="subscribeModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal__overlay" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__close" type="button" data-close aria-label="关闭订阅窗口">×</button>
+      <p class="modal__kicker">MONO · 电子刊</p>
+      <h2 class="modal__title" id="modalTitle">订阅，成为第一万零一个读者。</h2>
+      <p class="modal__desc">每周一封，四栏齐读。首月免费，随时可退订。</p>
+      <form class="modal__form" id="modalForm" novalidate>
+        <label class="visually-hidden" for="modalEmail">电子邮箱</label>
+        <input class="subscribe__input" type="email" id="modalEmail" name="email" placeholder="your@email.com" autocomplete="email" required>
+        <button class="btn btn--solid" type="submit">确认订阅</button>
+      </form>
+      <p class="modal__success" id="modalSuccess" role="status" hidden>已收到你的邮箱，欢迎上船。首期将于本周五送达。</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

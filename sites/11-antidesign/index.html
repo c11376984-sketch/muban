@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>噪音工厂 · NOISE FACTORY</title>
+<meta name="description" content="噪音工厂 —— 一个不讲道理的实验音乐厂牌。发行脏声音，办坏演出，收留被主流丢掉的频率。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Playfair+Display:ital,wght@1,700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">跳过这一堆噪音</a>
+
+<div class="noise-bg" aria-hidden="true"></div>
+
+<!-- 顶部：故意歪斜的导航 -->
+<header class="masthead" id="masthead">
+  <a class="logo" href="#top" aria-label="噪音工厂首页">
+    <span class="logo-loud">NOISE</span>
+    <span class="logo-quiet">工厂</span>
+  </a>
+  <nav class="nav" aria-label="主导航">
+    <a href="#manifesto" style="--rot:-3deg">宣言</a>
+    <a href="#artists" style="--rot:2deg">人头</a>
+    <a href="#records" style="--rot:-2deg">脏碟</a>
+    <a href="#shows" style="--rot:3deg">坏演出</a>
+    <a href="#join" style="--rot:-1deg;background:var(--acid);color:#000">加入</a>
+  </nav>
+  <button class="nav-burger" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="打开菜单">≡</button>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu" aria-label="移动端菜单">
+  <a href="#manifesto">宣言</a>
+  <a href="#artists">人头</a>
+  <a href="#records">脏碟</a>
+  <a href="#shows">坏演出</a>
+  <a href="#join">加入</a>
+</nav>
+
+<main id="main">
+
+  <!-- HERO：混乱大字宣言 -->
+  <section class="hero" id="top">
+    <p class="hero-kicker" style="--rot:-2deg">实验音乐厂牌 · EST. 噪音元年</p>
+    <h1 class="hero-title">
+      <span class="t1" style="--rot:-4deg">好听</span>
+      <span class="t2" style="--rot:3deg;color:var(--pink)">是</span>
+      <span class="t3" style="--rot:-2deg;color:var(--acid)">一种</span>
+      <span class="t4" style="--rot:2deg">残疾</span>
+      <span class="t5">。</span>
+    </h1>
+    <p class="hero-sub" style="--rot:1deg">
+      噪音工厂不发行悦耳的音乐。我们收集失真、反馈、城市底噪与被淘汰的频率，
+      把它们压在十寸黑胶上，卖给你——如果你愿意为刺耳付费。
+    </p>
+    <div class="hero-actions">
+      <a class="btn-loud" href="#records" style="--rot:-2deg"><span>听脏碟</span> <b aria-hidden="true">▶</b></a>
+      <button class="btn-trap" id="trapBtn" type="button" style="--rot:2deg">不要点我</button>
+      <button class="btn-now" id="nowBtn" type="button" style="--rot:-1deg">现在几点</button>
+    </div>
+    <p class="hero-note" id="trapMsg" role="status" aria-live="polite">……</p>
+    <div class="hero-marquee" aria-hidden="true">
+      <span>失真 · 反馈 · 底噪 · 掉帧 · 破音 · 跑调 · 失真 · 反馈 · 底噪 · 掉帧 · 破音 · 跑调 ·</span>
+    </div>
+  </section>
+
+  <!-- 宣言 -->
+  <section class="section manifesto" id="manifesto">
+    <span class="sec-badge" style="--rot:-4deg">宣言</span>
+    <h2 class="sec-title" style="--rot:1deg">我们反对<span class="hi">流畅</span>。</h2>
+    <div class="manifesto-body">
+      <p>主流音乐把一切打磨光滑，像商场的地砖。我们相反——欢迎毛边、齿音、意外、即兴与故障。</p>
+      <p>每张唱片都是一次事故的录音。不听就是错过，听了就是受害。<span class="hand">—— 主理人 胡噪</span></p>
+      <p class="manifesto-mess" id="mess" style="--rot:-2deg">点我，我什么都不做</p>
+    </div>
+  </section>
+
+  <!-- 艺术家 -->
+  <section class="section artists" id="artists">
+    <span class="sec-badge" style="--rot:3deg">人头</span>
+    <h2 class="sec-title" style="--rot:-1deg">厂牌<span class="hi" style="color:var(--blue)">毒贩</span></h2>
+    <ul class="artist-list">
+      <li class="artist" style="--rot:-3deg"><b>01</b><h3>脉冲洗衣机</h3><span>洗衣机 / 磁带机 / 愤怒</span></li>
+      <li class="artist" style="--rot:2deg"><b>02</b><h3>深夜天线</h3><span>收音机底噪采样 24 小时</span></li>
+      <li class="artist" style="--rot:-2deg"><b>03</b><h3>玻璃小提琴</h3><span>把乐器摔碎，然后演奏碎片</span></li>
+      <li class="artist" style="--rot:3deg"><b>04</b><h3>键盘侠乐队</h3><span>用机械键盘即兴节奏</span></li>
+      <li class="artist" style="--rot:-4deg"><b>05</b><h3>没人听说过的人</h3><span>作品仅供自己播放</span></li>
+    </ul>
+  </section>
+
+  <!-- 唱片 -->
+  <section class="section records" id="records">
+    <span class="sec-badge" style="--rot:-2deg">脏碟</span>
+    <h2 class="sec-title" style="--rot:2deg">近期<span class="hi" style="color:var(--pink)">事故</span>记录</h2>
+    <div class="record-grid">
+      <article class="record" style="--rot:-2deg;--shadow-c:var(--pink)">
+        <div class="rec-cover" style="background:linear-gradient(135deg,var(--acid),var(--blue))"></div>
+        <h3>地铁到站提示音</h3>
+        <p>磁带现场 · 2026</p>
+        <span class="rec-price">¥ 66</span>
+      </article>
+      <article class="record" style="--rot:2deg;--shadow-c:var(--acid)">
+        <div class="rec-cover" style="background:radial-gradient(circle at 70% 30%,var(--pink),#000)"></div>
+        <h3>打翻的八音盒</h3>
+        <p>10" 黑胶 · 2025</p>
+        <span class="rec-price">¥ 88</span>
+      </article>
+      <article class="record" style="--rot:-3deg;--shadow-c:var(--blue)">
+        <div class="rec-cover" style="background:conic-gradient(#fff 0 12%,#000 12% 24%,var(--acid) 24% 100%)"></div>
+        <h3>邻居的施工队</h3>
+        <p>现场录音 · 2025</p>
+        <span class="rec-price">¥ 45</span>
+      </article>
+      <article class="record" style="--rot:1deg;--shadow-c:var(--pink)">
+        <div class="rec-cover" style="background:repeating-linear-gradient(45deg,#000 0 8px,var(--pink) 8px 16px)"></div>
+        <h3>十点整</h3>
+        <p>数字发行 · 2026</p>
+        <span class="rec-price">免费(你敢)</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- 演出 -->
+  <section class="section shows" id="shows">
+    <span class="sec-badge" style="--rot:4deg">坏演出</span>
+    <h2 class="sec-title" style="--rot:-2deg">最近<span class="hi">搞砸</span>的场次</h2>
+    <div class="show-list">
+      <div class="show" style="--rot:-1deg"><span class="date">08.09</span><h3>地下锅炉房 <em>已取消</em></h3></div>
+      <div class="show" style="--rot:1deg"><span class="date">08.21</span><h3>废弃电话亭 <em>已售罄</em></h3></div>
+      <div class="show" style="--rot:-2deg"><span class="date">09.03</span><h3>停车场顶楼 <em>待定</em></h3></div>
+      <div class="show" style="--rot:2deg"><span class="date">09.18</span><h3>别人的婚礼 <em>强行参演</em></h3></div>
+    </div>
+  </section>
+
+  <!-- 加入 -->
+  <section class="section join" id="join">
+    <span class="sec-badge" style="--rot:-3deg">加入</span>
+    <h2 class="sec-title" style="--rot:1deg">把你也变成<span class="hi" style="color:var(--acid)">噪音</span></h2>
+    <p class="join-sub">留下邮箱，我们会给你发一些刺耳的邮件。可以随时退订，但你不会。</p>
+    <form class="join-form" id="joinForm">
+      <label class="visually-hidden" for="email">邮箱地址</label>
+      <input type="email" id="email" placeholder="你的邮箱(可能是错的)" required>
+      <button type="submit" id="joinBtn" style="--rot:-2deg">我确定要订阅</button>
+    </form>
+    <p class="join-msg" id="joinMsg" role="status" aria-live="polite"></p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="foot-loud">NOISE FACTORY</div>
+  <p style="--rot:-1deg">© 2026 噪音工厂 · 版权没有 · 随便抄</p>
+  <p class="foot-note" style="--rot:1deg">总部地址：地下室 · 邮编：不告诉你 · 邮箱：hire@noise.fm</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

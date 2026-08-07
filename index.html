@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>20 种风格 · 独立设计网站模板集</title>
+<style>
+  :root{
+    --bg:#0d0f14; --panel:#161a23; --line:#262c3a; --txt:#e8ecf4; --dim:#8b94a7;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:radial-gradient(1200px 600px at 80% -10%, #1b2240 0%, var(--bg) 55%), var(--bg);
+    color:var(--txt);
+    font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",-apple-system,BlinkMacSystemFont,sans-serif;
+    min-height:100vh; padding:64px 28px 120px;
+  }
+  header{max-width:1180px;margin:0 auto 56px}
+  .kicker{font-size:13px;letter-spacing:.35em;color:#6ee7ff;text-transform:uppercase;font-weight:700;margin-bottom:18px}
+  h1{font-size:clamp(34px,6vw,72px);line-height:1.04;font-weight:900;letter-spacing:-.02em}
+  h1 .grad{background:linear-gradient(90deg,#6ee7ff,#a78bfa,#f472b6);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--dim);margin-top:20px;max-width:640px;line-height:1.8;font-size:15px}
+  .stats{display:flex;gap:36px;margin-top:34px;flex-wrap:wrap}
+  .stats div b{display:block;font-size:30px;font-weight:900;letter-spacing:-.02em}
+  .stats div span{font-size:12px;color:var(--dim);letter-spacing:.14em}
+
+  .grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+  .card{
+    position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;
+    padding:22px;text-decoration:none;color:inherit;display:flex;flex-direction:column;gap:14px;
+    transition:transform .25s,border-color .25s,box-shadow .25s;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-5px);border-color:#3d4b66;box-shadow:0 18px 40px -18px rgba(0,0,0,.8)}
+  .card .num{font-size:12px;font-weight:800;letter-spacing:.12em;color:#5b6a80}
+  .card h2{font-size:20px;font-weight:800;letter-spacing:.01em}
+  .card .en{font-size:12px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase;margin-top:-8px}
+  .card .theme{font-size:13px;color:#b9c2d4;line-height:1.6}
+  .swatches{display:flex;gap:6px;margin-top:2px}
+  .swatches i{width:22px;height:22px;border-radius:6px;border:1px solid rgba(255,255,255,.14)}
+  .sample{
+    margin-top:2px;font-size:26px;line-height:1;color:#f1f5fb;
+    height:40px;display:flex;align-items:flex-end;overflow:hidden;white-space:nowrap;
+  }
+  .go{position:absolute;top:20px;right:20px;width:30px;height:30px;border-radius:50%;
+      background:#1e2431;display:grid;place-items:center;font-size:14px;color:#9fb0c9;
+      transition:.25s}
+  .card:hover .go{background:#6ee7ff;color:#0d0f14;transform:rotate(-45deg)}
+
+  footer{max-width:1180px;margin:64px auto 0;color:var(--dim);font-size:13px;text-align:center;line-height:1.8}
+  footer a{color:#6ee7ff;text-decoration:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="kicker">Design System · 20 独立风格</div>
+  <h1>20 种风格，<span class="grad">20 套独立设计</span></h1>
+  <p class="sub">每套站点拥有完全独立的布局结构、配色系统、字体体系、视觉特效与交互方式——绝无换皮。点击卡片进入对应站点，代码可直接复用。</p>
+  <div class="stats">
+    <div><b>20</b><span>套站点模板</span></div>
+    <div><b>60+</b><span>个源码文件</span></div>
+    <div><b>0</b><span>外部图片依赖</span></div>
+  </div>
+</header>
+
+<main class="grid">
+
+  <a class="card" href="sites/01-swiss/index.html">
+    <div class="num">01</div>
+    <h2>瑞士极简</h2>
+    <div class="en">Swiss International</div>
+    <p class="theme">线性设计工作室 · 网格 / 信号红 / 大号编号</p>
+    <div class="swatches"><i style="background:#F6F4F0"></i><i style="background:#111"></i><i style="background:#E63329"></i><i style="background:#E9E6E0"></i></div>
+    <div class="sample" style="font-family:Inter,'Noto Sans SC';font-weight:900;letter-spacing:-.04em">LINEAR®</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/02-glassmorphism/index.html">
+    <div class="num">02</div>
+    <h2>毛玻璃拟物</h2>
+    <div class="en">Glassmorphism</div>
+    <p class="theme">云协同 AI 笔记 · 半透明 / 光球 / 渐变</p>
+    <div class="swatches"><i style="background:#7C3AED"></i><i style="background:#2563EB"></i><i style="background:#EC4899"></i><i style="background:#1E1B4B"></i></div>
+    <div class="sample" style="font-family:Poppins,'Noto Sans SC';font-weight:600">灵记 Lingji</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/03-cyberpunk/index.html">
+    <div class="num">03</div>
+    <h2>赛博霓虹</h2>
+    <div class="en">Cyberpunk</div>
+    <p class="theme">电竞外设 · 故障字 / 网格地面 / 霓虹辉光</p>
+    <div class="swatches"><i style="background:#0A0A14"></i><i style="background:#00F0FF"></i><i style="background:#FF2BD6"></i><i style="background:#FFB800"></i></div>
+    <div class="sample" style="font-family:Orbitron,'Noto Sans SC';font-weight:900;text-shadow:0 0 12px #00F0FF">NEON</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/04-brutalism/index.html">
+    <div class="num">04</div>
+    <h2>新粗野主义</h2>
+    <div class="en">Neo-brutalism</div>
+    <p class="theme">独立咖啡烘焙 · 硬阴影 / 粗描边 / 贴纸</p>
+    <div class="swatches"><i style="background:#FFF7E6"></i><i style="background:#FFD60A"></i><i style="background:#118AB2"></i><i style="background:#FF6B35"></i></div>
+    <div class="sample" style="font-family:'Archivo Black','Noto Sans SC';font-weight:900;color:#111;-webkit-text-stroke:1px #FF6B35">BRUT!</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/05-wabi-sabi/index.html">
+    <div class="num">05</div>
+    <h2>日式侘寂</h2>
+    <div class="en">Wabi-sabi</div>
+    <p class="theme">京都町屋民宿 · 竖排 / 留白 / 和纸</p>
+    <div class="swatches"><i style="background:#F4EFE3"></i><i style="background:#D8CDBB"></i><i style="background:#2B2B28"></i><i style="background:#B74A2F"></i></div>
+    <div class="sample" style="font-family:'Noto Serif SC','SimSun';font-weight:600;letter-spacing:.3em">庵</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/06-street/index.html">
+    <div class="num">06</div>
+    <h2>街头涂鸦</h2>
+    <div class="en">Street Graffiti</div>
+    <p class="theme">滑板潮牌 · 喷漆 / 手写 / 贴纸</p>
+    <div class="swatches"><i style="background:#C8C8C8"></i><i style="background:#FF6D00"></i><i style="background:#00B8A9"></i><i style="background:#FF2E88"></i></div>
+    <div class="sample" style="font-family:'Permanent Marker',cursive;transform:rotate(-4deg);color:#FF6D00">STREET!</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/07-editorial/index.html">
+    <div class="num">07</div>
+    <h2>时尚杂志</h2>
+    <div class="en">Editorial</div>
+    <p class="theme">独立时装杂志 · 大衬线 / 多栏 / 首字下沉</p>
+    <div class="swatches"><i style="background:#FFFFFF"></i><i style="background:#000000"></i><i style="background:#C8102E"></i><i style="background:#EFE9E1"></i></div>
+    <div class="sample" style="font-family:'Playfair Display','Noto Serif SC';font-style:italic;font-weight:700">FORM</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/08-aurora/index.html">
+    <div class="num">08</div>
+    <h2>极光流体</h2>
+    <div class="en">Aurora</div>
+    <p class="theme">当代艺术画廊 · 流动光斑 / 渐变</p>
+    <div class="swatches"><i style="background:#0FF0C8"></i><i style="background:#7B6CFF"></i><i style="background:#FF6FB5"></i><i style="background:#FFB46B"></i></div>
+    <div class="sample" style="font-family:'Space Grotesk','Noto Sans SC';letter-spacing:.2em">LUMEN</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/09-pixel/index.html">
+    <div class="num">09</div>
+    <h2>8-bit 像素</h2>
+    <div class="en">Pixel Retro</div>
+    <p class="theme">复古游戏发行 · 像素字 / CRT 扫描线</p>
+    <div class="swatches"><i style="background:#0B1026"></i><i style="background:#00E436"></i><i style="background:#FFE14D"></i><i style="background:#4EE1FF"></i></div>
+    <div class="sample" style="font-family:'Press Start 2P',monospace;font-size:16px;color:#00E436;text-shadow:2px 2px 0 #0B1026">PIXEL</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/10-craft/index.html">
+    <div class="num">10</div>
+    <h2>手工纸艺</h2>
+    <div class="en">Paper &amp; Craft</div>
+    <p class="theme">手作工坊 · 牛皮纸 / 胶带 / 手写</p>
+    <div class="swatches"><i style="background:#C9A87C"></i><i style="background:#FAF3E7"></i><i style="background:#3A332B"></i><i style="background:#9BC4A6"></i></div>
+    <div class="sample" style="font-family:Caveat,cursive;color:#3A332B;transform:rotate(-2deg)">拾光纸语</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/11-antidesign/index.html">
+    <div class="num">11</div>
+    <h2>新丑反设计</h2>
+    <div class="en">Anti-design</div>
+    <p class="theme">实验音乐厂牌 · 撞色 / 乱排 / 混沌</p>
+    <div class="swatches"><i style="background:#C6FF00"></i><i style="background:#2000FF"></i><i style="background:#FF2E7E"></i><i style="background:#FF5C00"></i></div>
+    <div class="sample" style="font-family:'Times New Roman',serif;font-weight:900;color:#2000FF;transform:rotate(-3deg)">BAD!</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/12-ink/index.html">
+    <div class="num">12</div>
+    <h2>中国水墨</h2>
+    <div class="en">Ink Wash</div>
+    <p class="theme">茶文化空间 · 水墨 / 竖排 / 印章</p>
+    <div class="swatches"><i style="background:#F7F3EA"></i><i style="background:#1A1A1A"></i><i style="background:#6E6A63"></i><i style="background:#A83020"></i></div>
+    <div class="sample" style="font-family:'STKaiti','KaiTi',serif;letter-spacing:.2em;color:#1A1A1A">观水</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/13-nordic/index.html">
+    <div class="num">13</div>
+    <h2>北欧极简</h2>
+    <div class="en">Nordic</div>
+    <p class="theme">实木家具 · 圆角 / 低饱和 / 温暖</p>
+    <div class="swatches"><i style="background:#FBF7F0"></i><i style="background:#E8D5B7"></i><i style="background:#9CAF88"></i><i style="background:#D98E73"></i></div>
+    <div class="sample" style="font-family:Nunito,'Noto Sans SC';font-weight:800">拾木</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/14-industrial/index.html">
+    <div class="num">14</div>
+    <h2>工业蓝图</h2>
+    <div class="en">Industrial</div>
+    <p class="theme">机器人制造 · 蓝图网格 / 尺寸标注 / 印章</p>
+    <div class="swatches"><i style="background:#0B3D6E"></i><i style="background:#E8F1FF"></i><i style="background:#FFC400"></i><i style="background:#9AA5B1"></i></div>
+    <div class="sample" style="font-family:'IBM Plex Mono',monospace;font-weight:700;color:#E8F1FF">BLUEPRINT</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/15-space/index.html">
+    <div class="num">15</div>
+    <h2>太空科幻</h2>
+    <div class="en">Space</div>
+    <p class="theme">商业航天 · 星海 / 行星 / 轨道</p>
+    <div class="swatches"><i style="background:#05070F"></i><i style="background:#4EE1FF"></i><i style="background:#FF9E45"></i><i style="background:#8A6CF0"></i></div>
+    <div class="sample" style="font-family:Exo,'Noto Sans SC';letter-spacing:.3em;font-weight:800">STAR</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/16-artdeco/index.html">
+    <div class="num">16</div>
+    <h2>Art Deco</h2>
+    <div class="en">Decorative Arts</div>
+    <p class="theme">奢华酒店 · 金线 / 对称 / 几何纹样</p>
+    <div class="swatches"><i style="background:#1A1612"></i><i style="background:#D4AF37"></i><i style="background:#F5EFE0"></i><i style="background:#7A1F2B"></i></div>
+    <div class="sample" style="font-family:Cinzel,'Noto Serif SC';letter-spacing:.35em;color:#F5EFE0;text-shadow:0 1px 0 #D4AF37">GOLD</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/17-comic/index.html">
+    <div class="num">17</div>
+    <h2>漫画分镜</h2>
+    <div class="en">Comic</div>
+    <p class="theme">漫画出版 · 分镜格 / 拟声字 / 网点</p>
+    <div class="swatches"><i style="background:#FFD400"></i><i style="background:#1D6FF2"></i><i style="background:#E63B2E"></i><i style="background:#111111"></i></div>
+    <div class="sample" style="font-family:Bangers,cursive;color:#E63B2E;-webkit-text-stroke:1px #111;transform:rotate(-4deg)">POW!</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/18-synthwave/index.html">
+    <div class="num">18</div>
+    <h2>合成器浪潮</h2>
+    <div class="en">Synthwave</div>
+    <p class="theme">电子音乐 · 条纹落日 / 网格地面 / 铬字</p>
+    <div class="swatches"><i style="background:#1A0B2E"></i><i style="background:#FF2D95"></i><i style="background:#25F4EE"></i><i style="background:#FFD319"></i></div>
+    <div class="sample" style="font-family:Righteous,cursive;color:#FF2D95;text-shadow:0 0 14px #25F4EE">MIDNIGHT</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/19-nature/index.html">
+    <div class="num">19</div>
+    <h2>自然生态</h2>
+    <div class="en">Nature</div>
+    <p class="theme">环保组织 · 森林剪影 / 波浪 / 苔绿</p>
+    <div class="swatches"><i style="background:#3E7C4F"></i><i style="background:#1F3D2B"></i><i style="background:#7FAE5E"></i><i style="background:#F4F0E4"></i></div>
+    <div class="sample" style="font-family:Karla,'Noto Sans SC';font-weight:800;color:#3E7C4F">青野</div>
+    <div class="go">→</div>
+  </a>
+
+  <a class="card" href="sites/20-collage/index.html">
+    <div class="num">20</div>
+    <h2>拼贴艺术</h2>
+    <div class="en">Collage</div>
+    <p class="theme">先锋视觉 · 撕纸边缘 / 错位 / 旧物质感</p>
+    <div class="swatches"><i style="background:#F2EDE3"></i><i style="background:#274060"></i><i style="background:#D95D39"></i><i style="background:#FF4FA5"></i></div>
+    <div class="sample" style="font-family:'Times New Roman',serif;font-weight:900;color:#274060;text-shadow:2px 2px 0 #FF4FA5;transform:rotate(-2deg)">SHRED</div>
+    <div class="go">→</div>
+  </a>
+
+</main>
+
+<footer>
+  <p>20 种风格 · 20 套独立设计 · 全部为自包含静态站点（纯 HTML / CSS / JS，无外部图片依赖）</p>
+  <p style="margin-top:8px">模板目录：<a href="sites/">sites/</a></p>
+</footer>
+
+</body>
+</html>

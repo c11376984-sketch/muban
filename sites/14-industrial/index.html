@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="蓝图工场 BLUEPRINT WORKS —— 工业机器人工程公司。六轴机器人、协作机器人、重载码垛机器人、智能制造产线，按图施工，毫厘不差。">
+  <title>工业蓝图 · 蓝图工场机器人工程</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <!-- ===== 内联 SVG 符号库 ===== -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="gear" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" stroke-width="6"/>
+      <circle cx="50" cy="50" r="8" fill="currentColor"/>
+      <g stroke="currentColor" stroke-width="8">
+        <line x1="50" y1="4" x2="50" y2="17"/>
+        <line x1="50" y1="83" x2="50" y2="96"/>
+        <line x1="4" y1="50" x2="17" y2="50"/>
+        <line x1="83" y1="50" x2="96" y2="50"/>
+      </g>
+      <g stroke="currentColor" stroke-width="8">
+        <line x1="17.5" y1="17.5" x2="26.7" y2="26.7"/>
+        <line x1="73.3" y1="73.3" x2="82.5" y2="82.5"/>
+        <line x1="82.5" y1="17.5" x2="73.3" y2="26.7"/>
+        <line x1="26.7" y1="73.3" x2="17.5" y2="82.5"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <!-- ===== CAD 十字光标与坐标读数（仅精确指针设备显示） ===== -->
+  <div class="cad-cross" aria-hidden="true"><i class="h"></i><i class="v"></i></div>
+  <div class="cad-readout" aria-hidden="true"><span id="cad-x">X 0000.0</span><span id="cad-y">Y 0000.0</span></div>
+
+  <!-- ===== 顶部图签条 + 导航 ===== -->
+  <header class="site-header" id="top">
+    <div class="tape" aria-hidden="true">
+      <span>蓝图工场 BLUEPRINT WORKS · 工业机器人工程</span>
+      <span>图纸 BW-A0-001 · REV R4.2 · 比例 1:100</span>
+    </div>
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <svg class="brand-gear" aria-hidden="true"><use href="#gear"/></svg>
+        <span class="brand-text">
+          <strong>蓝图工场</strong>
+          <small>BLUEPRINT WORKS</small>
+        </span>
+        <span class="brand-no" aria-hidden="true">图号 A0-001</span>
+      </a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="#about">企业概况</a>
+        <a href="#products">产品线</a>
+        <a href="#specs">技术规格</a>
+        <a href="#applications">应用场景</a>
+        <a href="#process">研发流程</a>
+        <a href="#contact">联系我们</a>
+      </nav>
+      <button id="dims-toggle" class="dims-toggle" aria-pressed="false" title="显示或隐藏图纸标注线">
+        <span class="i">标注</span><span class="i">图层</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== SEC 01 · HERO 总装图 ===== -->
+    <section class="hero sheet" id="hero" aria-labelledby="hero-title">
+      <span class="edge-label" aria-hidden="true">图纸总装 · 蓝图工场 · BW-A0-001</span>
+      <p class="sec-tag rv">SEC 01 · 总装图 A0-01</p>
+
+      <div class="hero-layout">
+        <div class="hero-copy">
+          <h1 id="hero-title"><span>蓝图</span><span class="out">工场</span></h1>
+          <p class="hero-en">BLUEPRINT WORKS · INDUSTRIAL ROBOTICS</p>
+          <div class="hero-rule" aria-hidden="true"></div>
+          <p class="hero-slogan">从一张图纸，到一条产线。</p>
+          <p class="hero-desc">我们以工程图纸的标准对待每一次交付——毫米级重复定位精度、可追溯的全生命周期数据、十年免大修的结构设计。每一台机器人都严格按图施工、按图验收。</p>
+          <div class="hero-actions">
+            <a class="btn btn-solid" href="#products">查看产品线 <span aria-hidden="true">▸</span></a>
+            <a class="btn btn-ghost" href="#specs">技术参数表</a>
+          </div>
+          <dl class="hero-meta">
+            <div><dt>成立年份</dt><dd>2009</dd></div>
+            <div><dt>累计交付</dt><dd>1200+ 台</dd></div>
+            <div><dt>质保期限</dt><dd>5 年</dd></div>
+            <div><dt>设计寿命</dt><dd>20000 h</dd></div>
+          </dl>
+        </div>
+
+        <figure class="hero-drawing rv" role="img" aria-label="六轴工业机器人总装示意图，标注最大臂展 1200 毫米与整机高度 1650 毫米">
+          <svg viewBox="0 0 560 440" xmlns="http://www.w3.org/2000/svg">
+            <!-- 地面线 -->
+            <line x1="40" y1="400" x2="520" y2="400" stroke="#9aa4b2" stroke-width="1" stroke-dasharray="5 7" opacity=".6"/>
+            <!-- 底座与转台 -->
+            <rect x="228" y="332" width="104" height="68" fill="rgba(238,244,255,.04)" stroke="#eef4ff" stroke-width="1.5"/>
+            <rect x="248" y="268" width="64" height="66" fill="rgba(238,244,255,.04)" stroke="#eef4ff" stroke-width="1.5"/>
+            <!-- 臂杆轴线（虚线） -->
+            <path d="M260 268 L350 140 L448 208" stroke="#ffcc00" stroke-width="1" stroke-dasharray="6 4" fill="none" opacity=".8"/>
+            <!-- 臂杆 -->
+            <path d="M260 268 L350 140 L448 208" stroke="#eef4ff" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M260 268 L350 140 L448 208" stroke="#09275e" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity=".9"/>
+            <!-- 关节 -->
+            <circle cx="260" cy="268" r="8" fill="#09275e" stroke="#ffcc00" stroke-width="2"/>
+            <circle cx="350" cy="140" r="8" fill="#09275e" stroke="#ffcc00" stroke-width="2"/>
+            <circle cx="448" cy="208" r="8" fill="#09275e" stroke="#ffcc00" stroke-width="2"/>
+            <!-- 腕部与夹爪 -->
+            <line x1="448" y1="208" x2="478" y2="246" stroke="#eef4ff" stroke-width="6" stroke-linecap="round"/>
+            <line x1="478" y1="246" x2="470" y2="263" stroke="#eef4ff" stroke-width="5" stroke-linecap="round"/>
+            <line x1="478" y1="246" x2="490" y2="259" stroke="#eef4ff" stroke-width="5" stroke-linecap="round"/>
+            <!-- 工作半径圆弧 -->
+            <g class="dim-svg">
+              <path class="draw" d="M118 100 A220 220 0 0 1 428 127" fill="none" stroke="#9aa4b2" stroke-width="1" stroke-dasharray="5 6"/>
+              <text class="fade" x="150" y="92" fill="#9aa4b2" font-size="11" font-family="'Share Tech Mono',monospace">R1200</text>
+              <line class="fade" x1="160" y1="97" x2="196" y2="103" stroke="#9aa4b2" stroke-width="1"/>
+            </g>
+            <!-- 顶部水平标注 -->
+            <g class="dim-svg" stroke="#ffcc00" stroke-width="1">
+              <line class="draw" x1="118" y1="62" x2="428" y2="62"/>
+              <line class="draw" x1="118" y1="54" x2="118" y2="70"/>
+              <line class="draw" x1="428" y1="54" x2="428" y2="70"/>
+              <polygon class="fade" points="118,62 130,58 130,66" fill="#ffcc00" stroke="none"/>
+              <polygon class="fade" points="428,62 416,58 416,66" fill="#ffcc00" stroke="none"/>
+              <text class="fade" x="273" y="46" text-anchor="middle" fill="#ffcc00" font-size="11" font-family="'Share Tech Mono',monospace">L 1200mm</text>
+            </g>
+            <!-- 左侧垂直标注 -->
+            <g class="dim-svg" stroke="#ffcc00" stroke-width="1">
+              <line class="draw" x1="72" y1="268" x2="72" y2="400"/>
+              <line class="draw" x1="64" y1="268" x2="80" y2="268"/>
+              <line class="draw" x1="64" y1="400" x2="80" y2="400"/>
+              <polygon class="fade" points="72,268 68,280 76,280" fill="#ffcc00" stroke="none"/>
+              <polygon class="fade" points="72,400 68,388 76,388" fill="#ffcc00" stroke="none"/>
+              <text class="fade" x="60" y="340" text-anchor="end" fill="#ffcc00" font-size="11" font-family="'Share Tech Mono',monospace" transform="rotate(-90 60 340)">H 1650mm</text>
+            </g>
+          </svg>
+          <figcaption>图 BW-ROB-06 · 六轴工业机器人总装示意 · 比例 1:20</figcaption>
+        </figure>
+
+        <div class="stamp stamp-approve rvstamp" aria-hidden="true">
+          <span>蓝图工场<br>设计批准<br>NO.BW-2207</span>
+        </div>
+      </div>
+
+      <!-- hero 页脚标注线 -->
+      <div class="dim dim-h rvx" style="left:6%;bottom:10px;width:88%;" aria-hidden="true">
+        <span class="dim-tick tl"></span><span class="dim-tick tr"></span>
+        <span class="dim-label">总长 L = 6.2 m</span>
+      </div>
+      <div class="dim dim-v rvy" style="right:6px;top:18%;height:34%;" aria-hidden="true">
+        <span class="dim-tick tl"></span><span class="dim-tick tr"></span>
+        <span class="dim-label">H 3.8 m</span>
+      </div>
+    </section>
+
+    <!-- ===== SEC 02 · 企业概况 ===== -->
+    <section class="section sheet" id="about" aria-labelledby="about-title">
+      <span class="crn cr-tr" aria-hidden="true"></span>
+      <span class="crn cr-bl" aria-hidden="true"></span>
+
+      <header class="sec-head">
+        <span class="sec-no rv">SEC 02</span>
+        <div class="rv">
+          <h2 id="about-title">企业概况</h2>
+          <p class="sec-en">ABOUT THE WORKSHOP</p>
+        </div>
+        <span class="stamp sec-stamp rvstamp" aria-hidden="true"><span>蓝图<br>工场<br>BW</span></span>
+      </header>
+
+      <div class="about-grid">
+        <div class="about-copy rv">
+          <h3>按图施工，毫厘不差。</h3>
+          <p>蓝图工场成立于 2009 年，专注工业机器人本体与智能制造产线的研发制造。180 名工程师分布于南京研发中心与合肥制造基地，累计交付 1200 余台机器人，覆盖汽车、3C、物流与医疗四大行业。</p>
+          <p>我们以绘制工程蓝图的方式做产品——每一个零件都有图号，每一次运动都经过仿真验证，每一批交付都附完整图纸归档。图纸，就是我们与客户之间唯一需要讨论的语言。</p>
+          <div class="cut-symbol" aria-hidden="true">
+            <svg viewBox="0 0 220 88" xmlns="http://www.w3.org/2000/svg">
+              <line x1="18" y1="44" x2="158" y2="44" stroke="#ffcc00" stroke-width="1.5"/>
+              <circle cx="18" cy="44" r="12" fill="#09275e" stroke="#ffcc00" stroke-width="1.5"/>
+              <circle cx="158" cy="44" r="12" fill="#09275e" stroke="#ffcc00" stroke-width="1.5"/>
+              <text x="18" y="48" text-anchor="middle" fill="#ffcc00" font-size="12" font-family="'Share Tech Mono',monospace">A</text>
+              <text x="158" y="48" text-anchor="middle" fill="#ffcc00" font-size="12" font-family="'Share Tech Mono',monospace">A</text>
+              <rect x="176" y="16" width="38" height="56" fill="rgba(238,244,255,.04)" stroke="#eef4ff" stroke-dasharray="3 3"/>
+              <line x1="180" y1="26" x2="210" y2="26" stroke="#9aa4b2" stroke-width="2"/>
+              <line x1="180" y1="62" x2="210" y2="62" stroke="#9aa4b2" stroke-width="2"/>
+              <line x1="196" y1="22" x2="196" y2="66" stroke="#ffcc00" stroke-width="1" stroke-dasharray="2 3"/>
+            </svg>
+          </div>
+          <p class="cut-caption">剖切示意 A-A · RV 减速器行星架 · 见总图 BW-RV-102</p>
+        </div>
+
+        <dl class="stats rv">
+          <div class="stat">
+            <dt>工程师团队</dt>
+            <dd><span class="dial" data-count="180">0</span>+ 人</dd>
+          </div>
+          <div class="stat">
+            <dt>累计交付</dt>
+            <dd><span class="dial" data-count="1200">0</span>+ 台</dd>
+          </div>
+          <div class="stat">
+            <dt>核心专利</dt>
+            <dd><span class="dial" data-count="12">0</span> 项</dd>
+          </div>
+          <div class="stat">
+            <dt>覆盖行业</dt>
+            <dd><span class="dial" data-count="4">0</span> 大</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== SEC 03 · 机器人产品线 ===== -->
+    <section class="section sheet" id="products" aria-labelledby="products-title">
+      <span class="crn cr-tr" aria-hidden="true"></span>
+      <span class="crn cr-bl" aria-hidden="true"></span>
+
+      <header class="sec-head">
+        <span class="sec-no rv">SEC 03</span>
+        <div class="rv">
+          <h2 id="products-title">机器人产品线</h2>
+          <p class="sec-en">ROBOT PRODUCT LINE</p>
+        </div>
+        <span class="stamp sec-stamp rvstamp" aria-hidden="true"><span>产品<br>目录<br>P-07</span></span>
+      </header>
+
+      <div class="p-grid">
+        <article class="pcard rv">
+          <span class="crn cr-tr" aria-hidden="true"></span>
+          <span class="crn cr-bl" aria-hidden="true"></span>
+          <div class="pc-head">
+            <span class="pc-no">型号 BW-6R1200</span>
+            <svg class="pc-gear" aria-hidden="true"><use href="#gear"/></svg>
+          </div>
+          <h3>通用六轴机器人</h3>
+          <p class="pc-tag">六轴串联 · 焊接 / 上下料 / 搬运</p>
+          <ul class="pc-specs">
+            <li><b>6 kg</b><span>额定负载</span></li>
+            <li><b>1200 mm</b><span>最大臂展</span></li>
+            <li><b>6</b><span>自由度</span></li>
+            <li><b>±0.02 mm</b><span>重复定位精度</span></li>
+          </ul>
+          <p class="pc-desc">紧凑机身配高刚性铸件基座，适配高频次上下料与多工位焊接。</p>
+          <a class="pc-link" href="#specs">选型参数 <span aria-hidden="true">▸</span></a>
+          <span class="pc-fig" aria-hidden="true">总图 BW-6R1200-A · 1:10</span>
+        </article>
+
+        <article class="pcard rv">
+          <span class="crn cr-tr" aria-hidden="true"></span>
+          <span class="crn cr-bl" aria-hidden="true"></span>
+          <div class="pc-head">
+            <span class="pc-no">型号 BW-CR15</span>
+            <svg class="pc-gear" aria-hidden="true"><use href="#gear"/></svg>
+          </div>
+          <h3>协作机器人</h3>
+          <p class="pc-tag">七轴协作 · 人机共融 / 拖拽示教</p>
+          <ul class="pc-specs">
+            <li><b>15 kg</b><span>额定负载</span></li>
+            <li><b>1300 mm</b><span>最大臂展</span></li>
+            <li><b>7</b><span>自由度</span></li>
+            <li><b>扭矩传感</b><span>全关节碰撞检测</span></li>
+          </ul>
+          <p class="pc-desc">内置全关节力矩传感，遇阻即停，无需安全围栏即可与操作员同工位作业。</p>
+          <a class="pc-link" href="#specs">选型参数 <span aria-hidden="true">▸</span></a>
+          <span class="pc-fig" aria-hidden="true">总图 BW-CR15-A · 1:8</span>
+        </article>
+
+        <article class="pcard rv">
+          <span class="crn cr-tr" aria-hidden="true"></span>
+          <span class="crn cr-bl" aria-hidden="true"></span>
+          <div class="pc-head">
+            <span class="pc-no">型号 BW-60D4500</span>
+            <svg class="pc-gear" aria-hidden="true"><use href="#gear"/></svg>
+          </div>
+          <h3>重载码垛机器人</h3>
+          <p class="pc-tag">四轴码垛 · 装卸 / 重载搬运</p>
+          <ul class="pc-specs">
+            <li><b>60 kg</b><span>额定负载</span></li>
+            <li><b>4500 mm</b><span>最大臂展</span></li>
+            <li><b>4</b><span>自由度</span></li>
+            <li><b>±0.08 mm</b><span>重复定位精度</span></li>
+          </ul>
+          <p class="pc-desc">大臂展高负载，适合码垛、装卸与集装箱作业，标配快速夹具接口。</p>
+          <a class="pc-link" href="#specs">选型参数 <span aria-hidden="true">▸</span></a>
+          <span class="pc-fig" aria-hidden="true">总图 BW-60D4500-A · 1:25</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== SEC 04 · 技术规格参数表 ===== -->
+    <section class="section sheet" id="specs" aria-labelledby="specs-title">
+      <span class="crn cr-tr" aria-hidden="true"></span>
+      <span class="crn cr-bl" aria-hidden="true"></span>
+
+      <header class="sec-head">
+        <span class="sec-no rv">SEC 04</span>
+        <div class="rv">
+          <h2 id="specs-title">技术规格参数表</h2>
+          <p class="sec-en">TECHNICAL SPECIFICATIONS</p>
+        </div>
+        <span class="stamp sec-stamp rvstamp" aria-hidden="true"><span>参数<br>核准<br>S-03</span></span>
+      </header>
+
+      <div class="table-wrap rv">
+        <table class="spec">
+          <caption>三款主力机型对照表 · 数据来源：型式试验报告 T-2026-041</caption>
+          <thead>
+            <tr>
+              <th scope="col">参数项</th>
+              <th scope="col">BW-6R1200</th>
+              <th scope="col">BW-CR15</th>
+              <th scope="col">BW-60D4500</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">结构形式</th><td>六轴串联</td><td>七轴协作</td><td>四轴码垛</td></tr>
+            <tr><th scope="row">额定负载</th><td><b>6 kg</b></td><td><b>15 kg</b></td><td><b>60 kg</b></td></tr>
+            <tr><th scope="row">最大臂展</th><td><b>1200 mm</b></td><td><b>1300 mm</b></td><td><b>4500 mm</b></td></tr>
+            <tr><th scope="row">重复定位精度</th><td>±0.02 mm</td><td>±0.03 mm</td><td>±0.08 mm</td></tr>
+            <tr><th scope="row">最大合成速度</th><td>8.2 m/s</td><td>5.4 m/s</td><td>6.0 m/s</td></tr>
+            <tr><th scope="row">A1 旋转范围</th><td>±170°</td><td>±360°</td><td>±360°</td></tr>
+            <tr><th scope="row">防护等级</th><td>IP54</td><td>IP54</td><td>IP65</td></tr>
+            <tr><th scope="row">安装方式</th><td>地面 / 吊装 / 侧装</td><td>任意角度</td><td>地面</td></tr>
+            <tr><th scope="row">本体重量</th><td>190 kg</td><td>58 kg</td><td>1680 kg</td></tr>
+            <tr><th scope="row">供电电压</th><td>380 VAC</td><td>48 VDC</td><td>380 VAC</td></tr>
+            <tr><th scope="row">通讯协议</th><td>EtherCAT</td><td>Modbus-TCP</td><td>PROFINET</td></tr>
+            <tr><th scope="row">设计寿命</th><td>20000 h</td><td>20000 h</td><td>30000 h</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-note rv">注：以上参数在 25 ℃ 标准工况下测得，实际性能以《型式试验报告》为准；可提供全套三维模型与图纸用于产线布局仿真。</p>
+    </section>
+
+    <!-- ===== SEC 05 · 应用场景 ===== -->
+    <section class="section sheet" id="applications" aria-labelledby="apps-title">
+      <span class="crn cr-tr" aria-hidden="true"></span>
+      <span class="crn cr-bl" aria-hidden="true"></span>
+
+      <header class="sec-head">
+        <span class="sec-no rv">SEC 05</span>
+        <div class="rv">
+          <h2 id="apps-title">应用场景</h2>
+          <p class="sec-en">APPLICATION SCENARIOS</p>
+        </div>
+        <span class="stamp sec-stamp rvstamp" aria-hidden="true"><span>现场<br>工位<br>F-11</span></span>
+      </header>
+
+      <div class="apps">
+        <article class="app rv">
+          <span class="app-sta" aria-hidden="true">STA-01</span>
+          <svg class="app-ico" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M14 8 L8 24 M8 24 L14 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M24 14 l5 6 -5 5 5 5 -5 5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M34 6 l2 -4 M38 12 l4 -2 M40 6 l4 -1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>汽车焊装</h3>
+          <p>白车身焊装工作站，双工位高频焊接，节拍 45 秒，全年 7×24 连续作业。</p>
+        </article>
+
+        <article class="app rv">
+          <span class="app-sta" aria-hidden="true">STA-02</span>
+          <svg class="app-ico" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="17" y="17" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <rect x="21" y="21" width="6" height="6" fill="currentColor"/>
+            <path d="M24 9 v6 M24 33 v6 M9 24 h6 M33 24 h6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M14 12 v-3 M18 11 v-4 M24 10 v-4 M30 11 v-4 M34 12 v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <h3>3C 电子装配</h3>
+          <p>高精密锁付与贴装，末端抖动小于 0.01 mm，支持千级洁净车间。</p>
+        </article>
+
+        <article class="app rv">
+          <span class="app-sta" aria-hidden="true">STA-03</span>
+          <svg class="app-ico" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="9" y="26" width="30" height="7" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M16 20 v6 M32 20 v6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+            <rect x="16" y="9" width="16" height="11" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M16 9 l8 6 8 -6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+          </svg>
+          <h3>物流仓储</h3>
+          <p>全天候码垛与分拣，垛型算法自动规划，出库效率提升 3.2 倍。</p>
+        </article>
+
+        <article class="app rv">
+          <span class="app-sta" aria-hidden="true">STA-04</span>
+          <svg class="app-ico" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="7" y="7" width="34" height="34" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"/>
+            <path d="M24 15 v18 M15 24 h18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+          <h3>医疗器械</h3>
+          <p>万级洁净室内的精密装配与灌装，全流程数据留痕、批次可追溯。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== SEC 06 · 研发流程时间线 ===== -->
+    <section class="section sheet" id="process" aria-labelledby="process-title">
+      <span class="crn cr-tr" aria-hidden="true"></span>
+      <span class="crn cr-bl" aria-hidden="true"></span>
+
+      <header class="sec-head">
+        <span class="sec-no rv">SEC 06</span>
+        <div class="rv">
+          <h2 id="process-title">研发流程</h2>
+          <p class="sec-en">R&amp;D PROCESS</p>
+        </div>
+        <span class="stamp sec-stamp rvstamp" aria-hidden="true"><span>流程<br>归档<br>R-09</span></span>
+      </header>
+
+      <div class="timeline rv" role="list" aria-label="六阶段研发流程时间线">
+        <span class="tl-rail" aria-hidden="true"></span>
+        <ol class="tl-steps">
+          <li class="tl-step" role="listitem">
+            <span class="tl-node" aria-hidden="true"><svg class="tl-gear"><use href="#gear"/></svg><i>01</i></span>
+            <div class="tl-card">
+              <h3>需求定义 <span class="tl-doc">图纸 D-01</span></h3>
+              <p>与客户共同明确节拍、负载、工况与洁净度要求，输出《需求规格书》并冻结范围。</p>
+            </div>
+          </li>
+          <li class="tl-step" role="listitem">
+            <span class="tl-node" aria-hidden="true"><svg class="tl-gear"><use href="#gear"/></svg><i>02</i></span>
+            <div class="tl-card">
+              <h3>概念设计 <span class="tl-doc">图纸 D-02</span></h3>
+              <p>运动学初步选型，绘制机构简图与载荷谱，确定减速比与电机型号。</p>
+            </div>
+          </li>
+          <li class="tl-step" role="listitem">
+            <span class="tl-node" aria-hidden="true"><svg class="tl-gear"><use href="#gear"/></svg><i>03</i></span>
+            <div class="tl-card">
+              <h3>结构仿真 <span class="tl-doc">图纸 D-03</span></h3>
+              <p>刚柔耦合仿真与疲劳校核，关键轴系迭代 5 轮以上，输出仿真报告。</p>
+            </div>
+          </li>
+          <li class="tl-step" role="listitem">
+            <span class="tl-node" aria-hidden="true"><svg class="tl-gear"><use href="#gear"/></svg><i>04</i></span>
+            <div class="tl-card">
+              <h3>样机试制 <span class="tl-doc">图纸 P-01</span></h3>
+              <p>关键件加工与装配，出厂预检，首台样机下线并完成空载磨合。</p>
+            </div>
+          </li>
+          <li class="tl-step" role="listitem">
+            <span class="tl-node" aria-hidden="true"><svg class="tl-gear"><use href="#gear"/></svg><i>05</i></span>
+            <div class="tl-card">
+              <h3>可靠性测试 <span class="tl-doc">报告 T-01</span></h3>
+              <p>2000 小时连续运行、高低温循环与粉尘试验，留样一台持续跟踪。</p>
+            </div>
+          </li>
+          <li class="tl-step" role="listitem">
+            <span class="tl-node" aria-hidden="true"><svg class="tl-gear"><use href="#gear"/></svg><i>06</i></span>
+            <div class="tl-card">
+              <h3>图纸归档交付 <span class="tl-doc">图纸 A-01</span></h3>
+              <p>全套图纸、BOM 与运维手册归档，版本锁定后交付，支持全链路追溯。</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+      <p class="table-note rv">每个节点均对应独立图号存档，可在交付后任意时间调取原始设计数据。</p>
+    </section>
+
+    <!-- ===== SEC 07 · 联系我们 ===== -->
+    <section class="section sheet" id="contact" aria-labelledby="contact-title">
+      <span class="crn cr-tr" aria-hidden="true"></span>
+      <span class="crn cr-bl" aria-hidden="true"></span>
+
+      <header class="sec-head">
+        <span class="sec-no rv">SEC 07</span>
+        <div class="rv">
+          <h2 id="contact-title">联系我们</h2>
+          <p class="sec-en">CONTACT &amp; INQUIRY</p>
+        </div>
+        <span class="stamp sec-stamp rvstamp" aria-hidden="true"><span>联系<br>工位<br>C-05</span></span>
+      </header>
+
+      <div class="contact-grid">
+        <div class="contact-info rv">
+          <h3>有产线自动化需求？交给我们画图。</h3>
+          <p>提交初步需求后，工程师将在 2 个工作日内出具《选型建议书》，并附技术图纸与布局示意。</p>
+          <ul class="contact-list">
+            <li><span class="cli-ico" aria-hidden="true">⌖</span><div><b>制造基地</b>安徽省合肥市经开区机器人产业园 9 号楼</div></li>
+            <li><span class="cli-ico" aria-hidden="true">⌖</span><div><b>研发中心</b>江苏省南京市江宁区智能制造产业园 8 栋</div></li>
+            <li><span class="cli-ico" aria-hidden="true">✆</span><div><b>服务热线</b>400-000-1909 · +86 25-6666-0000</div></li>
+            <li><span class="cli-ico" aria-hidden="true">✉</span><div><b>技术邮箱</b>hello@blueprint-works.cn</div></li>
+            <li><span class="cli-ico" aria-hidden="true">◷</span><div><b>工作时间</b>周一至周五 09:00 – 18:00（含方案评审）</div></li>
+          </ul>
+        </div>
+
+        <form id="quote-form" class="quote-form rv" novalidate aria-labelledby="form-title">
+          <div class="form-title" id="form-title">技术选型登记表 <span aria-hidden="true">表格号 T-2210</span></div>
+          <div class="form-row">
+            <div>
+              <label for="q-unit">单位名称</label>
+              <input id="q-unit" name="unit" type="text" required placeholder="例：华东精密制造有限公司">
+            </div>
+            <div>
+              <label for="q-mail">联系邮箱</label>
+              <input id="q-mail" name="mail" type="email" required placeholder="name@company.cn">
+            </div>
+          </div>
+          <label for="q-model">意向型号</label>
+          <select id="q-model" name="model">
+            <option value="BW-6R1200">BW-6R1200 通用六轴机器人</option>
+            <option value="BW-CR15">BW-CR15 协作机器人</option>
+            <option value="BW-60D4500">BW-60D4500 重载码垛机器人</option>
+            <option value="custom">整线定制（需现场勘查）</option>
+          </select>
+          <label for="q-note">需求简述</label>
+          <textarea id="q-note" name="note" rows="3" placeholder="工艺、节拍、工位数、安装空间……"></textarea>
+          <button class="btn btn-solid" type="submit">提交需求 <span aria-hidden="true">▸</span></button>
+          <p class="form-hint">提交即视为同意《技术保密协议》；所有需求仅用于方案评估，不对外公开。</p>
+
+          <div id="accept-stamp" class="accept-stamp" aria-live="polite">
+            <span>受理回执<br>NO. BW-0000<br>已盖章确认</span>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="site-footer sheet">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <svg class="brand-gear" aria-hidden="true"><use href="#gear"/></svg>
+        <div class="brand-text">
+          <strong>蓝图工场</strong>
+          <small>BLUEPRINT WORKS</small>
+        </div>
+        <p>以工程图纸的标准，交付每一台机器人。按图施工，毫厘不差。</p>
+      </div>
+      <nav class="footer-nav" aria-label="页脚导航">
+        <a href="#about">企业概况</a>
+        <a href="#products">产品线</a>
+        <a href="#specs">技术规格</a>
+        <a href="#applications">应用场景</a>
+        <a href="#process">研发流程</a>
+        <a href="#contact">联系我们</a>
+      </nav>
+      <div class="footer-fig" aria-label="图纸标题栏信息">
+        <span><b>图号</b>BW-A0-001</span>
+        <span><b>版本</b>R4.2</span>
+        <span><b>比例</b>1:100</span>
+        <span><b>制图</b>蓝图工场</span>
+        <span><b>日期</b>2026-08</span>
+      </div>
+    </div>
+
+    <div class="title-block">
+      <span>图纸编号：BW-A0-001</span>
+      <span>版本：R4.2</span>
+      <span>制图：蓝图工场 BLUEPRINT WORKS</span>
+      <span>比例：1:100</span>
+      <span>© 2009–2026 蓝图工场 苏ICP备2026000000号</span>
+      <span class="to-top"><a href="#top">返回页首 ↑</a></span>
+    </div>
+    <p class="footer-note">本站视觉按工程制图规范绘制：细实线 0.35 mm、标注黄色、虚线段 6-4。欢迎按图纸验收。</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

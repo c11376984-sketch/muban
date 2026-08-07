@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="霓虹纪元 NEON ERA —— 未来都市电竞外设。神经键盘、环绕耳机、量子鼠标，为数字都市的原住民而生。">
+  <meta name="theme-color" content="#07070f">
+  <title>霓虹纪元 NEON ERA · 未来都市电竞外设</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">跳到主内容</a>
+
+  <!-- 全屏扫描线叠加层 -->
+  <div class="scanlines" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#top" aria-label="霓虹纪元 NEON ERA 首页">
+        <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2 L21 7 V17 L12 22 L3 17 V7 Z" fill="none" stroke="#00f0ff" stroke-width="1.6"/>
+          <path d="M12 6 L18 9 V15 L12 18 L6 15 V9 Z" fill="none" stroke="#ff2bd6" stroke-width="1.2" opacity="0.8"/>
+          <circle cx="12" cy="12" r="2" fill="#ffe600"/>
+        </svg>
+        <span class="logo-text">NEON<em>ERA</em></span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="打开导航菜单">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav id="primary-nav" class="primary-nav" aria-label="主导航">
+        <ul>
+          <li><a href="#about"><span class="nav-idx">01</span>情报档案</a></li>
+          <li><a href="#products"><span class="nav-idx">02</span>产品系列</a></li>
+          <li><a href="#specs"><span class="nav-idx">03</span>技术规格</a></li>
+          <li><a href="#grid"><span class="nav-idx">04</span>城市节点</a></li>
+          <li><a href="#reviews"><span class="nav-idx">05</span>玩家评测</a></li>
+          <li><a href="#order"><span class="nav-idx">06</span>预订</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-label="霓虹纪元品牌口号区">
+      <!-- 透视网格地面 -->
+      <svg class="hero-floor" viewBox="0 0 1200 560" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="floorFade" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00f0ff" stop-opacity="0.85"/>
+            <stop offset="0.45" stop-color="#8a2bff" stop-opacity="0.32"/>
+            <stop offset="1" stop-color="#00f0ff" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <g class="floor-h" fill="none" stroke="url(#floorFade)" stroke-width="1.6">
+          <line x1="0" y1="70" x2="1200" y2="70"/>
+          <line x1="0" y1="120" x2="1200" y2="120"/>
+          <line x1="0" y1="185" x2="1200" y2="185"/>
+          <line x1="0" y1="265" x2="1200" y2="265"/>
+          <line x1="0" y1="360" x2="1200" y2="360"/>
+          <line x1="0" y1="470" x2="1200" y2="470"/>
+          <line x1="0" y1="560" x2="1200" y2="560"/>
+        </g>
+        <g class="floor-v" fill="none" stroke="url(#floorFade)" stroke-width="1.1">
+          <line x1="600" y1="30" x2="-360" y2="560"/>
+          <line x1="600" y1="30" x2="-120" y2="560"/>
+          <line x1="600" y1="30" x2="120" y2="560"/>
+          <line x1="600" y1="30" x2="360" y2="560"/>
+          <line x1="600" y1="30" x2="600" y2="560"/>
+          <line x1="600" y1="30" x2="840" y2="560"/>
+          <line x1="600" y1="30" x2="1080" y2="560"/>
+          <line x1="600" y1="30" x2="1320" y2="560"/>
+          <line x1="600" y1="30" x2="1560" y2="560"/>
+        </g>
+      </svg>
+
+      <!-- 霓虹地平线辉光 -->
+      <div class="hero-horizon" aria-hidden="true"></div>
+      <!-- 都市背景天际线剪影 -->
+      <div class="hero-skyline" aria-hidden="true">
+        <svg viewBox="0 0 1200 260" preserveAspectRatio="none">
+          <path d="M0 260 V180 h40 v40 h30 v-60 h36 v70 h28 v-40 h44 v30 h30 V150 h48 v50 h30 V120 h40 v90 h30 V160 h42 v50 h28 V140 h44 v70 h30 V170 h40 v90 h30 V130 h46 v80 h36 V90 h30 v170 Z"
+            fill="rgba(15,15,30,0.92)" stroke="rgba(0,240,255,0.25)" stroke-width="1.5"/>
+          <g fill="#ffe600" opacity="0.7">
+            <rect x="150" y="130" width="5" height="5"/>
+            <rect x="290" y="110" width="5" height="5"/>
+            <rect x="470" y="150" width="5" height="5"/>
+            <rect x="640" y="120" width="5" height="5"/>
+            <rect x="820" y="140" width="5" height="5"/>
+            <rect x="990" y="100" width="5" height="5"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="container hero-inner">
+        <p class="hero-kicker" data-kicker>NEXUS CITY · 2088 —— 都市网络现已开放预订</p>
+        <h1 class="hero-title glitch" data-text="霓虹纪元">霓虹纪元</h1>
+        <p class="hero-en">NEON <span class="text-magenta">ERA</span></p>
+        <p class="hero-desc">把城市的光握在手里。神经键盘、环绕耳机、量子鼠标——<br>为数字都市的原住民打造的下一代电竞外设。</p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#order">立即预订</a>
+          <a class="btn btn-ghost" href="#products">查看武器库</a>
+        </div>
+
+        <ul class="hero-stats" aria-label="产品关键数据">
+          <li class="hero-stat">
+            <span class="hero-stat-num" style="animation-delay:0s">0.1</span><span class="hero-stat-unit">ms</span>
+            <span class="hero-stat-label">响应延迟</span>
+          </li>
+          <li class="hero-stat">
+            <span class="hero-stat-num" style="animation-delay:1s">33K</span>
+            <span class="hero-stat-label">DPI 引擎</span>
+          </li>
+          <li class="hero-stat">
+            <span class="hero-stat-num" style="animation-delay:2s">168</span><span class="hero-stat-unit">h</span>
+            <span class="hero-stat-label">无线续航</span>
+          </li>
+          <li class="hero-stat">
+            <span class="hero-stat-num" style="animation-delay:3s">12</span>
+            <span class="hero-stat-label">都市节点</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- HUD 边角装饰 -->
+      <div class="hud hud-tl" aria-hidden="true"><span></span><span></span></div>
+      <div class="hud hud-tr" aria-hidden="true"><span></span><span></span></div>
+      <div class="hud hud-bl" aria-hidden="true"><span></span><span></span></div>
+      <div class="hud hud-br" aria-hidden="true"><span></span><span></span></div>
+    </section>
+
+    <!-- ============ 广播滚动条 ============ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>NEXUS 全频道广播</span>
+        <em>源核 Syndicate 宣布与霓虹纪元续约三年</em>
+        <span>首轮预订已突破 12 万套</span>
+        <em>新港区全息发布会定档 09.12</em>
+        <span>幻影帮疑似窃取原型固件</span>
+        <em>VX-9 空间音频引擎获都市声学奖</em>
+        <span>NEXUS 全频道广播</span>
+        <em>源核 Syndicate 宣布与霓虹纪元续约三年</em>
+        <span>首轮预订已突破 12 万套</span>
+        <em>新港区全息发布会定档 09.12</em>
+        <span>幻影帮疑似窃取原型固件</span>
+        <em>VX-9 空间音频引擎获都市声学奖</em>
+      </div>
+    </div>
+
+    <!-- ============ ABOUT 情报档案 ============ -->
+    <section id="about" class="section about">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-tag">01 / 情报档案</span>
+          <h2 class="section-title">关于 <span class="accent">霓虹纪元</span></h2>
+          <p class="section-intro">从地下隧道实验室，到十二座都市的霓虹之巅。</p>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-text">
+            <p>我们诞生于<strong>霓虹都市最深的隧道层</strong>。2079 年，一群被大公司裁员的工程师，在废弃服务器与液态光缆之间，焊接出第一把原型键盘——那一夜，霓虹纪元在跳闸与火花中点亮。</p>
+            <p>如今，我们的外设已接入 12 座城市的地下网络节点，成为都市游荡者、网咖黑客与职业选手的标配。每一件装备都在完成 172 道光学校验后，才被准许离开新港区的地下工坊。</p>
+            <ul class="about-values">
+              <li>
+                <span class="value-idx">L1</span>
+                <div><h3>光学工艺</h3><p>全链路光学触发，无机械抖动，无延迟残影。</p></div>
+              </li>
+              <li>
+                <span class="value-idx">L2</span>
+                <div><h3>神经同步</h3><p>神经接口模块可将按键映射为潜意识反射。</p></div>
+              </li>
+              <li>
+                <span class="value-idx">L3</span>
+                <div><h3>模块化</h3><p>键轴、耳罩、微动全部支持现场热拔更换。</p></div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 终端打字机 -->
+          <div class="terminal clip-panel" aria-hidden="true">
+            <div class="terminal-bar">
+              <span class="term-dot term-dot-r"></span>
+              <span class="term-dot term-dot-y"></span>
+              <span class="term-dot term-dot-g"></span>
+              <span class="term-title">nexus_terminal.exe</span>
+            </div>
+            <pre class="term-body" id="term-body" tabindex="0" aria-label="终端启动日志"></pre>
+          </div>
+          <!-- 供读屏阅读的完整日志 -->
+          <p class="sr-only" id="term-static" lang="en">
+            NEON ERA OS v6.0.4 initializing... Node link 12 of 12 online. Identity: NEXUS_CITIZEN_2088. Optical engine calibrated, 0.1 ms. Encrypted channel HEX #00F0FF. Welcome home, wanderer.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRODUCTS 产品系列 ============ -->
+    <section id="products" class="section products">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-tag">02 / 产品系列</span>
+          <h2 class="section-title">武器库 <span class="accent">WARGEAR</span></h2>
+          <p class="section-intro">三件套，足以在任何对局里改写结局。</p>
+        </header>
+
+        <div class="product-grid">
+          <article class="product-card clip-panel" data-tilt>
+            <div class="product-top">
+              <span class="product-code">NX-01</span>
+              <span class="product-badge">新品</span>
+            </div>
+            <svg class="product-art" viewBox="0 0 240 120" aria-hidden="true">
+              <rect x="6" y="10" width="228" height="100" rx="12" class="art-shell"/>
+              <g class="art-key" fill="none">
+                <rect x="20" y="26" width="34" height="26" rx="4"/>
+                <rect x="60" y="26" width="34" height="26" rx="4"/>
+                <rect x="100" y="26" width="34" height="26" rx="4"/>
+                <rect x="140" y="26" width="34" height="26" rx="4"/>
+                <rect x="180" y="26" width="48" height="26" rx="4"/>
+                <rect x="20" y="60" width="34" height="26" rx="4"/>
+                <rect x="60" y="60" width="34" height="26" rx="4"/>
+                <rect x="100" y="60" width="34" height="26" rx="4"/>
+                <rect x="140" y="60" width="34" height="26" rx="4"/>
+                <rect x="180" y="60" width="48" height="26" rx="4"/>
+              </g>
+              <g class="art-keylit">
+                <rect x="60" y="60" width="34" height="26" rx="4"/>
+                <rect x="180" y="26" width="48" height="26" rx="4"/>
+              </g>
+              <circle cx="228" cy="52" r="3" class="art-sensor"/>
+            </svg>
+            <h3 class="product-name">神经键盘</h3>
+            <p class="product-en">NEURAL KEY</p>
+            <p class="product-desc">磁轴光学键轴，键程随心调节，指尖直接对话电路。</p>
+            <ul class="product-points">
+              <li>0.1ms 光学触发</li>
+              <li>航空铝 + PBT 键帽</li>
+              <li>神经同步模块可选</li>
+            </ul>
+            <div class="product-foot">
+              <span class="product-price">¥2,099</span>
+              <a class="btn btn-sm" href="#order">预订</a>
+            </div>
+          </article>
+
+          <article class="product-card clip-panel" data-tilt>
+            <div class="product-top">
+              <span class="product-code">VX-9</span>
+              <span class="product-badge product-badge-hot">热卖</span>
+            </div>
+            <svg class="product-art" viewBox="0 0 240 120" aria-hidden="true">
+              <circle cx="120" cy="46" r="38" class="art-halo"/>
+              <path d="M44 78 V54 a76 76 0 0 1 152 0 V78" class="art-band"/>
+              <rect x="22" y="70" width="32" height="42" rx="10" class="art-cup"/>
+              <rect x="186" y="70" width="32" height="42" rx="10" class="art-cup"/>
+              <circle cx="120" cy="28" r="7" class="art-sensor"/>
+              <path d="M28 96 q-10 6 -2 12" class="art-mic"/>
+              <path d="M212 96 q10 6 2 12" class="art-mic"/>
+            </svg>
+            <h3 class="product-name">环绕耳机</h3>
+            <p class="product-en">SURROUND HEADSET</p>
+            <p class="product-desc">9.1 声道空间音频，让整座城市在你耳边呼吸。</p>
+            <ul class="product-points">
+              <li>双驱动单元 + 空间引擎</li>
+              <li>记忆蛋白耳罩</li>
+              <li>环境降噪 / 全息耳麦</li>
+            </ul>
+            <div class="product-foot">
+              <span class="product-price">¥1,599</span>
+              <a class="btn btn-sm" href="#order">预订</a>
+            </div>
+          </article>
+
+          <article class="product-card clip-panel" data-tilt>
+            <div class="product-top">
+              <span class="product-code">QN-77</span>
+              <span class="product-badge">新品</span>
+            </div>
+            <svg class="product-art" viewBox="0 0 240 120" aria-hidden="true">
+              <path d="M120 8 C 82 8 74 32 74 62 C 74 102 92 112 120 112 C 148 112 166 102 166 62 C 166 32 158 8 120 8 Z" class="art-body"/>
+              <line x1="120" y1="22" x2="120" y2="50" class="art-scroll"/>
+              <circle cx="120" cy="94" r="6" class="art-sensor"/>
+              <path d="M74 44 H96" class="art-sidebtn"/>
+              <path d="M74 56 H96" class="art-sidebtn"/>
+              <path d="M166 44 H144" class="art-sidebtn"/>
+              <path d="M166 56 H144" class="art-sidebtn"/>
+            </svg>
+            <h3 class="product-name">量子鼠标</h3>
+            <p class="product-en">QUANTUM MOUSE</p>
+            <p class="product-desc">33,000 DPI 光学引擎，0.1ms 回报，锁定即命中。</p>
+            <ul class="product-points">
+              <li>33,000 DPI 光学引擎</li>
+              <li>碳纤维轻量化 52g</li>
+              <li>触觉反馈 + 磁吸充电</li>
+            </ul>
+            <div class="product-foot">
+              <span class="product-price">¥899</span>
+              <a class="btn btn-sm" href="#order">预订</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SPECS 技术规格 ============ -->
+    <section id="specs" class="section specs">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-tag">03 / 技术规格</span>
+          <h2 class="section-title">数据档案 <span class="accent">DATASHEET</span></h2>
+          <p class="section-intro">所有数据均经 2088 年都市网络实测校准。</p>
+        </header>
+
+        <div class="spec-table-wrap clip-panel">
+          <table class="spec-table">
+            <caption class="sr-only">三款产品技术规格对照表</caption>
+            <thead>
+              <tr>
+                <th scope="col">型号</th>
+                <th scope="col">光学引擎</th>
+                <th scope="col">回报率</th>
+                <th scope="col">续航</th>
+                <th scope="col">材质</th>
+                <th scope="col">光效</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><span class="spec-code">NX-01</span> 神经键盘</th>
+                <td>磁轴光学 / 3.2mm</td>
+                <td>0.1 ms</td>
+                <td>—</td>
+                <td>航空铝 + PBT</td>
+                <td>全键霓虹光场</td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="spec-code">VX-9</span> 环绕耳机</th>
+                <td>空间音频 / 9.1ch</td>
+                <td>0.3 ms</td>
+                <td>168 h</td>
+                <td>记忆蛋白皮</td>
+                <td>霓虹灯环</td>
+              </tr>
+              <tr>
+                <th scope="row"><span class="spec-code">QN-77</span> 量子鼠标</th>
+                <td>光学 / 33,000 DPI</td>
+                <td>0.1 ms</td>
+                <td>140 h</td>
+                <td>碳纤维 52g</td>
+                <td>点阵光轨</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="spec-note"><span class="spec-arrow">&gt;&gt;</span> 全部型号通过《都市数据伦理公约》认证，信号通道默认加密，绝不上传你的对局数据。</p>
+      </div>
+    </section>
+
+    <!-- ============ GRID 城市节点图 ============ -->
+    <section id="grid" class="section grid-section">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-tag">04 / 城市节点</span>
+          <h2 class="section-title">势力网络 <span class="accent">GRID</span></h2>
+          <p class="section-intro">选中节点，读取该势力的加密情报。键盘可用 Tab 定位节点。</p>
+        </header>
+
+        <div class="grid-layout">
+          <div class="map-panel clip-panel">
+            <svg class="map-svg" viewBox="0 0 1000 560" role="img" aria-labelledby="map-title" aria-describedby="map-desc">
+              <title id="map-title">霓虹纪元势力节点图</title>
+              <desc id="map-desc">以 NEXUS 枢纽为中心，连接新港区源核、旧城区幻影帮、工业带黄蜂会与穹顶站紫教团四个势力节点。</desc>
+              <defs>
+                <pattern id="mapGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                  <path d="M40 0 H0 V40" fill="none" stroke="rgba(0,240,255,0.05)" stroke-width="1"/>
+                </pattern>
+                <radialGradient id="hubGlow" cx="0.5" cy="0.5" r="0.5">
+                  <stop offset="0" stop-color="#00f0ff" stop-opacity="0.55"/>
+                  <stop offset="1" stop-color="#00f0ff" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <rect width="1000" height="560" fill="url(#mapGrid)"/>
+
+              <!-- 连接线 -->
+              <g class="map-links">
+                <line class="link link-synd" x1="500" y1="280" x2="250" y2="150"/>
+                <line class="link link-ghost" x1="500" y1="280" x2="760" y2="120"/>
+                <line class="link link-vesp" x1="500" y1="280" x2="190" y2="440"/>
+                <line class="link link-violet" x1="500" y1="280" x2="810" y2="400"/>
+                <line class="link link-cross" x1="250" y1="150" x2="190" y2="440"/>
+                <line class="link link-cross" x1="760" y1="120" x2="810" y2="400"/>
+              </g>
+
+              <!-- NEXUS 枢纽 -->
+              <g class="node node-hub" tabindex="0" role="button" aria-label="查看 NEXUS 枢纽情报" aria-controls="node-readout" data-faction="nexus">
+                <circle class="node-pulse" cx="500" cy="280" r="26"/>
+                <circle cx="500" cy="280" r="44" fill="url(#hubGlow)" stroke="none"/>
+                <circle class="node-dot" cx="500" cy="280" r="15"/>
+                <text x="500" y="360" class="node-name">NEXUS 枢纽</text>
+                <text x="500" y="378" class="node-sub">HUB</text>
+              </g>
+
+              <!-- 源核 Syndicate -->
+              <g class="node f-synd" tabindex="0" role="button" aria-label="查看源核 Syndicate 情报" aria-controls="node-readout" data-faction="synd">
+                <circle class="node-halo" cx="250" cy="150" r="34"/>
+                <circle class="node-dot" cx="250" cy="150" r="12"/>
+                <text x="250" y="126" class="node-name">源核</text>
+                <text x="250" y="142" class="node-sub">SYNDICATE</text>
+                <text x="250" y="202" class="node-cap">新港区</text>
+              </g>
+
+              <!-- 幻影帮 Ghost -->
+              <g class="node f-ghost" tabindex="0" role="button" aria-label="查看幻影帮 Ghost 情报" aria-controls="node-readout" data-faction="ghost">
+                <circle class="node-halo" cx="760" cy="120" r="34"/>
+                <circle class="node-dot" cx="760" cy="120" r="12"/>
+                <text x="760" y="96" class="node-name">幻影帮</text>
+                <text x="760" y="112" class="node-sub">GHOST</text>
+                <text x="760" y="172" class="node-cap">旧城区</text>
+              </g>
+
+              <!-- 黄蜂会 Vesp -->
+              <g class="node f-vesp" tabindex="0" role="button" aria-label="查看黄蜂会 Vesp 情报" aria-controls="node-readout" data-faction="vesp">
+                <circle class="node-halo" cx="190" cy="440" r="34"/>
+                <circle class="node-dot" cx="190" cy="440" r="12"/>
+                <text x="190" y="416" class="node-name">黄蜂会</text>
+                <text x="190" y="432" class="node-sub">VESP</text>
+                <text x="190" y="492" class="node-cap">工业带</text>
+              </g>
+
+              <!-- 紫教团 Violet -->
+              <g class="node f-violet" tabindex="0" role="button" aria-label="查看紫教团 Violet 情报" aria-controls="node-readout" data-faction="violet">
+                <circle class="node-halo" cx="810" cy="400" r="34"/>
+                <circle class="node-dot" cx="810" cy="400" r="12"/>
+                <text x="810" y="376" class="node-name">紫教团</text>
+                <text x="810" y="392" class="node-sub">VIOLET</text>
+                <text x="810" y="452" class="node-cap">穹顶站</text>
+              </g>
+            </svg>
+          </div>
+
+          <div class="map-side">
+            <section class="readout clip-panel" id="node-readout" aria-live="polite" aria-label="所选势力情报">
+              <p class="readout-hint" data-readout-hint>&gt;&gt; 请选择节点，正在破解加密信道…</p>
+              <div class="readout-data" hidden data-readout-data>
+                <div class="readout-head">
+                  <span class="readout-name" data-out-name></span>
+                  <span class="readout-en" data-out-en></span>
+                </div>
+                <dl class="readout-rows">
+                  <div><dt>控制区</dt><dd data-out-zone></dd></div>
+                  <div><dt>节点强度</dt><dd><span data-out-power>0</span> / 100</dd></div>
+                  <div><dt>领袖</dt><dd data-out-leader></dd></div>
+                  <div><dt>外交状态</dt><dd data-out-attitude></dd></div>
+                </dl>
+                <p class="readout-note" data-out-note></p>
+              </div>
+            </section>
+
+            <ul class="map-legend" aria-label="势力图例">
+              <li><span class="legend-swatch" style="--c:#00f0ff"></span>源核 Syndicate</li>
+              <li><span class="legend-swatch" style="--c:#ff2bd6"></span>幻影帮 Ghost</li>
+              <li><span class="legend-swatch" style="--c:#ffe600"></span>黄蜂会 Vesp</li>
+              <li><span class="legend-swatch" style="--c:#8a2bff"></span>紫教团 Violet</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REVIEWS 玩家评测 ============ -->
+    <section id="reviews" class="section reviews">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-tag">05 / 玩家评测</span>
+          <h2 class="section-title">城市回声 <span class="accent">ECHO</span></h2>
+          <p class="section-intro">来自地下网咖、穹顶赛场与深夜直播间的真实回响。</p>
+        </header>
+
+        <div class="review-grid">
+          <figure class="review-card">
+            <blockquote>
+              <p>「它的手感像雨后的霓虹街面——干脆、湿润、不粘滞。按下去的每一格都带着城市的心跳。」</p>
+            </blockquote>
+            <figcaption>
+              <span class="review-idx">ID-07</span>
+              <span class="review-name">零号</span>
+              <span class="review-role">电竞选手 · 幻影帮荣誉成员</span>
+            </figcaption>
+          </figure>
+
+          <figure class="review-card review-card-ghost">
+            <blockquote>
+              <p>「戴上 VX-9 的瞬间，整座城市都在你耳边呼吸。我能听见对手绕后的脚步声，像潮水一样。」</p>
+            </blockquote>
+            <figcaption>
+              <span class="review-idx">ID-23</span>
+              <span class="review-name">脉冲</span>
+              <span class="review-role">深夜主播 · 听众 84 万</span>
+            </figcaption>
+          </figure>
+
+          <figure class="review-card review-card-yellow">
+            <blockquote>
+              <p>「QN-77 让我在 0.1 秒的窗口里赢下关键对局。那晚的奖金，够我再买三只。」</p>
+            </blockquote>
+            <figcaption>
+              <span class="review-idx">ID-31</span>
+              <span class="review-name">Kai</span>
+              <span class="review-role">穹顶联赛职业选手</span>
+            </figcaption>
+          </figure>
+
+          <figure class="review-card review-card-violet">
+            <blockquote>
+              <p>「预订第三天就到了。盒子会发光，像收到了一封来自未来的情书。」</p>
+            </blockquote>
+            <figcaption>
+              <span class="review-idx">ID-52</span>
+              <span class="review-name">Luna</span>
+              <span class="review-role">都市游荡者 · 夜骑手</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ORDER 预订 CTA ============ -->
+    <section id="order" class="section order">
+      <div class="container order-inner">
+        <div class="order-scan" aria-hidden="true"></div>
+        <p class="section-tag section-tag-center">06 / 预订程序</p>
+        <h2 class="order-title glitch" data-text="把城市的光，握在手里">把城市的光，握在手里</h2>
+        <p class="order-desc">限量首发给 NEXUS 公民徽章持有者：全系 8 折 + 神经同步模块免费升级。<br>首轮发货：2088 年 9 月 12 日 · 新港区地下工坊直出。</p>
+        <a class="btn btn-order" href="#contact">启动预订程序 →</a>
+        <ul class="order-terms" aria-label="预订条款">
+          <li>支持加密币 / 全息卡结算</li>
+          <li>72 小时内可无理由退货</li>
+          <li>信号通道全程加密</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT 联络 ============ -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <header class="section-head">
+          <span class="section-tag">07 / 联络频道</span>
+          <h2 class="section-title">建立 <span class="accent">连接</span></h2>
+          <p class="section-intro">发送加密讯息，24 小时内必有回音。</p>
+        </header>
+
+        <div class="contact-grid">
+          <form class="contact-form clip-panel" action="#" method="post" novalidate>
+            <div class="field">
+              <label for="name">代号</label>
+              <input type="text" id="name" name="name" placeholder="例：零号" autocomplete="nickname" required>
+            </div>
+            <div class="field">
+              <label for="email">通讯 ID</label>
+              <input type="email" id="email" name="email" placeholder="you@nexus.city" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="topic">讯息类型</label>
+              <select id="topic" name="topic">
+                <option value="order">预订咨询</option>
+                <option value="repair">固件升级</option>
+                <option value="deal">地下交易</option>
+                <option value="other">其他频道</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="message">讯息内容</label>
+              <textarea id="message" name="message" rows="4" placeholder="写下你的讯息…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">发送加密讯息</button>
+            <p class="form-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="contact-info">
+            <p class="info-label">实体据点</p>
+            <p class="info-value">新港区 · 霓虹大道 2088 号 · 地下 7 层</p>
+            <p class="info-label">通讯频道</p>
+            <p class="info-value info-mono">nexus@neon-era.city</p>
+            <p class="info-label">全频道呼号</p>
+            <p class="info-value info-mono">NEXUS-2088</p>
+            <p class="info-label">营业时段</p>
+            <p class="info-value">每日 19:00 —— 次日 06:00（夜班制）</p>
+            <p class="info-warn">你的讯息将被端到端加密，绝不上交任何大公司数据局。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="logo" href="#top" aria-label="返回顶部">
+          <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2 L21 7 V17 L12 22 L3 17 V7 Z" fill="none" stroke="#00f0ff" stroke-width="1.6"/>
+            <path d="M12 6 L18 9 V15 L12 18 L6 15 V9 Z" fill="none" stroke="#ff2bd6" stroke-width="1.2" opacity="0.8"/>
+            <circle cx="12" cy="12" r="2" fill="#ffe600"/>
+          </svg>
+          <span class="logo-text">NEON<em>ERA</em></span>
+        </a>
+        <p>未来都市电竞外设。地下实验室制造，霓虹街头验证。</p>
+        <p class="footer-mono">EST. 2079 · NEXUS CITY</p>
+      </div>
+
+      <nav class="footer-nav" aria-label="页脚导航">
+        <p class="footer-nav-title">频道索引</p>
+        <ul>
+          <li><a href="#about">情报档案</a></li>
+          <li><a href="#products">产品系列</a></li>
+          <li><a href="#specs">技术规格</a></li>
+          <li><a href="#grid">城市节点</a></li>
+          <li><a href="#reviews">玩家评测</a></li>
+          <li><a href="#order">预订程序</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-connect">
+        <p class="footer-nav-title">外部信道</p>
+        <ul class="social-links">
+          <li><a href="#" aria-label="地下网络社区"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>网域社区</a></li>
+          <li><a href="#" aria-label="全息社交频道"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1.2"/></svg>全息社交</a></li>
+          <li><a href="#" aria-label="加密邮件订阅"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="m4 7 8 6 8-6"/></svg>加密订阅</a></li>
+        </ul>
+        <p class="footer-note">遵守《都市数据伦理公约》<br>© 2088 霓虹纪元 NEON ERA · 保留所有像素</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

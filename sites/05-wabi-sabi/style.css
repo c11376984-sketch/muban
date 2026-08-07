@@ -1,0 +1,890 @@
+/* ==========================================================================
+   苔庭 KOKEI NIWA — 日式侘寂 · 禅意
+   设计 token / 布局 / 动效 · 无外部图片，全 CSS + 内联 SVG 绘制
+   ========================================================================== */
+
+:root {
+  /* —— 色板 —— */
+  --paper: #f5f0e4;          /* 宣纸米白 */
+  --paper-deep: #ece4d0;     /* 纸色深处 */
+  --ink: #26241f;            /* 墨黑 */
+  --ink-soft: #55503f;       /* 淡墨 */
+  --moss: #6e7f5a;           /* 苔绿 */
+  --moss-deep: #55604a;
+  --clay: #b07c55;           /* 陶土 */
+  --persimmon: #c84e2a;      /* 柿红点缀 */
+  --line: rgba(38, 36, 31, 0.16);
+  --line-strong: rgba(38, 36, 31, 0.32);
+
+  /* —— 字体 —— */
+  --font-serif: "Noto Serif SC", "Songti SC", "STSong", "SimSun",
+                "Yu Mincho", "PingFang SC", "Microsoft YaHei", Georgia, serif;
+  --font-kai: "Noto Serif SC", "STKaiti", "KaiTi", "FangSong",
+              "PingFang SC", Georgia, serif;
+
+  /* —— 布局 —— */
+  --container: 1120px;
+  --pad: 24px;
+  --section-y: clamp(72px, 11vw, 136px);
+
+  /* —— 动效 —— */
+  --ease: cubic-bezier(0.33, 0, 0.2, 1);
+  --t-fast: 0.35s;
+  --t-slow: 1.1s;
+
+  /* —— 阴影（极轻） —— */
+  --shadow: 0 1px 0 var(--line), 0 18px 40px -32px rgba(38, 36, 31, 0.35);
+}
+
+/* ==========================================================================
+   重置与基础
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-serif);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.9;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, select, textarea { font: inherit; color: inherit; }
+
+::selection { background: var(--persimmon); color: var(--paper); }
+
+:focus-visible {
+  outline: 2px solid var(--persimmon);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+/* —— 和纸噪点纹理（整页覆盖） —— */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  pointer-events: none;
+  opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.container {
+  width: min(var(--container), 100% - var(--pad) * 2);
+  margin-inline: auto;
+}
+
+/* —— 跳过链接 —— */
+.skip-link {
+  position: fixed;
+  top: 10px; left: 10px;
+  z-index: 3000;
+  padding: 10px 18px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.9rem;
+  transform: translateY(-160%);
+  transition: transform var(--t-fast) var(--ease);
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
+/* —— 通用区块 —— */
+.section { padding-block: var(--section-y); position: relative; }
+.section--tint { background: var(--paper-deep); }
+
+.sec-head {
+  margin-bottom: clamp(40px, 7vw, 72px);
+  position: relative;
+}
+.sec-head__eyebrow {
+  font-family: var(--font-kai);
+  font-size: 0.86rem;
+  letter-spacing: 0.42em;
+  color: var(--clay);
+  margin-bottom: 18px;
+}
+.sec-head__title {
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+}
+.brush {
+  width: 220px;
+  max-width: 46%;
+  height: auto;
+  margin-top: 22px;
+  color: var(--ink);
+}
+/* 水墨笔触默认路径可见（无 JS 兜底），JS 启用后改为从零描绘 */
+.brush.is-armed path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+/* —— 滚动渐显（极克制） —— */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+[data-reveal].is-in { opacity: 1; transform: none; }
+
+/* ==========================================================================
+   顶栏
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 14px;
+}
+.site-brand { display: flex; align-items: center; gap: 12px; }
+.site-brand__seal {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  border: 1px solid var(--persimmon);
+  color: var(--persimmon);
+  font-family: var(--font-kai);
+  font-size: 1.05rem;
+  transform: rotate(-3deg);
+}
+.site-brand__text {
+  font-size: 1.05rem;
+  letter-spacing: 0.3em;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.site-brand__text small {
+  font-size: 0.6rem;
+  letter-spacing: 0.32em;
+  color: var(--ink-soft);
+}
+
+.site-nav__list { display: flex; align-items: center; gap: clamp(16px, 2.6vw, 34px); }
+.site-nav__list a {
+  font-size: 0.92rem;
+  letter-spacing: 0.2em;
+  padding: 6px 2px;
+  position: relative;
+}
+.site-nav__list a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--t-fast) var(--ease);
+}
+.site-nav__list a:hover::after,
+.site-nav__list a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+.site-nav__cta {
+  border: 1px solid var(--line-strong);
+  padding: 8px 18px !important;
+}
+.site-nav__cta::after { display: none; }
+.site-nav__cta:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+  transition: background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+
+.nav-toggle { display: none; }
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
+.hero__bg { position: absolute; inset: 0; z-index: 0; }
+.hero__mountains { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+/* 枯山水沙纹：同心圆波纹 + 沙粒 */
+.hero__sand {
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 34%;
+  background:
+    radial-gradient(circle at 82% 130%, var(--ink) 2px, transparent 2.6px),
+    radial-gradient(circle at 14% 160%, var(--ink) 1.6px, transparent 2.2px),
+    radial-gradient(circle at 42% 180%, var(--ink) 1.8px, transparent 2.4px),
+    repeating-radial-gradient(
+      ellipse at 58% 160%,
+      transparent 0 46px,
+      rgba(38, 36, 31, 0.10) 47px 48px
+    );
+  opacity: 0.9;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr;
+  align-items: center;
+  gap: 40px;
+  padding-block: clamp(64px, 12vh, 120px);
+}
+
+.hero__text { max-width: 34em; }
+.hero__eyebrow {
+  font-family: var(--font-kai);
+  font-size: 0.82rem;
+  letter-spacing: 0.5em;
+  color: var(--clay);
+  margin-bottom: clamp(20px, 4vh, 40px);
+}
+
+/* 竖排大字 */
+.hero__title {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(4.4rem, 13vw, 9.5rem);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  margin-bottom: clamp(20px, 4vh, 44px);
+}
+
+.hero__sub {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: clamp(1.05rem, 2.4vw, 1.45rem);
+  letter-spacing: 0.5em;
+  color: var(--moss-deep);
+  margin-bottom: 26px;
+}
+
+.hero__note {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  letter-spacing: 0.06em;
+  margin-bottom: clamp(28px, 5vh, 48px);
+}
+
+.hero__scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-kai);
+  font-size: 0.88rem;
+  letter-spacing: 0.35em;
+  color: var(--clay);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 10px;
+}
+.hero__scroll-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--clay);
+  animation: drift 3.2s var(--ease) infinite;
+}
+@keyframes drift {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+
+/* 柿印印章 */
+.hero__seal {
+  justify-self: center;
+  color: var(--persimmon);
+  opacity: 0.9;
+  width: clamp(84px, 11vw, 128px);
+  transform: rotate(-5deg);
+  animation: seal-breathe 7s ease-in-out infinite;
+}
+@keyframes seal-breathe {
+  0%, 100% { transform: rotate(-5deg) scale(1); }
+  50% { transform: rotate(-3deg) scale(1.02); }
+}
+
+/* ==========================================================================
+   茶室精神 ABOUT
+   ========================================================================== */
+.spirit .container {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: clamp(24px, 5vw, 72px);
+}
+
+/* 竖排旁题 */
+.spirit__aside {
+  border-left: 1px solid var(--line);
+  padding-left: 18px;
+}
+.spirit__vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: var(--font-kai);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  letter-spacing: 0.55em;
+  color: var(--moss-deep);
+}
+
+.spirit__lead {
+  font-size: clamp(1.15rem, 2.6vw, 1.6rem);
+  line-height: 2.1;
+  letter-spacing: 0.1em;
+  color: var(--ink);
+  margin-bottom: 40px;
+}
+
+.spirit__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(28px, 5vw, 56px);
+  margin-bottom: clamp(40px, 7vw, 72px);
+}
+.spirit__col {
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+  letter-spacing: 0.05em;
+}
+
+/* 和敬清寂 四谛 */
+.virtues {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.virtue {
+  background: var(--paper);
+  padding: clamp(20px, 3vw, 32px) 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+.virtue__kanji {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 500;
+  color: var(--ink);
+}
+.virtue__note {
+  font-family: var(--font-kai);
+  font-size: 0.82rem;
+  letter-spacing: 0.22em;
+  color: var(--clay);
+}
+
+/* ==========================================================================
+   茶道流程 TIMELINE
+   ========================================================================== */
+.chanoyu__intro {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+  margin-bottom: clamp(44px, 7vw, 80px);
+}
+
+.timeline {
+  position: relative;
+  max-width: 720px;
+  padding-left: clamp(64px, 10vw, 110px);
+}
+.timeline__rail {
+  position: absolute;
+  left: 26px;
+  top: 8px; bottom: 8px;
+  width: 1px;
+  background: var(--line-strong);
+}
+.timeline__progress {
+  position: absolute;
+  inset: 0;
+  width: 2px;
+  left: -0.5px;
+  background: var(--moss);
+  transform-origin: top;
+  transform: scaleY(0);
+  transition: transform 0.2s linear;
+}
+
+.timeline__steps { display: flex; flex-direction: column; gap: clamp(40px, 6vw, 64px); }
+
+.step { position: relative; }
+.step__no {
+  position: absolute;
+  left: calc(-1 * clamp(64px, 10vw, 110px) + 26px);
+  top: 4px;
+  translate: -50% 0;
+  display: grid;
+  place-items: center;
+  width: 44px; height: 44px;
+  border: 1px solid var(--moss);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--moss-deep);
+  font-family: var(--font-kai);
+  font-size: 1.05rem;
+}
+.chanoyu .step__no { background: var(--paper-deep); }
+.step__title {
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  margin-bottom: 10px;
+}
+.step__text {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  max-width: 46em;
+}
+
+.chanoyu__note {
+  margin-top: clamp(44px, 7vw, 72px);
+  font-family: var(--font-kai);
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  color: var(--ink-soft);
+}
+
+/* ==========================================================================
+   房间 ROOMS
+   ========================================================================== */
+.rooms__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 36px);
+  align-items: start;
+}
+.room--raised { margin-top: clamp(24px, 5vw, 64px); }
+
+.room {
+  border-top: 1px solid var(--line-strong);
+  padding-top: 26px;
+  transition: transform var(--t-fast) var(--ease);
+}
+.room:hover { transform: translateY(-4px); }
+
+.room__fig {
+  margin-bottom: 26px;
+  color: var(--ink);
+  opacity: 0.85;
+}
+.room__fig svg { width: 100%; height: auto; }
+
+.room__eyebrow {
+  font-family: var(--font-kai);
+  font-size: 0.8rem;
+  letter-spacing: 0.32em;
+  color: var(--clay);
+  margin-bottom: 10px;
+}
+.room__title {
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  margin-bottom: 14px;
+}
+.room__text {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  letter-spacing: 0.03em;
+  margin-bottom: 22px;
+}
+.room__meta {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
+}
+.room__price {
+  font-family: var(--font-kai);
+  font-size: 1.35rem;
+  color: var(--ink);
+  letter-spacing: 0.1em;
+}
+
+.rooms__note {
+  margin-top: clamp(44px, 7vw, 72px);
+  text-align: center;
+  font-family: var(--font-kai);
+  font-size: 0.86rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+}
+
+/* ==========================================================================
+   四季之味 SEASONS
+   ========================================================================== */
+.seasons__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(16px, 3vw, 32px);
+}
+.season {
+  padding: clamp(24px, 3vw, 36px) 20px;
+  text-align: center;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--paper) 55%, transparent);
+  transition: transform var(--t-fast) var(--ease), box-shadow var(--t-fast) var(--ease);
+}
+.season:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 44px -34px rgba(38, 36, 31, 0.5);
+}
+.season__icon {
+  color: var(--moss-deep);
+  width: 80px;
+  margin: 0 auto 20px;
+}
+.season__icon svg { width: 100%; height: auto; }
+.season__name {
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+}
+.season__text {
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+}
+
+/* ==========================================================================
+   预约 CTA
+   ========================================================================== */
+.reserve__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(36px, 6vw, 88px);
+  align-items: start;
+}
+.reserve__title {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  margin: 14px 0 28px;
+}
+.reserve__lead {
+  color: var(--ink-soft);
+  letter-spacing: 0.06em;
+  margin-bottom: 36px;
+}
+.reserve__info { border-top: 1px solid var(--line-strong); }
+.reserve__info-row {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 16px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+.reserve__info dt {
+  font-family: var(--font-kai);
+  color: var(--clay);
+  letter-spacing: 0.2em;
+}
+.reserve__info dd { color: var(--ink-soft); }
+.reserve__info a {
+  border-bottom: 1px solid var(--line-strong);
+}
+.reserve__info a:hover { color: var(--persimmon); }
+
+/* 表单 */
+.reserve-form {
+  border: 1px solid var(--line-strong);
+  padding: clamp(24px, 4vw, 40px);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+}
+.field { margin-bottom: 22px; }
+.field label {
+  display: block;
+  font-family: var(--font-kai);
+  font-size: 0.84rem;
+  letter-spacing: 0.24em;
+  color: var(--clay);
+  margin-bottom: 8px;
+}
+.field__opt { color: var(--ink-soft); letter-spacing: 0.1em; }
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--paper-deep);
+  border: 1px solid var(--line);
+  border-radius: 0;
+  letter-spacing: 0.06em;
+  transition: border-color var(--t-fast) var(--ease);
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--persimmon);
+}
+.field textarea { resize: vertical; min-height: 88px; }
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 20px;
+  background: var(--ink);
+  color: var(--paper);
+  letter-spacing: 0.3em;
+  font-size: 0.98rem;
+  overflow: hidden;
+  transition: color var(--t-fast) var(--ease);
+}
+.btn__ink {
+  position: absolute;
+  inset: 0;
+  background: var(--persimmon);
+  transform: translateY(101%);
+  transition: transform 0.5s var(--ease);
+}
+.btn:hover .btn__ink,
+.btn:focus-visible .btn__ink { transform: translateY(0); }
+.btn span { position: relative; z-index: 1; }
+
+.reserve-form__done {
+  margin-top: 18px;
+  font-family: var(--font-kai);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  color: var(--moss-deep);
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+.reserve-form__done[hidden] { display: none; }
+
+/* ==========================================================================
+   页脚
+   ========================================================================== */
+.site-footer {
+  border-top: 1px solid var(--line-strong);
+  padding-block: clamp(48px, 7vw, 80px) 36px;
+  background: var(--paper-deep);
+}
+.site-footer__inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 28px;
+}
+.site-footer__name {
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 12px;
+}
+.site-footer__name small { font-size: 0.62rem; letter-spacing: 0.32em; color: var(--ink-soft); }
+.site-footer__tag {
+  font-family: var(--font-kai);
+  font-size: 0.86rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.14em;
+}
+.site-footer__nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.site-footer__nav a {
+  font-size: 0.9rem;
+  letter-spacing: 0.18em;
+  color: var(--ink-soft);
+  border-bottom: 1px solid transparent;
+}
+.site-footer__nav a:hover { color: var(--persimmon); border-color: currentColor; }
+.site-footer__note {
+  font-family: var(--font-kai);
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  color: var(--moss-deep);
+  align-self: end;
+  text-align: right;
+}
+.site-footer__copy {
+  grid-column: 1 / -1;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  color: var(--ink-soft);
+}
+
+/* ==========================================================================
+   平板 641–1024px
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero__inner { grid-template-columns: 1.25fr 0.75fr; }
+  .rooms__grid { grid-template-columns: repeat(2, 1fr); }
+  .room--raised { margin-top: 0; }
+  .room:last-child { grid-column: 1 / -1; max-width: 480px; margin-inline: auto; }
+  .seasons__grid { grid-template-columns: repeat(2, 1fr); }
+  .site-footer__inner { grid-template-columns: 1fr 1fr; }
+  .site-footer__note { text-align: left; }
+}
+
+/* ==========================================================================
+   移动 ≤640px
+   ========================================================================== */
+@media (max-width: 640px) {
+  :root { --pad: 20px; }
+
+  /* 折叠菜单 */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px; height: 40px;
+    padding: 8px;
+  }
+  .nav-toggle__bar {
+    height: 1px;
+    background: var(--ink);
+    transition: transform var(--t-fast) var(--ease), opacity var(--t-fast) var(--ease);
+  }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(2) { opacity: 0; }
+  .nav-toggle[aria-expanded="true"] .nav-toggle__bar:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line-strong);
+    box-shadow: 0 24px 40px -28px rgba(38, 36, 31, 0.4);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.45s var(--ease);
+  }
+  .site-nav.is-open { max-height: 360px; }
+  .site-nav__list { flex-direction: column; align-items: stretch; gap: 0; padding: 8px var(--pad) 18px; }
+  .site-nav__list li { border-bottom: 1px solid var(--line); }
+  .site-nav__list a { display: block; padding: 14px 4px; letter-spacing: 0.26em; }
+  .site-nav__cta { border: 0; padding: 14px 4px !important; }
+
+  /* Hero 重排：竖排标题居中偏右，印章下沉 */
+  .hero { min-height: 88vh; }
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-block: 96px 72px;
+  }
+  .hero__text { max-width: none; }
+  .hero__eyebrow { letter-spacing: 0.36em; }
+  .hero__title {
+    font-size: clamp(4.2rem, 26vw, 7rem);
+    letter-spacing: 0.02em;
+    margin: 4px 0 20px;
+  }
+  .hero__seal {
+    position: absolute;
+    right: var(--pad);
+    top: 92px;
+    width: 64px;
+  }
+
+  /* 精神 */
+  .spirit .container { grid-template-columns: 1fr; }
+  .spirit__aside {
+    border-left: 0;
+    border-bottom: 1px solid var(--line);
+    padding: 0 0 18px;
+    margin-bottom: 24px;
+  }
+  .spirit__vertical { writing-mode: horizontal-tb; letter-spacing: 0.4em; }
+  .spirit__columns { grid-template-columns: 1fr; }
+  .virtues { grid-template-columns: 1fr 1fr; }
+
+  /* 时间线 */
+  .timeline { padding-left: 0; }
+  .timeline__rail { left: 20px; }
+  .step { padding-left: 56px; }
+  .step__no {
+    left: 20px;
+    width: 40px; height: 40px;
+    font-size: 0.95rem;
+  }
+
+  /* 房间 / 四季 */
+  .rooms__grid { grid-template-columns: 1fr; }
+  .room:last-child { grid-column: auto; max-width: none; margin-inline: 0; }
+  .seasons__grid { grid-template-columns: 1fr; }
+
+  /* 预约 */
+  .reserve__inner { grid-template-columns: 1fr; }
+  .reserve__info-row { grid-template-columns: 56px 1fr; }
+
+  /* 页脚 */
+  .site-footer__inner { grid-template-columns: 1fr; }
+  .site-footer__note { text-align: left; }
+  .site-footer__copy { margin-top: 28px; }
+}
+
+/* ==========================================================================
+   减弱动效
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+  .brush.is-armed path { transition: none; }
+  .hero__scroll-dot, .hero__seal { animation: none; }
+  .room:hover, .season:hover { transform: none; }
+  .timeline__progress { transition: none; }
+}

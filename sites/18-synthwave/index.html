@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="午夜驱动 MIDNIGHT DRIVE —— 1980s 复古合成器音乐厂牌与夜行电台，专辑、混音带、演出与深夜频率。">
+  <title>合成器浪潮 · 午夜驱动</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Audiowide&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <!-- 背景层：扫描线 + 噪点 + 频闪 -->
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- 顶部导航 -->
+  <header class="site-header" id="top">
+    <div class="header-bar" aria-hidden="true"></div>
+    <nav class="navbar" aria-label="主导航">
+      <a class="brand" href="#top" aria-label="午夜驱动 首页">
+        <span class="brand-logo" aria-hidden="true">
+          <svg viewBox="0 0 40 24" width="40" height="24" role="img" aria-hidden="true">
+            <polyline points="2,22 8,14 12,18 18,4 23,16 27,9 33,22" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>午夜驱动</strong>
+          <em>MIDNIGHT&nbsp;DRIVE</em>
+        </span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="primaryMenu" aria-label="打开菜单">
+        <span class="toggle-line" aria-hidden="true"></span>
+        <span class="toggle-line" aria-hidden="true"></span>
+        <span class="toggle-line" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-menu" id="primaryMenu">
+        <li><a class="nav-link" href="#albums">专辑</a></li>
+        <li><a class="nav-link" href="#mixtapes">混音带</a></li>
+        <li><a class="nav-link" href="#schedule">节目表</a></li>
+        <li><a class="nav-link" href="#events">演出</a></li>
+        <li><a class="nav-link" href="#join">加入</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ============ 开屏：复古太阳 + 透视网格地平线 ============ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-stripes" aria-hidden="true"></div>
+      <div class="hero-sun-wrap" aria-hidden="true">
+        <div class="hero-sun"></div>
+        <div class="hero-sun-line line-1"></div>
+        <div class="hero-sun-line line-2"></div>
+        <div class="hero-sun-line line-3"></div>
+        <div class="hero-sun-line line-4"></div>
+      </div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="hero-eyebrow">FM 88.6 · 深夜频率 · 始于 1984</p>
+        <h1 id="hero-title" class="hero-title">
+          <span class="t-neon t-pink">午夜驱动</span>
+          <span class="t-neon t-cyan">MIDNIGHT DRIVE</span>
+        </h1>
+        <p class="hero-lead">当城市睡去，合成器醒来。我们把 1980 年代的霓虹与想象装进磁带，沿环城高速一路向北，为每一段夜行配乐。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#mixtapes">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            立即收听
+          </a>
+          <a class="btn btn-ghost" href="#schedule">查看节目表</a>
+        </div>
+      </div>
+      <div class="hero-ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>MIDNIGHT DRIVE ★ 午夜驱动 ★ FM 88.6 ★ 复古合成器浪潮 ★ 夜行电台 ★ 纯音 · 混音带 · 现场 ★</span>
+          <span>MIDNIGHT DRIVE ★ 午夜驱动 ★ FM 88.6 ★ 复古合成器浪潮 ★ 夜行电台 ★ 纯音 · 混音带 · 现场 ★</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 专辑架 ============ -->
+    <section class="section albums" id="albums" aria-labelledby="albums-title">
+      <div class="section-head">
+        <h2 id="albums-title" class="section-title"><span class="t-neon t-gold">最新专辑</span><span class="section-title-en">DISCOGRAPHY</span></h2>
+        <p class="section-sub">四张金胶唱片，四段午夜叙事。磁带与黑胶已上架。</p>
+      </div>
+      <div class="album-shelf" role="list" aria-label="专辑列表">
+        <article class="card album-card" role="listitem" style="--hue:330">
+          <div class="record" aria-hidden="true"><span class="record-hole"></span></div>
+          <div class="album-cover cover-1" aria-hidden="true">
+            <span class="cover-sun"></span>
+            <span class="cover-grid"></span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">夜行高速</h3>
+            <p class="card-sub">NEON HIGHWAY</p>
+            <p class="card-meta">1986 · 合成器流行 · 12 曲</p>
+          </div>
+        </article>
+        <article class="card album-card" role="listitem" style="--hue:160">
+          <div class="record" aria-hidden="true"><span class="record-hole"></span></div>
+          <div class="album-cover cover-2" aria-hidden="true">
+            <span class="cover-sun"></span>
+            <span class="cover-grid"></span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">海市蜃楼</h3>
+            <p class="card-sub">MIRAGE CLUB</p>
+            <p class="card-meta">1989 · 电子合成器 · 10 曲</p>
+          </div>
+        </article>
+        <article class="card album-card" role="listitem" style="--hue:280">
+          <div class="record" aria-hidden="true"><span class="record-hole"></span></div>
+          <div class="album-cover cover-3" aria-hidden="true">
+            <span class="cover-sun"></span>
+            <span class="cover-grid"></span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">午夜太阳</h3>
+            <p class="card-sub">MIDNIGHT SUN</p>
+            <p class="card-meta">1991 · 前卫电子 · 9 曲</p>
+          </div>
+        </article>
+        <article class="card album-card" role="listitem" style="--hue:55">
+          <div class="record" aria-hidden="true"><span class="record-hole"></span></div>
+          <div class="album-cover cover-4" aria-hidden="true">
+            <span class="cover-sun"></span>
+            <span class="cover-grid"></span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">电压之心</h3>
+            <p class="card-sub">VOLTAGE HEART</p>
+            <p class="card-meta">2024 · 回响未来 · 11 曲</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 混音带列表 ============ -->
+    <section class="section mixtapes" id="mixtapes" aria-labelledby="mixtapes-title">
+      <div class="section-head">
+        <h2 id="mixtapes-title" class="section-title"><span class="t-neon t-pink">混音带列表</span><span class="section-title-en">MIXTAPE ARCHIVE</span></h2>
+        <p class="section-sub">选择一盘磁带，把音量推满。空格键播放/暂停。</p>
+      </div>
+      <ol class="tape-list">
+        <li>
+          <button class="tape tape-playing" data-tape="0" aria-pressed="true">
+            <span class="tape-cover" aria-hidden="true"><span class="tape-rings"></span></span>
+            <span class="tape-info">
+              <span class="tape-name">M-001 城市光脉</span>
+              <span class="tape-desc">CITY PULSE · 45 分钟</span>
+            </span>
+            <span class="tape-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="tape-time" data-time="08:33">08:33</span>
+            <span class="tape-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button class="tape" data-tape="1" aria-pressed="false">
+            <span class="tape-cover" aria-hidden="true"><span class="tape-rings"></span></span>
+            <span class="tape-info">
+              <span class="tape-name">M-002 南岸霓虹</span>
+              <span class="tape-desc">NEON COAST · 52 分钟</span>
+            </span>
+            <span class="tape-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="tape-time" data-time="09:12">09:12</span>
+            <span class="tape-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button class="tape" data-tape="2" aria-pressed="false">
+            <span class="tape-cover" aria-hidden="true"><span class="tape-rings"></span></span>
+            <span class="tape-info">
+              <span class="tape-name">M-003 蒸汽黎明</span>
+              <span class="tape-desc">STEAM DAWN · 38 分钟</span>
+            </span>
+            <span class="tape-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="tape-time" data-time="06:57">06:57</span>
+            <span class="tape-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </button>
+        </li>
+        <li>
+          <button class="tape" data-tape="3" aria-pressed="false">
+            <span class="tape-cover" aria-hidden="true"><span class="tape-rings"></span></span>
+            <span class="tape-info">
+              <span class="tape-name">M-004 天际线以下</span>
+              <span class="tape-desc">BELOW SKYLINE · 61 分钟</span>
+            </span>
+            <span class="tape-eq" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+            <span class="tape-time" data-time="11:05">11:05</span>
+            <span class="tape-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+          </button>
+        </li>
+      </ol>
+
+      <!-- 正在播放 -->
+      <div class="now-playing" id="nowPlaying" role="status" aria-live="polite">
+        <span class="np-disc" aria-hidden="true"><span class="np-disc-hole"></span></span>
+        <span class="np-copy">
+          <span class="np-label">NOW PLAYING</span>
+          <strong id="npTitle">M-001 城市光脉</strong>
+          <em id="npDesc">CITY PULSE · 45 分钟</em>
+        </span>
+        <span class="np-meter" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <span class="np-progress"><span class="np-progress-fill" id="npProgress"></span></span>
+      </div>
+    </section>
+
+    <!-- ============ 节目表 ============ -->
+    <section class="section schedule" id="schedule" aria-labelledby="schedule-title">
+      <div class="section-head">
+        <h2 id="schedule-title" class="section-title"><span class="t-neon t-cyan">深夜节目表</span><span class="section-title-en">LATE NIGHT LINEUP</span></h2>
+        <p class="section-sub">北京时间 20:00 起，连续播送到凌晨。整点整刻，勿让夜色空转。</p>
+      </div>
+      <table class="sched-table">
+        <caption class="sr-only">午夜驱动电台每日节目表</caption>
+        <thead>
+          <tr>
+            <th scope="col">时间</th>
+            <th scope="col">节目</th>
+            <th scope="col">主持人</th>
+            <th scope="col">类型</th>
+            <th scope="col" class="col-status">状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-hour="20">
+            <td>20:00</td>
+            <td>城市光脉</td>
+            <td>KITT</td>
+            <td>都市浪潮</td>
+            <td class="col-status"><span class="badge badge-up">待播</span></td>
+          </tr>
+          <tr data-hour="21">
+            <td>21:00</td>
+            <td>磁带夜话</td>
+            <td>VEGA</td>
+            <td>谈话 · 点播</td>
+            <td class="col-status"><span class="badge badge-up">待播</span></td>
+          </tr>
+          <tr data-hour="22">
+            <td>22:00</td>
+            <td>环形公路</td>
+            <td>DRIVER-X</td>
+            <td>高速合成器</td>
+            <td class="col-status"><span class="badge badge-up">待播</span></td>
+          </tr>
+          <tr data-hour="23">
+            <td>23:00</td>
+            <td>星群信号</td>
+            <td>NOVA</td>
+            <td>氛围 · 深空</td>
+            <td class="col-status"><span class="badge badge-live">直播中</span></td>
+          </tr>
+          <tr data-hour="0">
+            <td>00:00</td>
+            <td>午夜驱动</td>
+            <td>MIRAGE</td>
+            <td>混音带精选</td>
+            <td class="col-status"><span class="badge badge-off">已结束</span></td>
+          </tr>
+          <tr data-hour="1">
+            <td>01:00</td>
+            <td>失眠者的电台</td>
+            <td>午夜值班</td>
+            <td>慢速合成器</td>
+            <td class="col-status"><span class="badge badge-off">已结束</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="sched-note">表内时段将随当前时间自动高亮。<span class="t-neon t-gold">NOW = 此刻在播</span></p>
+    </section>
+
+    <!-- ============ 演出 ============ -->
+    <section class="section events" id="events" aria-labelledby="events-title">
+      <div class="section-head">
+        <h2 id="events-title" class="section-title"><span class="t-neon t-gold">霓虹现场</span><span class="section-title-en">LIVE EVENTS</span></h2>
+        <p class="section-sub">巡回演出与合成器之夜，带好你的耳塞。</p>
+      </div>
+      <div class="event-list">
+        <article class="event">
+          <div class="event-date" aria-hidden="true"><strong>08</strong><span>AUG</span></div>
+          <div class="event-info">
+            <h3>午夜驱动 · 全国巡演 上海站</h3>
+            <p>上海 静安 · 复兴中路 138 号「霓虹仓」/ 20:00 开门 · 21:30 开场</p>
+          </div>
+          <a class="btn btn-small" href="#join">购票</a>
+        </article>
+        <article class="event">
+          <div class="event-date" aria-hidden="true"><strong>16</strong><span>AUG</span></div>
+          <div class="event-info">
+            <h3>磁带交换夜 · 二手合成器集市</h3>
+            <p>北京 朝阳 · 798 电子艺术中心 / 免费入场 · 自带磁带</p>
+          </div>
+          <a class="btn btn-small" href="#join">报名</a>
+        </article>
+        <article class="event">
+          <div class="event-date" aria-hidden="true"><strong>30</strong><span>AUG</span></div>
+          <div class="event-info">
+            <h3>后视镜日落 · 屋顶合成器 Live</h3>
+            <p>深圳 南山 · 科技园天台 23 层 / 18:30 入场 · 日落开场</p>
+          </div>
+          <a class="btn btn-small" href="#join">预约</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 加入 ============ -->
+    <section class="section join" id="join" aria-labelledby="join-title">
+      <div class="join-box">
+        <div class="join-grid" aria-hidden="true"></div>
+        <div class="join-copy">
+          <h2 id="join-title" class="section-title"><span class="t-neon t-pink">加入午夜</span><span class="section-title-en">TUNE IN</span></h2>
+          <p>留下你的呼号，第一时间收到新专辑、混音带与演出消息。我们将定期抽选听众，寄出限量夜光磁带。</p>
+          <form class="join-form" id="joinForm" novalidate>
+            <label class="field" for="handle">你的呼号</label>
+            <input type="text" id="handle" name="handle" placeholder="例如：夜航_1986" maxlength="24" required>
+            <label class="field" for="email">电子邮箱</label>
+            <input type="email" id="email" name="email" placeholder="you@drive.88" required>
+            <button type="submit" class="btn btn-primary">发射信号</button>
+            <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-brand"><strong>午夜驱动</strong><em>MIDNIGHT DRIVE</em></p>
+      <p>© 1984 – 2026 午夜驱动厂牌 · 深夜电波永不消失</p>
+      <ul class="footer-links" aria-label="页脚链接">
+        <li><a href="#top">回到顶部</a></li>
+        <li><a href="#schedule">节目表</a></li>
+        <li><a href="#join">加入</a></li>
+      </ul>
+    </div>
+    <div class="footer-bar" aria-hidden="true"></div>
+  </footer>
+
+  <button class="back-top" id="backTop" aria-label="回到顶部">
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="M12 5l7 7h-4v7h-6v-7H5z"/></svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>

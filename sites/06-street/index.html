@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="泼墨 BOARD MOB —— 街头滑板与服饰厂牌。板面、艺术家、滑板场、线下活动与俱乐部。">
+<meta name="theme-color" content="#cdc6ba">
+<title>街头涂鸦 · 泼墨 BOARD MOB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Caveat:wght@500;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+
+<!-- 全局 SVG 滤镜：泼溅 / 手绘抖动 -->
+<svg class="svg-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="splatter" x="-40%" y="-40%" width="180%" height="180%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="26" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="wobble" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="turbulence" baseFrequency="0.03 0.09" numOctaves="2" seed="7" result="w"/>
+      <feDisplacementMap in="SourceGraphic" in2="w" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<div class="grain" aria-hidden="true"></div>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<header class="site-header">
+  <a class="logo" href="#top" data-mark aria-label="泼墨 BOARD MOB，返回顶部">
+    <svg class="logo-can" viewBox="0 0 40 44" aria-hidden="true">
+      <rect x="11" y="13" width="18" height="25" rx="4" fill="#111"/>
+      <rect x="11" y="13" width="18" height="25" rx="4" fill="none" stroke="#f4efe4" stroke-width="1.6"/>
+      <rect x="13" y="5" width="14" height="8" rx="2" fill="#ff5a00"/>
+      <circle cx="20" cy="18" r="2.4" fill="#00b2a9"/>
+      <circle cx="20" cy="26" r="5" fill="#ff4fa0"/>
+      <circle cx="20" cy="26" r="2.2" fill="#111"/>
+    </svg>
+    <span class="logo-text">泼墨 <em>BOARD MOB</em></span>
+  </a>
+
+  <nav class="site-nav" aria-label="主导航">
+    <button id="navToggle" class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="burger" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="burger-text">菜单</span>
+    </button>
+    <ul class="menu" id="menu">
+      <li><a href="#about" data-mark>关于</a></li>
+      <li><a href="#decks" data-mark>板面</a></li>
+      <li><a href="#customize" data-mark>定制</a></li>
+      <li><a href="#artists" data-mark>艺术家</a></li>
+      <li><a href="#park" data-mark>滑板场</a></li>
+      <li><a href="#events" data-mark>活动</a></li>
+      <li><a href="#join" data-mark>加入</a></li>
+    </ul>
+  </nav>
+
+  <button id="sprayToggle" class="spray-toggle" type="button" aria-pressed="true">
+    喷漆：<b id="sprayTxt">开</b>
+  </button>
+</header>
+
+<main id="main">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero-blob blob-o" aria-hidden="true"></div>
+    <div class="hero-blob blob-b" aria-hidden="true"></div>
+    <div class="hero-blob blob-p" aria-hidden="true"></div>
+    <div class="hero-dots" aria-hidden="true">
+      <i style="left:10%;top:24%"></i><i style="left:78%;top:16%"></i>
+      <i style="left:88%;top:58%"></i><i style="left:16%;top:70%"></i>
+      <i style="left:64%;top:80%"></i><i style="left:6%;top:44%"></i>
+      <i style="left:38%;top:12%"></i><i style="left:52%;top:82%"></i>
+    </div>
+
+    <div class="hero-inner">
+      <p class="hero-tag reveal">EST. 2016 · 街头滑板与服饰厂牌</p>
+
+      <div class="hero-title-wrap">
+        <svg class="hero-ring" viewBox="0 0 200 90" aria-hidden="true">
+          <path class="ring-path" d="M18 45 C28 16 172 16 182 45 C190 66 30 74 18 45 Z" fill="none" stroke="#ff4fa0" stroke-width="9" stroke-linecap="round"/>
+        </svg>
+        <h1 class="hero-title">泼墨</h1>
+        <div class="hero-drips" aria-hidden="true">
+          <i class="drip" style="--c:#ff5a00;height:52px"></i>
+          <i class="drip" style="--c:#00b2a9;height:74px"></i>
+          <i class="drip" style="--c:#ff4fa0;height:44px"></i>
+          <i class="drip" style="--c:#111;height:60px"></i>
+        </div>
+      </div>
+
+      <p class="hero-sub">BOARD MOB · 不滑就泼</p>
+      <p class="hero-note reveal">把整座城市当成一块更大的板。每一次出门，都是一次涂鸦。</p>
+
+      <div class="hero-actions">
+        <a class="btn btn-orange" href="#decks" data-mark>逛板面</a>
+        <button id="sprayHero" class="btn btn-blue" type="button" data-mark>喷一罐</button>
+      </div>
+
+      <svg class="hero-arrow" viewBox="0 0 120 40" aria-hidden="true">
+        <path class="arrow-path" d="M8 30 C40 24 70 18 96 14 M96 14 L84 10 M96 14 L88 22"/>
+      </svg>
+    </div>
+
+    <span class="tag hero-tag-1">街滑不死</span>
+    <span class="tag hero-tag-2">手工丝网印</span>
+    <span class="tag hero-tag-3">8.0 硬度</span>
+    <span class="note note-hero">滑板不是运动，是移动的涂鸦</span>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>泼墨 BOARD MOB</span><span>新板面 8/16 首发</span><span>周末街滑日 · 每周日 15:00</span><span>手工丝网印</span><span>不滑就泼</span><span>涂鸦工作坊 8/24</span><span>滑板请戴护具</span>
+      <span>泼墨 BOARD MOB</span><span>新板面 8/16 首发</span><span>周末街滑日 · 每周日 15:00</span><span>手工丝网印</span><span>不滑就泼</span><span>涂鸦工作坊 8/24</span><span>滑板请戴护具</span>
+    </div>
+  </div>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="sec about" id="about">
+    <div class="wrap">
+      <p class="sec-tag reveal">我们是谁 · WHO WE ARE</p>
+      <h2 class="sec-title reveal">一群拿板当笔的人
+        <svg class="underline" viewBox="0 0 240 22" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M6 13 Q70 3 120 12 T236 10"/>
+        </svg>
+      </h2>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>泼墨 <strong>BOARD MOB</strong> 2016 年成立于一座永远不下雪的城市。我们做板面、做服饰、做活动，也把整座城市当成一块更大的板。</p>
+          <p>名字来自工作室里的第一块板——一块墨汁泼歪了的半成品。从此我们懂了：<em>歪了才好看。</em>我们不定义「滑板」，台阶、废弃喷泉、超市手推车都是地形；我们只负责把每一次出门都涂成作品。</p>
+          <span class="sticker about-sticker">歪了才好看</span>
+        </div>
+
+        <div class="about-sketch reveal">
+          <div class="sketch-card">
+            <svg class="sketch-svg" viewBox="0 0 220 120" aria-hidden="true">
+              <path d="M24 44 C8 50 6 62 15 70 L205 70 C214 62 212 50 196 44 C168 30 52 30 24 44 Z" fill="#f2ead9" stroke="#111" stroke-width="2.5"/>
+              <path d="M24 44 C8 50 6 62 15 70 L205 70 C214 62 212 50 196 44 C168 30 52 30 24 44 Z" fill="none" stroke="#ff5a00" stroke-width="2" stroke-dasharray="5 6"/>
+              <g filter="url(#splatter)">
+                <circle cx="70" cy="52" r="12" fill="#00b2a9"/>
+                <circle cx="140" cy="56" r="10" fill="#ff4fa0"/>
+              </g>
+              <text x="110" y="60" text-anchor="middle" font-family="'Permanent Marker'" font-size="11" fill="#111">BOARD MOB</text>
+            </svg>
+            <span class="note note-a">画布就是板，板就是画布</span>
+          </div>
+        </div>
+
+        <dl class="stats reveal">
+          <div class="stat"><dt>10</dt><dd>年街头野路</dd></div>
+          <div class="stat"><dt>60+</dt><dd>合作艺术家</dd></div>
+          <div class="stat"><dt>40+</dt><dd>块主题板面</dd></div>
+          <div class="stat"><dt>300+</dt><dd>场线下活动</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DECKS ============ -->
+  <section class="sec decks" id="decks">
+    <div class="wrap">
+      <p class="sec-tag reveal">板面系列 · DECKS</p>
+      <h2 class="sec-title reveal">每一块都是画布
+        <svg class="underline" viewBox="0 0 240 22" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M6 11 Q70 19 120 10 T236 12"/>
+        </svg>
+      </h2>
+
+      <div class="decks-grid">
+        <article class="deck-card reveal" data-mark>
+          <div class="deck-tilt">
+            <div class="deck-art">
+              <svg class="deck-svg" viewBox="0 0 220 100" role="img" aria-label="经典泼墨板面：橙色板底配墨色泼溅">
+                <defs><pattern id="gp1" width="7" height="7" patternUnits="userSpaceOnUse">
+                  <circle cx="1.5" cy="1.5" r="1" fill="rgba(17,17,17,.28)"/><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,.12)"/>
+                </pattern></defs>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="#ff5a00"/>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="url(#gp1)"/>
+                <g filter="url(#splatter)">
+                  <circle cx="62" cy="44" r="13" fill="#111"/>
+                  <circle cx="96" cy="60" r="8" fill="#111"/>
+                  <circle cx="148" cy="38" r="16" fill="#111"/>
+                  <circle cx="172" cy="57" r="9" fill="#111"/>
+                  <circle cx="120" cy="46" r="6" fill="#111"/>
+                </g>
+                <circle cx="46" cy="40" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="74" cy="40" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="146" cy="56" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="174" cy="56" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="none" stroke="#111" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h3 class="deck-name">经典泼墨 #1</h3>
+            <p class="deck-desc">手工丝网印，每一块的泼墨角度都长得不一样。</p>
+            <div class="deck-meta">
+              <span class="deck-price">¥380</span>
+              <span class="badge">热卖</span>
+            </div>
+            <span class="sticker deck-sticker">8.0 硬度</span>
+          </div>
+        </article>
+
+        <article class="deck-card reveal" data-mark>
+          <div class="deck-tilt">
+            <div class="deck-art">
+              <svg class="deck-svg" viewBox="0 0 220 100" role="img" aria-label="湖蓝波点板面：湖蓝板底配粉红波浪带与白点">
+                <defs><pattern id="gp2" width="7" height="7" patternUnits="userSpaceOnUse">
+                  <circle cx="1.5" cy="1.5" r="1" fill="rgba(17,17,17,.28)"/><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,.12)"/>
+                </pattern></defs>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="#00b2a9"/>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="url(#gp2)"/>
+                <path d="M20 52 Q70 40 112 52 T200 48" fill="none" stroke="#ff4fa0" stroke-width="9" stroke-linecap="round" filter="url(#splatter)"/>
+                <circle cx="58" cy="40" r="4" fill="#f4efe4"/><circle cx="78" cy="62" r="3" fill="#f4efe4"/>
+                <circle cx="126" cy="44" r="3.5" fill="#f4efe4"/><circle cx="150" cy="60" r="4" fill="#f4efe4"/>
+                <circle cx="176" cy="42" r="3" fill="#f4efe4"/>
+                <circle cx="46" cy="40" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="74" cy="40" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="146" cy="56" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="174" cy="56" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="none" stroke="#111" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h3 class="deck-name">湖蓝波点</h3>
+            <p class="deck-desc">波普实验款，八色套印，远看是一片湖，近看是波点。</p>
+            <div class="deck-meta">
+              <span class="deck-price">¥390</span>
+              <span class="badge">上新</span>
+            </div>
+            <span class="sticker deck-sticker">8.25 硬度</span>
+          </div>
+        </article>
+
+        <article class="deck-card reveal" data-mark>
+          <div class="deck-tilt">
+            <div class="deck-art">
+              <svg class="deck-svg" viewBox="0 0 220 100" role="img" aria-label="粉红闪电板面：粉色板底配墨色闪电图案">
+                <defs><pattern id="gp3" width="7" height="7" patternUnits="userSpaceOnUse">
+                  <circle cx="1.5" cy="1.5" r="1" fill="rgba(17,17,17,.28)"/><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,.12)"/>
+                </pattern></defs>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="#ff4fa0"/>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="url(#gp3)"/>
+                <g filter="url(#splatter)">
+                  <polygon points="58,60 98,30 84,47 106,47 76,68 88,51 64,51" fill="#111"/>
+                </g>
+                <circle cx="128" cy="40" r="3.5" fill="#f4efe4"/><circle cx="150" cy="58" r="3" fill="#f4efe4"/>
+                <circle cx="170" cy="42" r="3.5" fill="#f4efe4"/>
+                <circle cx="46" cy="40" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="74" cy="40" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="146" cy="56" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="174" cy="56" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="none" stroke="#111" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h3 class="deck-name">粉红闪电</h3>
+            <p class="deck-desc">限量 50 块，墨色闪电寓意「摔倒要快，爬起也要快」。</p>
+            <div class="deck-meta">
+              <span class="deck-price">¥420</span>
+              <span class="badge">限量</span>
+            </div>
+            <span class="sticker deck-sticker">8.0 硬度</span>
+          </div>
+        </article>
+
+        <article class="deck-card reveal" data-mark>
+          <div class="deck-tilt">
+            <div class="deck-art">
+              <svg class="deck-svg" viewBox="0 0 220 100" role="img" aria-label="全黑沥青板面：黑底配荧光泼溅">
+                <defs><pattern id="gp4" width="7" height="7" patternUnits="userSpaceOnUse">
+                  <circle cx="1.5" cy="1.5" r="1" fill="rgba(255,255,255,.10)"/>
+                </pattern></defs>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="#111"/>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="url(#gp4)"/>
+                <g filter="url(#splatter)">
+                  <circle cx="64" cy="42" r="13" fill="#ff5a00"/>
+                  <circle cx="118" cy="54" r="9" fill="#00b2a9"/>
+                  <circle cx="158" cy="36" r="15" fill="#ff4fa0"/>
+                  <circle cx="176" cy="54" r="8" fill="#ff5a00"/>
+                </g>
+                <circle cx="46" cy="40" r="4" fill="#f4efe4" stroke="#111" stroke-width="1.5"/>
+                <circle cx="74" cy="40" r="4" fill="#f4efe4" stroke="#111" stroke-width="1.5"/>
+                <circle cx="146" cy="56" r="4" fill="#f4efe4" stroke="#111" stroke-width="1.5"/>
+                <circle cx="174" cy="56" r="4" fill="#f4efe4" stroke="#111" stroke-width="1.5"/>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="none" stroke="#f4efe4" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3 class="deck-name">全黑沥青</h3>
+            <p class="deck-desc">夜光泼墨，白天吸够日光，天黑就是城市里的一块反光板。</p>
+            <div class="deck-meta">
+              <span class="deck-price">¥460</span>
+              <span class="badge">限量</span>
+            </div>
+            <span class="sticker deck-sticker">8.5 硬度</span>
+          </div>
+        </article>
+
+        <article class="deck-card reveal" data-mark>
+          <div class="deck-tilt">
+            <div class="deck-art">
+              <svg class="deck-svg" viewBox="0 0 220 100" role="img" aria-label="水泥灰原木板面：原木色板底印厂牌字样">
+                <defs>
+                  <pattern id="gp5" width="16" height="8" patternUnits="userSpaceOnUse">
+                    <rect width="16" height="8" fill="#f2ead9"/>
+                    <path d="M0 2 H16 M2 5 H14" stroke="rgba(17,17,17,.14)" stroke-width="2" fill="none"/>
+                  </pattern>
+                </defs>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="url(#gp5)"/>
+                <text x="110" y="49" text-anchor="middle" font-family="'Permanent Marker'" font-size="13" fill="#111">BOARD MOB</text>
+                <g filter="url(#splatter)">
+                  <circle cx="52" cy="54" r="6" fill="#00b2a9"/>
+                  <circle cx="168" cy="48" r="5" fill="#ff5a00"/>
+                </g>
+                <circle cx="46" cy="40" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="74" cy="40" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="146" cy="56" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="174" cy="56" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="none" stroke="#111" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h3 class="deck-name">水泥灰原木</h3>
+            <p class="deck-desc">七层加拿大枫木，不上漆，滑出属于自己的纹路。</p>
+            <div class="deck-meta">
+              <span class="deck-price">¥360</span>
+              <span class="badge">经典</span>
+            </div>
+            <span class="sticker deck-sticker">7.75 硬度</span>
+          </div>
+        </article>
+
+        <article class="deck-card reveal" data-mark>
+          <div class="deck-tilt">
+            <div class="deck-art">
+              <svg class="deck-svg" viewBox="0 0 220 100" role="img" aria-label="爆炸三原色板面：三种颜色对撞的泼溅图案">
+                <defs><pattern id="gp6" width="7" height="7" patternUnits="userSpaceOnUse">
+                  <circle cx="1.5" cy="1.5" r="1" fill="rgba(17,17,17,.25)"/><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,.10)"/>
+                </pattern></defs>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="#f2ead9"/>
+                <g filter="url(#splatter)">
+                  <circle cx="70" cy="50" r="42" fill="#ff5a00"/>
+                  <circle cx="112" cy="42" r="40" fill="#00b2a9"/>
+                  <circle cx="150" cy="52" r="44" fill="#ff4fa0"/>
+                </g>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="url(#gp6)"/>
+                <circle cx="46" cy="40" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="74" cy="40" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="146" cy="56" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <circle cx="174" cy="56" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+                <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="none" stroke="#111" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h3 class="deck-name">爆炸三原色</h3>
+            <p class="deck-desc">三色对撞款，撞坏了不换——这就是设计的一部分。</p>
+            <div class="deck-meta">
+              <span class="deck-price">¥440</span>
+              <span class="badge">联名</span>
+            </div>
+            <span class="sticker deck-sticker">8.0 硬度</span>
+          </div>
+        </article>
+      </div>
+      <p class="decks-foot note reveal">每一块都从空白板面 + 一罐不听话的漆开始。</p>
+    </div>
+  </section>
+
+  <!-- ============ CUSTOMIZER ============ -->
+  <section class="sec on-dark customize" id="customize">
+    <div class="wrap">
+      <p class="sec-tag reveal">在线泼墨 · CUSTOM</p>
+      <h2 class="sec-title reveal">涂一块你自己的板
+        <svg class="underline" viewBox="0 0 240 22" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M6 13 Q70 3 120 12 T236 10"/>
+        </svg>
+      </h2>
+
+      <div class="custom-grid">
+        <div class="custom-stage reveal">
+          <div class="custom-tilt">
+            <svg class="cust-deck" viewBox="0 0 220 100" role="img" aria-label="正在定制的板面预览">
+              <defs><pattern id="gpc" width="7" height="7" patternUnits="userSpaceOnUse">
+                <circle cx="1.5" cy="1.5" r="1" fill="rgba(17,17,17,.28)"/><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,.12)"/>
+              </pattern></defs>
+              <path id="cust-board" d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="#ff5a00"/>
+              <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="url(#gpc)"/>
+              <g id="cust-splats" filter="url(#splatter)"></g>
+              <g id="cust-sticker">
+                <g id="stk-lightning" style="display:none" transform="translate(118,28)">
+                  <polygon points="0,0 24,-18 16,-6 30,-6 10,14 19,0 6,0" fill="#f4efe4" stroke="#111" stroke-width="1.5"/>
+                </g>
+                <g id="stk-heart" style="display:none" transform="translate(130,30)">
+                  <path d="M0 4 C0 -2 7 -2 7 4 L3.5 8 L0 4 Z" fill="#ff4fa0" stroke="#111" stroke-width="1.5"/>
+                </g>
+                <g id="stk-star" style="display:none" transform="translate(120,26)">
+                  <polygon points="7,0 9,5 14,5 10,8 12,13 7,10 2,13 4,8 0,5 5,5" fill="#ff5a00" stroke="#111" stroke-width="1"/>
+                </g>
+              </g>
+              <circle cx="46" cy="40" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+              <circle cx="74" cy="40" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+              <circle cx="146" cy="56" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+              <circle cx="174" cy="56" r="4" fill="#111" stroke="#f4efe4" stroke-width="1.5"/>
+              <path d="M24 40 C8 46 6 58 15 66 L205 66 C214 58 212 46 196 40 C168 26 52 26 24 40 Z" fill="none" stroke="#f4efe4" stroke-width="2.2"/>
+            </svg>
+
+            <div class="custom-drips" aria-hidden="true">
+              <i class="drip" style="--c:#ff5a00;height:40px"></i>
+              <i class="drip" style="--c:#00b2a9;height:28px"></i>
+            </div>
+
+            <svg class="mini-skate" viewBox="0 0 220 60" aria-hidden="true">
+              <path d="M26 20 Q110 12 194 20" fill="none" stroke="#f4efe4" stroke-width="7" stroke-linecap="round"/>
+              <path d="M64 22 L74 34 L90 34 L96 22 Z" fill="#f4efe4"/>
+              <path d="M124 22 L130 34 L146 34 L156 22 Z" fill="#f4efe4"/>
+              <g transform="translate(60,38)"><g class="skate-wheel"><circle r="9" fill="#00b2a9"/><circle r="3.5" fill="#111"/></g></g>
+              <g transform="translate(100,38)"><g class="skate-wheel"><circle r="9" fill="#ff5a00"/><circle r="3.5" fill="#111"/></g></g>
+              <g transform="translate(120,38)"><g class="skate-wheel"><circle r="9" fill="#ff4fa0"/><circle r="3.5" fill="#111"/></g></g>
+              <g transform="translate(160,38)"><g class="skate-wheel"><circle r="9" fill="#f4efe4"/><circle r="3.5" fill="#111"/></g></g>
+            </svg>
+          </div>
+          <span class="sticker price-sticker">¥<span id="priceVal">380</span></span>
+          <span class="note note-custom">点下面的颜色，直接往板上泼</span>
+        </div>
+
+        <div class="custom-controls reveal">
+          <fieldset class="ctl">
+            <legend>板面底色</legend>
+            <div class="swatches" role="group" aria-label="板面底色">
+              <button class="swatch active" type="button" data-base="#ff5a00" aria-label="荧光橙" style="--c:#ff5a00"></button>
+              <button class="swatch" type="button" data-base="#00b2a9" aria-label="湖蓝" style="--c:#00b2a9"></button>
+              <button class="swatch" type="button" data-base="#ff4fa0" aria-label="粉红" style="--c:#ff4fa0"></button>
+              <button class="swatch" type="button" data-base="#111111" aria-label="漆黑" style="--c:#111"></button>
+              <button class="swatch" type="button" data-base="#f2ead9" aria-label="水泥灰" style="--c:#f2ead9"></button>
+            </div>
+          </fieldset>
+
+          <fieldset class="ctl">
+            <legend>墨点密度 <b id="splatCount" class="ctl-num">8</b></legend>
+            <input id="splatRange" type="range" min="0" max="16" value="8" aria-label="墨点密度">
+          </fieldset>
+
+          <fieldset class="ctl">
+            <legend>贴纸</legend>
+            <div class="stick-options" role="group" aria-label="贴纸图案">
+              <button type="button" data-sticker="none" class="stick-opt active">不贴</button>
+              <button type="button" data-sticker="lightning" class="stick-opt">闪电</button>
+              <button type="button" data-sticker="heart" class="stick-opt">爱心</button>
+              <button type="button" data-sticker="star" class="stick-opt">星星</button>
+            </div>
+          </fieldset>
+
+          <button id="randomSplat" class="btn btn-orange" type="button" data-mark>随机泼一罐</button>
+          <p class="ctl-note">定制的每一块都会手写编号，限量发售。价格按泼墨量浮动，多泼多收。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ARTISTS ============ -->
+  <section class="sec artists" id="artists">
+    <div class="wrap">
+      <p class="sec-tag reveal">合作艺术家 · THE CREW</p>
+      <h2 class="sec-title reveal">一起泼墨的伙伴
+        <svg class="underline" viewBox="0 0 240 22" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M6 11 Q70 19 120 10 T236 12"/>
+        </svg>
+      </h2>
+
+      <div class="artists-grid">
+        <article class="artist-card reveal" data-mark>
+          <div class="artist-monogram"><span>道</span></div>
+          <h3 class="artist-name">DAOS · 道斯</h3>
+          <p class="artist-role">涂鸦艺术家 · 主理人</p>
+          <blockquote class="artist-quote">「一面墙就是一块板，我只是在上面留个痕迹。板也一样，留在滑手手里才算完成。」</blockquote>
+          <a class="artist-link" href="#decks" data-mark>看合作系列 →</a>
+        </article>
+
+        <article class="artist-card reveal" data-mark>
+          <div class="artist-monogram"><span>K</span></div>
+          <h3 class="artist-name">K7</h3>
+          <p class="artist-role">滑手 · 插画师</p>
+          <blockquote class="artist-quote">「摔倒是我最新的招，画画是我唯一的板。膝盖换了两个，铅笔换了无数支。」</blockquote>
+          <a class="artist-link" href="#decks" data-mark>看合作系列 →</a>
+        </article>
+
+        <article class="artist-card reveal" data-mark>
+          <div class="artist-monogram"><span>M</span></div>
+          <h3 class="artist-name">MOMO · 摸摸</h3>
+          <p class="artist-role">街头摄影师 · 丝网印师傅</p>
+          <blockquote class="artist-quote">「所有颜色都是从水泥灰开始的。我拍滑手摔倒的一百种姿势，也在板面上印它们。」</blockquote>
+          <a class="artist-link" href="#decks" data-mark>看合作系列 →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PARK MAP ============ -->
+  <section class="sec on-dark park" id="park">
+    <div class="wrap">
+      <p class="sec-tag reveal">滑板场 · PARK</p>
+      <h2 class="sec-title reveal">来找你的地形
+        <svg class="underline" viewBox="0 0 240 22" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M6 13 Q70 3 120 12 T236 10"/>
+        </svg>
+      </h2>
+
+      <div class="park-head reveal">
+        <p class="park-intro">滨江 3 号板场，2024 年由我们和市政府一起画出来的场地。免费开放，24 小时灯光。先看图，再上路。</p>
+        <button id="routeToggle" class="btn btn-blue" type="button" data-mark>今日推荐路线</button>
+      </div>
+
+      <div class="map-wrap reveal" data-mark>
+        <div class="map-park" role="img" aria-label="滨江3号滑板场示意图：碗池、四分之一管、坡道、铁杆、Funbox、台阶、斜面、入口">
+          <svg class="map-svg" viewBox="0 0 800 420" aria-hidden="true">
+            <rect x="8" y="8" width="784" height="404" fill="none" stroke="rgba(244,239,228,.35)" stroke-dasharray="10 8"/>
+            <!-- 1/4 管 -->
+            <path d="M8 106 A98 98 0 0 1 106 8" class="ob"/>
+            <path d="M22 106 A84 84 0 0 1 106 22" class="ob ob-in"/>
+            <!-- 碗池 -->
+            <circle cx="150" cy="205" r="78" class="ob"/>
+            <circle cx="150" cy="205" r="52" class="ob ob-in"/>
+            <circle cx="150" cy="205" r="8" class="ob-dot"/>
+            <!-- 坡道 -->
+            <path d="M612 106 L664 10 L706 10 L706 106 Z" class="ob"/>
+            <path d="M636 106 L664 42 L676 106 Z" class="ob ob-in"/>
+            <!-- 铁杆 -->
+            <path d="M400 180 H640" class="ob"/>
+            <path d="M400 186 H640" class="ob-in"/>
+            <!-- Funbox -->
+            <rect x="380" y="270" width="110" height="60" class="ob"/>
+            <rect x="392" y="250" width="86" height="20" class="ob ob-in"/>
+            <path d="M392 270 V250 M478 270 V250" class="ob-in"/>
+            <!-- 台阶 -->
+            <rect x="560" y="300" width="60" height="30" class="ob"/>
+            <rect x="530" y="270" width="60" height="30" class="ob"/>
+            <rect x="500" y="240" width="60" height="30" class="ob"/>
+            <!-- 斜面 -->
+            <path d="M110 330 L210 258 L230 330 Z" class="ob"/>
+            <path d="M120 322 L190 270" class="ob-in"/>
+            <!-- 入口 -->
+            <path d="M400 414 V378 M388 392 L400 378 L412 392" class="ob ob-entrance"/>
+            <text x="400" y="396" text-anchor="middle" font-family="'Permanent Marker'" font-size="12" fill="#f4efe4">入</text>
+            <!-- 涂鸦 doodles -->
+            <g class="doodles" fill="none" stroke="#ff4fa0" stroke-width="2.5" stroke-linecap="round">
+              <path d="M640 150 q10 -10 0 -20 q-10 -10 0 -20"/>
+              <path d="M320 120 l12 -18 M320 120 l-14 -12 M320 120 l4 20"/>
+              <path d="M120 60 c10 -8 22 4 12 12 c-8 8 -20 -4 -12 -12"/>
+              <path d="M560 30 c8 -6 16 2 10 8 c-6 6 -16 -2 -10 -8"/>
+            </g>
+            <!-- 推荐路线 -->
+            <path id="routePath" class="route" d="M400 396 C360 330 300 300 240 260 C200 235 190 250 150 205 C120 172 150 160 180 168 C260 190 340 210 460 205 L540 205 C565 205 570 225 560 255 C550 285 560 300 560 300" />
+          </svg>
+
+          <button class="map-chip" style="left:19%;top:49%" aria-label="碗池，深度1.6米，进阶场地">
+            <span class="chip-label">碗池</span>
+            <span class="tip"><b>碗池</b>深度 1.6m · 进阶 · 先从边缘热身</span>
+          </button>
+          <button class="map-chip" style="left:7%;top:10%" aria-label="四分之一管，新手可玩">
+            <span class="chip-label">1/4 管</span>
+            <span class="tip"><b>1/4 管</b>高度 1m · 新手友好 · 练习上肩</span>
+          </button>
+          <button class="map-chip" style="left:80%;top:17%" aria-label="坡道，适合速度与腾空">
+            <span class="chip-label">坡道</span>
+            <span class="tip"><b>坡道</b>斜面 26° · 速度流 · 注意来车</span>
+          </button>
+          <button class="map-chip" style="left:66%;top:40%" aria-label="铁杆，滑动技巧场地">
+            <span class="chip-label">铁杆</span>
+            <span class="tip"><b>铁杆</b>长 4.2m · 磨边专用 · 先练直线</span>
+          </button>
+          <button class="map-chip" style="left:54%;top:66%" aria-label="Funbox，组合地形">
+            <span class="chip-label">Funbox</span>
+            <span class="tip"><b>Funbox</b>箱高 0.4m · 组合招 · 全龄适用</span>
+          </button>
+          <button class="map-chip" style="left:74%;top:74%" aria-label="台阶，三节台阶">
+            <span class="chip-label">台阶</span>
+            <span class="tip"><b>台阶</b>三节 · 下阶梯 · 记得先练 Ollie</span>
+          </button>
+          <button class="map-chip" style="left:21%;top:76%" aria-label="斜面，新手入门">
+            <span class="chip-label">斜面</span>
+            <span class="tip"><b>斜面</b>平缓 15° · 零基础 · 第一块地</span>
+          </button>
+          <button class="map-chip" style="left:50%;top:92%" aria-label="入口">
+            <span class="chip-label">入口</span>
+            <span class="tip"><b>入口</b>免费开放 · 24 小时灯光 · 晚上最热闹</span>
+          </button>
+        </div>
+      </div>
+
+      <ul class="park-legend reveal" aria-label="图例">
+        <li><i class="lg-obs"></i>障碍</li>
+        <li><i class="lg-route"></i>推荐路线</li>
+        <li><i class="lg-fun"></i>新手友好</li>
+        <li><i class="lg-hard"></i>进阶挑战</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ EVENTS ============ -->
+  <section class="sec events" id="events">
+    <div class="wrap">
+      <p class="sec-tag reveal">线下活动 · ON STREET</p>
+      <h2 class="sec-title reveal">街头见，不见不散
+        <svg class="underline" viewBox="0 0 240 22" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M6 11 Q70 19 120 10 T236 12"/>
+        </svg>
+      </h2>
+      <p class="countdown-chip reveal" id="countdown" aria-live="polite">距开版派对 …</p>
+
+      <div class="events-grid">
+        <article class="event-card reveal" data-mark>
+          <span class="sticker event-date">每周日<br>15:00</span>
+          <h3 class="event-name">周末街滑日</h3>
+          <p class="event-place">滨江 3 号板场 · 免费</p>
+          <p class="event-desc">老滑手带新人滑一圈，有护具借，有气泵，还有现场修板摊。新老皆可，自带板来。</p>
+          <span class="tag event-tag">全龄</span>
+          <a class="event-link" href="#join" data-mark>约我一起去 →</a>
+        </article>
+
+        <article class="event-card reveal" data-mark>
+          <span class="sticker event-date">8/16 周六<br>19:00</span>
+          <h3 class="event-name">泼墨 · 开版派对</h3>
+          <p class="event-place">泼墨工作室 · 环城南路 88 号</p>
+          <p class="event-desc">新一季板面首发，现场喷漆表演，前 50 名入场送一罐厂牌喷漆。DJ 自带黑胶，欢迎来放。</p>
+          <span class="tag event-tag">首发</span>
+          <a class="event-link" href="#join" data-mark>约我一起去 →</a>
+        </article>
+
+        <article class="event-card reveal" data-mark>
+          <span class="sticker event-date">8/24 周日<br>14:00</span>
+          <h3 class="event-name">涂鸦入门工作坊</h3>
+          <p class="event-place">社区美术馆外墙 · 免费</p>
+          <p class="event-desc">从线条到成字，两小时教会你写自己的 tag。零基础可来，颜料管够，走的时候留一面墙。</p>
+          <span class="tag event-tag">教学</span>
+          <a class="event-link" href="#join" data-mark>约我一起去 →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ JOIN ============ -->
+  <section class="sec join" id="join">
+    <div class="wrap">
+      <p class="sec-tag reveal">加入俱乐部 · MEMBER</p>
+      <h2 class="sec-title reveal">盖个手印就入伙
+        <svg class="underline" viewBox="0 0 240 22" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M6 13 Q70 3 120 12 T236 10"/>
+        </svg>
+      </h2>
+
+      <div class="join-grid">
+        <form id="joinForm" class="form-card reveal" novalidate data-mark>
+          <div class="form-fields">
+            <div class="field">
+              <label for="fname">涂鸦签名 / 昵称 <span class="req">*</span></label>
+              <input id="fname" name="name" type="text" required autocomplete="nickname" placeholder="例如：泼墨新手小野">
+            </div>
+            <div class="field">
+              <label for="fcity">常驻城市 <span class="req">*</span></label>
+              <select id="fcity" name="city" required>
+                <option value="">选一个城市</option>
+                <option>杭州</option><option>上海</option><option>成都</option><option>武汉</option><option>其他（活动跟得上也行）</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="ftrick">最想练成的动作</label>
+              <select id="ftrick" name="trick">
+                <option>Ollie（起跳，一切开始的地方）</option>
+                <option>Kickflip（踢翻）</option>
+                <option>Manual（抬头滑）</option>
+                <option>先站稳不摔</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="fmail">邮箱 <span class="req">*</span></label>
+              <input id="fmail" name="email" type="email" required autocomplete="email" placeholder="you@boardmob.ink">
+            </div>
+            <div class="field">
+              <label for="fwhy">为什么想入伙 <span class="req">*</span></label>
+              <textarea id="fwhy" name="why" rows="3" required placeholder="随便写，像涂鸦一样随便"></textarea>
+            </div>
+          </div>
+          <button class="btn btn-orange form-submit" type="submit" data-mark>盖手印 · 入会</button>
+          <p class="form-msg" id="formMsg" aria-live="polite"></p>
+        </form>
+
+        <div class="join-ok reveal" id="joinOk" hidden data-mark>
+          <span class="sticker ok-stamp">手印已盖</span>
+          <h3 class="ok-title">欢迎入伙，<span class="ok-name"></span>！</h3>
+          <p class="ok-text">下周的街滑日，我们在滨江 3 号板场等你。记得带上护具——摔倒了，我们会把你画在墙上。</p>
+          <p class="ok-note note">入会信已经泼向你的邮箱。</p>
+        </div>
+
+        <aside class="join-side reveal">
+          <h3 class="side-title">入会能拿到什么</h3>
+          <ul class="perks">
+            <li>每月一块厂牌贴纸包，三罐喷漆</li>
+            <li>活动优先报名，现场免排队</li>
+            <li>板面定制终身 9 折</li>
+            <li>一年两次免费维修（板断了算我们的）</li>
+          </ul>
+          <p class="note side-note">入会费：零。只要你能滑、能画、或者能凑热闹。</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <p class="footer-logo">泼墨 <em>BOARD MOB</em></p>
+      <p class="footer-slogan">不滑就泼。把城市当画布，把摔倒当草稿。</p>
+    </div>
+    <nav class="footer-col" aria-label="页脚导航">
+      <p class="footer-h">站点</p>
+      <a href="#decks">板面系列</a>
+      <a href="#customize">在线定制</a>
+      <a href="#park">滑板场地图</a>
+      <a href="#events">线下活动</a>
+    </nav>
+    <div class="footer-col">
+      <p class="footer-h">找我们</p>
+      <a href="#join">加入俱乐部</a>
+      <a href="mailto:hello@boardmob.ink">hello@boardmob.ink</a>
+      <a href="#top">环城南路 88 号老厂房 3 栋</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-h">出没在</p>
+      <span class="social">微博 · 泼墨BOARDMOB</span>
+      <span class="social">小红书 · 泼墨板场日记</span>
+      <span class="social">B 站 · 摔了也要剪</span>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 泼墨 BOARD MOB · 手写与印刷并存的厂牌</p>
+    <p class="footer-warn">滑板请戴护具，别让我们把你画成事故现场。</p>
+  </div>
+</footer>
+
+<div id="marker" class="marker" aria-hidden="true"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

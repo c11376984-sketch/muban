@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>漫画分镜 · 独立漫画工作室「分镜社」</title>
+<meta name="description" content="分镜社 PANEL HOUSE —— 独立漫画工作室，连载原创作品、分镜展示、漫画家介绍与预售订阅。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Luckiest+Guy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<!-- ==================== 顶栏 ==================== -->
+<header class="site-header" id="top">
+  <div class="header-inner">
+    <a class="brand" href="#top" aria-label="分镜社首页">
+      <span class="brand-mark" aria-hidden="true">PANEL</span>
+      <span class="brand-name">分镜社<span class="brand-sub">PANEL HOUSE</span></span>
+    </a>
+    <nav class="site-nav" aria-label="主导航">
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+        <span class="visually-hidden">展开菜单</span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#works">连载</a></li>
+        <li><a href="#panels">分镜</a></li>
+        <li><a href="#artists">漫画家</a></li>
+        <li><a href="#letters">读者来信</a></li>
+        <li><a href="#preorder" class="nav-cta">预售</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ==================== 开屏 ==================== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="halftone" aria-hidden="true"></div>
+    <div class="speedlines speedlines-a" aria-hidden="true"></div>
+    <div class="speedlines speedlines-b" aria-hidden="true"></div>
+
+    <p class="hero-tag" data-spin="-3">NEW SEASON 2026 · 全 新 连载 企划</p>
+    <h1 class="hero-title" id="hero-title">
+      <span class="big-fx" data-spin="-4">咣</span><span class="bang">！</span>
+      <span class="hero-line1">一页分镜，一场冒险</span>
+      <span class="hero-line2">分镜社<span class="outline-text">PANEL HOUSE</span></span>
+    </h1>
+
+    <div class="hero-stage">
+      <!-- 封面漫画 = 纯 CSS 分镜网格 -->
+      <div class="cover-comic" role="img" aria-label="《午夜巡游者》新刊封面：四格分镜，最后一格少女在路灯下回头">
+        <div class="cover-panel cover-p1" data-spin="-1">
+          <span class="cover-fx">唰！</span>
+          <span class="cover-inner">
+            <span class="halftone-sm"></span>
+            <i class="dot-sun"></i>
+          </span>
+        </div>
+        <div class="cover-panel cover-p2">
+          <span class="cover-inner" style="--bg:#ffd400">
+            <b class="cstrip cstrip-1"></b><b class="cstrip cstrip-2"></b>
+          </span>
+        </div>
+        <div class="cover-panel cover-p3">
+          <span class="cover-inner" style="--bg:#ff3b30">
+            <b class="clight clight-1"></b>
+          </span>
+        </div>
+        <div class="cover-panel cover-p4">
+          <span class="cover-inner" style="--bg:#1c1c1c">
+            <i class="clamp"></i>
+          </span>
+        </div>
+        <div class="cover-panel cover-p5 cover-big">
+          <span class="cover-inner" style="--bg:#faf6ef">
+            <i class="cfig cfig-head"></i><i class="cfig cfig-body"></i>
+            <i class="clamp clamp-red"></i>
+          </span>
+        </div>
+        <div class="cover-stamp" data-spin="4">ISSUE 27</div>
+        <div class="cover-titlebar">
+          <strong>午夜巡游者</strong>
+          <em>MIDNIGHT RANGER</em>
+        </div>
+      </div>
+
+      <div class="hero-copy">
+        <p class="hero-lead"><strong>咣——</strong>把纸页翻出声，把格子撞在一起。我们是分镜社，一群拿铅笔和网点纸过活的独立漫画家，在安静的街区里开张画室，画我们自己的连载。</p>
+        <ul class="hero-ticks">
+          <li>原创长篇连载 · 每月两更</li>
+          <li>分镜原稿公开 · 全彩与黑白双版本</li>
+          <li>读者来稿同人志 · 每年一届</li>
+        </ul>
+        <div class="hero-cta">
+          <a class="btn btn-big" href="#preorder">预售《午夜巡游者》第27话</a>
+          <a class="btn btn-ghost" href="#works">看看连载 →</a>
+        </div>
+        <p class="hero-note">新刊上市倒计时 <span class="countdown" id="countdown" aria-live="polite">00:00:00</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 连载作品 ==================== -->
+  <section class="works section" id="works" aria-labelledby="works-title">
+    <header class="section-head reveal">
+      <h2 class="section-title" id="works-title">连载<span class="title-en">ONGOING SERIES</span></h2>
+      <p class="section-sub">三部长篇，一条短篇。每一话的每一格，都先有分镜、再上墨线。</p>
+    </header>
+
+    <div class="works-grid">
+      <article class="work-card reveal" data-spin="-1">
+        <div class="work-cover work-cover-1" role="img" aria-label="《午夜巡游者》封面：少女提着提灯站在分镜格中">
+          <span class="cover-fx small" data-spin="6">咔！</span>
+          <span class="panel-mini p-m1"></span><span class="panel-mini p-m2"></span><span class="panel-mini p-m3"></span><span class="panel-mini p-m4"></span>
+          <span class="work-no">№ 27</span>
+        </div>
+        <div class="work-body">
+          <h3>午夜巡游者 <em>MIDNIGHT RANGER</em></h3>
+          <p class="work-meta">都市奇幻 · 每周四更新 · 连载 4 年</p>
+          <p class="work-desc">少女提灯官每晚在城市地下轨道巡逻，撞见被遗忘的昨日。路灯、末班车、和再也回不去的人。</p>
+          <a class="read-more" href="#panels">看最新话分镜 →</a>
+        </div>
+      </article>
+
+      <article class="work-card reveal" data-spin="1" data-delay="1">
+        <div class="work-cover work-cover-2" role="img" aria-label="《铁皮收音机》封面：红色铁皮收音机在黑白速度线中">
+          <span class="cover-fx small" data-spin="-7">嘭！</span>
+          <span class="speedlines work-slines"></span>
+          <span class="radio" aria-hidden="true"><i></i><i></i></span>
+          <span class="work-no">№ 12</span>
+        </div>
+        <div class="work-body">
+          <h3>铁皮收音机 <em>TIN RADIO</em></h3>
+          <p class="work-meta">科幻复古 · 隔周周日 · 连载 2 年</p>
+          <p class="work-desc">旧货店里一只会说话的收音机，只收到一个频率——来自 1987 年夏天的求救信号。</p>
+          <a class="read-more" href="#panels">看最新话分镜 →</a>
+        </div>
+      </article>
+
+      <article class="work-card reveal" data-spin="-1" data-delay="2">
+        <div class="work-cover work-cover-3" role="img" aria-label="《食堂与剑》封面：一碗拉面与一把剑的静物格">
+          <span class="cover-fx small" data-spin="8">滋溜～</span>
+          <span class="bowl" aria-hidden="true"><i></i></span>
+          <span class="work-no">№ 41</span>
+        </div>
+        <div class="work-body">
+          <h3>食堂与剑 <em>CANTEEN &amp; SWORD</em></h3>
+          <p class="work-meta">热血日常 · 每周一 · 连载 6 年</p>
+          <p class="work-desc">退役剑士开了家深夜食堂，来客都是一败涂地的冒险者。吃饱了，才有力气认输。</p>
+          <a class="read-more" href="#panels">看最新话分镜 →</a>
+        </div>
+      </article>
+
+      <article class="work-card work-card-wide reveal" data-spin="0">
+        <div class="work-cover work-cover-4" role="img" aria-label="《空白页》封面：一支铅笔在空白纸页上方">
+          <span class="page-diagram" aria-hidden="true">
+            <span class="pd-panel pd-1"></span><span class="pd-panel pd-2"></span><span class="pd-panel pd-3"></span>
+            <span class="pd-pencil"></span>
+          </span>
+          <span class="work-no">短篇</span>
+        </div>
+        <div class="work-body">
+          <h3>空白页 <em>BLANK PAGE</em></h3>
+          <p class="work-meta">实验短篇 · 不定期 · 单期完</p>
+          <p class="work-desc">关于画不出来的时候。一个月刊内页企划，与三位漫画家轮流执笔，每一期都是新的画法。</p>
+          <a class="read-more" href="#panels">看分镜 →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ==================== 分镜细节 ==================== -->
+  <section class="panels section" id="panels" aria-labelledby="panels-title">
+    <div class="section-head reveal">
+      <h2 class="section-title" id="panels-title">分镜细节<span class="title-en">PANEL TO PANEL</span></h2>
+      <p class="section-sub">一格特写，一页跨页，一段追车。原稿分镜未经修饰地摊开给你看。</p>
+    </div>
+
+    <div class="storyboard" role="img" aria-label="《午夜巡游者》第27话分镜草图：六格叙事序列，从特写眼瞳到狂奔的人影">
+      <figure class="sb-slot sb-slot-a reveal">
+        <span class="sb-art" data-spin="-2">
+          <i class="eye-slot" aria-hidden="true"></i>
+          <b class="sb-fx" data-spin="9">瞪</b>
+        </span>
+        <figcaption>特写 · 瞳孔中的站台灯</figcaption>
+      </figure>
+      <figure class="sb-slot sb-slot-b reveal" data-delay="1">
+        <span class="sb-art sb-art-wide" data-spin="1">
+          <i class="track-slot" aria-hidden="true"></i>
+          <b class="sb-fx" data-spin="-8">嗡——</b>
+        </span>
+        <figcaption>跨页 · 末班车驶过</figcaption>
+      </figure>
+      <figure class="sb-slot sb-slot-c reveal" data-delay="2">
+        <span class="sb-art" data-spin="-1">
+          <i class="door-slot" aria-hidden="true"></i>
+          <b class="sb-fx" data-spin="7">哗！</b>
+        </span>
+        <figcaption>中景 · 车门关闭的瞬间</figcaption>
+      </figure>
+      <figure class="sb-slot sb-slot-d reveal" data-delay="3">
+        <span class="sb-art" data-spin="2">
+          <i class="run-slot" aria-hidden="true"></i>
+          <b class="sb-fx" data-spin="-6">咣咣！</b>
+        </span>
+        <figcaption>全景 · 隧道里追来的人影</figcaption>
+      </figure>
+    </div>
+
+    <div class="process reveal">
+      <div class="process-col">
+        <h3>我们的工序</h3>
+        <ol class="process-steps">
+          <li><b>分镜脚本</b> — 先写一场戏的对白与节奏</li>
+          <li><b>缩略图</b> — 铅笔框出格子与镜头</li>
+          <li><b>墨线</b> — 毛笔与 G 笔落定线条</li>
+          <li><b>网点·上色</b> — 半调点、笔刷与专色</li>
+        </ol>
+      </div>
+      <div class="process-col">
+        <h3>本周更新日历</h3>
+        <ul class="cal-list">
+          <li><time datetime="2026-08-10">周一</time><span>《食堂与剑》第41话</span></li>
+          <li><time datetime="2026-08-13">周四</time><span>《午夜巡游者》第27话</span></li>
+          <li><time datetime="2026-08-16">周日</time><span>《铁皮收音机》番外</span></li>
+        </ul>
+      </div>
+      <div class="process-col">
+        <h3>现场速写</h3>
+        <div class="sketchpad" aria-hidden="true">
+          <span class="sk sk-1"></span><span class="sk sk-2"></span>
+          <span class="sk sk-3"></span><span class="sk sk-4"></span>
+          <span class="sk-skew"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 漫画家 ==================== -->
+  <section class="artists section" id="artists" aria-labelledby="artists-title">
+    <header class="section-head reveal">
+      <h2 class="section-title" id="artists-title">漫画家<span class="title-en">THE CREW</span></h2>
+      <p class="section-sub">四位常驻成员，四位客人，外加一条狗。笔名都很硬，稿费都很软。</p>
+    </header>
+
+    <div class="artists-grid">
+      <article class="artist reveal" data-spin="-1">
+        <div class="artist-portrait portrait-1" role="img" aria-label="漫画家三更的人物肖像漫画">
+          <span class="face face-a" aria-hidden="true"></span>
+          <span class="portrait-fx" data-spin="-6">胡！</span>
+        </div>
+        <h3>三更</h3>
+        <p class="artist-role">分镜 / 墨线 · 主笔《午夜巡游者》</p>
+        <p class="artist-bio">前建筑绘图员。画格子的习惯从图纸带到了稿纸上，最爱深夜两点的工作室窗外。</p>
+      </article>
+
+      <article class="artist reveal" data-spin="1" data-delay="1">
+        <div class="artist-portrait portrait-2" role="img" aria-label="漫画家老周的人物肖像漫画">
+          <span class="face face-b" aria-hidden="true"></span>
+          <span class="portrait-fx" data-spin="8">咚！</span>
+        </div>
+        <h3>老周</h3>
+        <p class="artist-role">脚本 / 对白 · 主笔《食堂与剑》</p>
+        <p class="artist-bio">一开口就是三幕结构。连载六年，把主角们的台词倒背如流，却总想不起自己菜窖的钥匙放哪。</p>
+      </article>
+
+      <article class="artist reveal" data-spin="-1" data-delay="2">
+        <div class="artist-portrait portrait-3" role="img" aria-label="漫画家栗七的人物肖像漫画">
+          <span class="face face-c" aria-hidden="true"></span>
+          <span class="portrait-fx" data-spin="-9">嘶——</span>
+        </div>
+        <h3>栗七</h3>
+        <p class="artist-role">上色 / 网点 · 主笔《铁皮收音机》</p>
+        <p class="artist-bio">调色盘里永远只有红、黄、黑。她说颜色太多会吵到剧情，于是全世界的霓虹都让她画得很安静。</p>
+      </article>
+
+      <article class="artist reveal" data-spin="1" data-delay="3">
+        <div class="artist-portrait portrait-4" role="img" aria-label="漫画家小满的人物肖像漫画">
+          <span class="face face-d" aria-hidden="true"></span>
+          <span class="portrait-fx" data-spin="-5">咻！</span>
+        </div>
+        <h3>小满</h3>
+        <p class="artist-role">短篇 / 实验 · 主笔《空白页》</p>
+        <p class="artist-bio">最快的交稿选手，也是改稿最多次的那个。每个月都在换画风，读者总在猜她下期会画成什么样。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ==================== 读者来信 ==================== -->
+  <section class="letters section" id="letters" aria-labelledby="letters-title">
+    <div class="letter-bg halftone" aria-hidden="true"></div>
+    <header class="section-head reveal">
+      <h2 class="section-title" id="letters-title">读者来信<span class="title-en">YOU SAID</span></h2>
+      <p class="section-sub">信箱每季清空一次，来信都会认真读完，回信贴在工作室的墙上。</p>
+    </header>
+
+    <div class="letters-wall">
+      <figure class="bubble reveal" data-spin="-2">
+        <blockquote>“第 26 话最后那格，提灯从她手心熄灭的时候，我在早高峰地铁上没忍住哭了。”</blockquote>
+        <figcaption>—— 阿青 · 上海 · 第 26 话</figcaption>
+        <span class="bubble-tail" aria-hidden="true"></span>
+      </figure>
+      <figure class="bubble bubble-yellow reveal" data-spin="1" data-delay="1">
+        <blockquote>“铁皮收音机的拟声词排版绝了，每一格都像能听见声音。希望多画点 1987 年的夏天。”</blockquote>
+        <figcaption>—— 小柯 · 广州 · 第 11 话</figcaption>
+        <span class="bubble-tail" aria-hidden="true"></span>
+      </figure>
+      <figure class="bubble bubble-red reveal" data-spin="-1" data-delay="2">
+        <blockquote>“食堂与剑第 40 话，剑士给哭鼻子的少年煮的那碗面……我翻来覆去看了八遍。”</blockquote>
+        <figcaption>—— 井生 · 成都 · 第 40 话</figcaption>
+        <span class="bubble-tail" aria-hidden="true"></span>
+      </figure>
+      <figure class="bubble bubble-white reveal" data-spin="2" data-delay="3">
+        <blockquote>“给分镜社回信是我每月最期待的事。墙上如果贴不下，请贴到《空白页》的空白页上。”</blockquote>
+        <figcaption>—— 棠棠 · 北京 · 读者投稿</figcaption>
+        <span class="bubble-tail" aria-hidden="true"></span>
+      </figure>
+    </div>
+
+    <div class="letter-form reveal">
+      <h3>也写一封给我们 <span class="title-en">DROP A LINE</span></h3>
+      <form id="letterForm" novalidate>
+        <div class="form-row">
+          <label for="letterName">落款</label>
+          <input id="letterName" name="name" type="text" maxlength="20" placeholder="你的笔名" required>
+        </div>
+        <div class="form-row">
+          <label for="letterCity">城市</label>
+          <input id="letterCity" name="city" type="text" maxlength="12" placeholder="所在城市">
+        </div>
+        <div class="form-row form-row-full">
+          <label for="letterText">来信</label>
+          <textarea id="letterText" name="text" rows="4" maxlength="240" placeholder="看完哪一话，想说点什么……" required></textarea>
+        </div>
+        <p class="form-feedback" id="letterFeedback" role="status" aria-live="polite"></p>
+        <button class="btn btn-big" type="submit">投进信箱 <span aria-hidden="true">→</span></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ==================== 预售订阅 ==================== -->
+  <section class="preorder section" id="preorder" aria-labelledby="preorder-title">
+    <div class="speedlines speedlines-c" aria-hidden="true"></div>
+    <div class="preorder-inner reveal">
+      <p class="preorder-kicker" data-spin="-2">OFFICIAL PRE-ORDER</p>
+      <h2 class="section-title section-title-big" id="preorder-title">《午夜巡游者》第 27 话 <span class="title-en">单行本预售</span></h2>
+      <p class="preorder-desc">限定首刷：专色黄封皮 + 拉页海报 + 分镜原稿别册。预售期优惠 ¥28 → ¥22，附赠读者姓名印刷进扉页。</p>
+
+      <div class="preorder-deals">
+        <article class="deal reveal" data-spin="-1">
+          <span class="deal-tag">普通版</span>
+          <b class="deal-price">¥22</b>
+          <ul>
+            <li>单行本 1 册（首刷）</li>
+            <li>分镜别册 16p</li>
+            <li>电子版早读券</li>
+          </ul>
+        </article>
+        <article class="deal deal-hot reveal" data-spin="1" data-delay="1">
+          <span class="deal-tag">签名套组</span>
+          <b class="deal-price">¥58</b>
+          <ul>
+            <li>普通版全部内容</li>
+            <li>三更亲笔签名 + 小画</li>
+            <li>拉页海报 + 信封贴纸</li>
+            <li>姓名印入扉页</li>
+          </ul>
+        </article>
+      </div>
+
+      <form class="subscribe" id="preorderForm" novalidate>
+        <label class="visually-hidden" for="subscribeEmail">邮箱</label>
+        <input id="subscribeEmail" name="email" type="email" placeholder="留下邮箱，开售时第一声提醒你" required>
+        <button class="btn btn-big" type="submit">预约提醒</button>
+      </form>
+      <p class="form-feedback form-feedback-center" id="preorderFeedback" role="status" aria-live="polite"></p>
+      <p class="preorder-note">预售将于 8 月 20 日 20:00 开启 · 不接受加印订单 · 感恩</p>
+    </div>
+  </section>
+</main>
+
+<!-- ==================== 页脚 ==================== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <strong>分镜社 <span>PANEL HOUSE</span></strong>
+      <p>独立漫画工作室 · 巷子尽头红色招牌那家</p>
+    </div>
+    <nav class="footer-nav" aria-label="页脚导航">
+      <a href="#works">连载</a>
+      <a href="#panels">分镜</a>
+      <a href="#artists">漫画家</a>
+      <a href="#letters">来信</a>
+      <a href="#preorder">预售</a>
+    </nav>
+    <p class="footer-meta">© 2026 PANEL HOUSE · 本站所有画面均为 CSS 绘制，无一张外部图片</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

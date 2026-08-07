@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="星港 NOVA PORT —— 向木卫二出发的星际殖民运输计划。航线计划、船队名录、科考日志与星际公民报名。">
+  <meta name="theme-color" content="#05070f">
+  <title>星港 NOVA PORT · 星际殖民计划</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <!-- ===== 顶部 HUD 导航 ===== -->
+  <header class="hud-nav" role="banner">
+    <div class="hud-nav__inner">
+      <a class="logo" href="#top" aria-label="星港 NOVA PORT 首页">
+        <span class="logo__mark" aria-hidden="true">◈</span>
+        <span class="logo__text">NOVA<span class="logo__accent">PORT</span></span>
+        <span class="logo__zh">星港 · 殖民运输</span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">
+          <span class="nav__toggle-line"></span><span class="nav__toggle-line"></span><span class="nav__toggle-line"></span>
+          <span class="visually-hidden">展开菜单</span>
+        </button>
+        <ul class="nav__menu" id="nav-menu">
+          <li><a href="#departure" class="nav__link">出发计划</a></li>
+          <li><a href="#route" class="nav__link">航线图</a></li>
+          <li><a href="#fleet" class="nav__link">船队名录</a></li>
+          <li><a href="#log" class="nav__link">科考日志</a></li>
+          <li><a href="#apply" class="nav__link nav__link--cta">星际公民报名</a></li>
+        </ul>
+      </nav>
+      <div class="hud-nav__status" aria-hidden="true">
+        <span class="status-dot"></span>LINK OK
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== 开屏：巨大星球 + 倒计时 ===== -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <canvas class="starfield" id="starfield" aria-hidden="true"></canvas>
+      <div class="scanlines" aria-hidden="true"></div>
+
+      <div class="hero__planet-wrap" aria-hidden="true">
+        <div class="planet planet--europa" data-parallax="0.25">
+          <div class="planet__core"></div>
+          <div class="planet__crack planet__crack--1"></div>
+          <div class="planet__crack planet__crack--2"></div>
+          <div class="planet__crack planet__crack--3"></div>
+          <div class="planet__glow"></div>
+        </div>
+        <div class="planet planet--moon" data-parallax="0.6"></div>
+      </div>
+
+      <div class="hero__content">
+        <p class="hero__kicker" data-parallax="0.1">MISSION · EUROPA TRANSIT // 0037-CYCLES</p>
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__title-big">跨越 <em>6.28亿公里</em></span>
+          <span class="hero__title-sub">向木卫二冰洋出发</span>
+        </h1>
+        <p class="hero__desc">星港 NOVA PORT 正式开放第三期殖民运输。冰下海洋、宜居舱段、深空科考站，一切就绪。你的星际公民编号，正在生成。</p>
+
+        <div class="countdown" role="timer" aria-label="距下次发射窗口倒计时">
+          <div class="countdown__unit">
+            <span class="countdown__num" id="cd-days">000</span>
+            <span class="countdown__label">DAYS</span>
+          </div>
+          <div class="countdown__sep" aria-hidden="true">:</div>
+          <div class="countdown__unit">
+            <span class="countdown__num" id="cd-hours">00</span>
+            <span class="countdown__label">HRS</span>
+          </div>
+          <div class="countdown__sep" aria-hidden="true">:</div>
+          <div class="countdown__unit">
+            <span class="countdown__num" id="cd-min">00</span>
+            <span class="countdown__label">MIN</span>
+          </div>
+          <div class="countdown__sep" aria-hidden="true">:</div>
+          <div class="countdown__unit">
+            <span class="countdown__num" id="cd-sec">00</span>
+            <span class="countdown__label">SEC</span>
+          </div>
+        </div>
+
+        <div class="hero__actions">
+          <a href="#apply" class="btn btn--primary">申请星际公民编号</a>
+          <a href="#route" class="btn btn--ghost">查看航线图</a>
+        </div>
+      </div>
+
+      <div class="hero__hud hero__hud--tl" aria-hidden="true"><span>STN.07</span><span>NOVA PORT</span></div>
+      <div class="hero__hud hero__hud--tr" aria-hidden="true"><span>ALT 412KM</span><span>VEL 7.9KM/S</span></div>
+      <div class="hero__hud hero__hud--bl" aria-hidden="true"><span>冰壳下温度 -171°C</span><span>含氧大气 微量</span></div>
+      <div class="hero__hud hero__hud--br" aria-hidden="true"><span>ORBIT 0023-07</span><span>SYS. ONLINE</span></div>
+
+      <a class="hero__scroll" href="#departure" aria-label="向下滚动查看出发计划">
+        <span class="hero__scroll-label">SCROLL</span>
+        <span class="hero__scroll-line" aria-hidden="true"></span>
+      </a>
+    </section>
+
+    <!-- ===== 出发计划 ===== -->
+    <section class="section" id="departure" aria-labelledby="departure-title">
+      <div class="section__head">
+        <p class="section__tag">DEPARTURE WINDOWS</p>
+        <h2 class="section__title" id="departure-title">发射窗口排期</h2>
+        <p class="section__lede">木星引力弹弓每 13 个月开启一次。错过本期，下一窗口在 14 个月后。</p>
+      </div>
+      <div class="timeline">
+        <ol class="timeline__list">
+          <li class="timeline__item">
+            <div class="timeline__node" aria-hidden="true"></div>
+            <div class="timeline__card hud-panel">
+              <p class="timeline__code">WIN-0726 · 首要窗口</p>
+              <h3 class="timeline__title">金牛座-α 运输舰队</h3>
+              <p class="timeline__meta">出发：2026.08.17 ｜ 到港：2027.03.02</p>
+              <p class="timeline__body">搭载第一批 1,200 名星际公民与 40 万吨模块化舱段，沿金星借力轨道低速巡航。</p>
+              <p class="timeline__status"><span class="status-dot status-dot--ok"></span>舱位登记中 · 剩余 37%</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__node" aria-hidden="true"></div>
+            <div class="timeline__card hud-panel">
+              <p class="timeline__code">WIN-0826 · 快速通道</p>
+              <h3 class="timeline__title">猎户座-γ 快速运输线</h3>
+              <p class="timeline__meta">出发：2027.09.04 ｜ 到港：2028.02.19</p>
+              <p class="timeline__body">核热推进快速线，航期缩短至 5.5 个月。面向科考团队与优先货物，舱位限量。</p>
+              <p class="timeline__status"><span class="status-dot status-dot--warn"></span>申请开放 · 需资质审核</p>
+            </div>
+          </li>
+          <li class="timeline__item">
+            <div class="timeline__node" aria-hidden="true"></div>
+            <div class="timeline__card hud-panel">
+              <p class="timeline__code">WIN-0926 · 预留窗口</p>
+              <h3 class="timeline__title">双子座-δ 补给编队</h3>
+              <p class="timeline__meta">出发：2028.01.12 ｜ 到港：2028.07.29</p>
+              <p class="timeline__body">定向补给与第二批移民。地面段舱位预约即日启动，适合提前规划的家庭申请。</p>
+              <p class="timeline__status"><span class="status-dot status-dot--idle"></span>预约队列 · 2026 年末开启</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== 航线图 ===== -->
+    <section class="section section--route" id="route" aria-labelledby="route-title">
+      <div class="section__head">
+        <p class="section__tag">TRANSIT MAP</p>
+        <h2 class="section__title" id="route-title">木星航线图</h2>
+        <p class="section__lede">从地球出发，借力金星与火星，沿行星际公路直抵木星系统。</p>
+      </div>
+      <div class="route-map hud-panel" role="img" aria-label="航线示意图：地球经金星借力、火星轨道、小行星带，抵达木星与木卫二">
+        <svg class="route-map__svg" viewBox="0 0 1200 560" aria-hidden="true" focusable="false">
+          <defs>
+            <radialGradient id="g-earth" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#5ce1ff"/><stop offset="55%" stop-color="#1fb6ff"/><stop offset="100%" stop-color="#0a3a5e"/>
+            </radialGradient>
+            <radialGradient id="g-venus" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffe3b3"/><stop offset="60%" stop-color="#ff9e3d"/><stop offset="100%" stop-color="#7a4314"/>
+            </radialGradient>
+            <radialGradient id="g-mars" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffc1a1"/><stop offset="60%" stop-color="#e85d3a"/><stop offset="100%" stop-color="#6e2012"/>
+            </radialGradient>
+            <radialGradient id="g-jupiter" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#e8d5b8"/><stop offset="55%" stop-color="#c99a6a"/><stop offset="100%" stop-color="#5a3a20"/>
+            </radialGradient>
+            <radialGradient id="g-europa" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f3f8ff"/><stop offset="50%" stop-color="#c9d6e8"/><stop offset="100%" stop-color="#4a5a7a"/>
+            </radialGradient>
+            <filter id="f-glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="6" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <pattern id="p-grid" width="60" height="60" patternUnits="userSpaceOnUse">
+              <path d="M60 0H0V60" fill="none" stroke="#1fb6ff" stroke-opacity="0.08" stroke-width="1"/>
+            </pattern>
+          </defs>
+
+          <rect width="1200" height="560" fill="url(#p-grid)"/>
+
+          <!-- 行星轨道 -->
+          <circle class="route-orbit" cx="180" cy="470" r="52" aria-hidden="true"></circle>
+          <circle class="route-orbit" cx="180" cy="470" r="120" aria-hidden="true"></circle>
+          <circle class="route-orbit" cx="180" cy="470" r="205" aria-hidden="true"></circle>
+
+          <!-- 航线主路径 -->
+          <path class="route-path" d="M180,330 C340,180 520,120 700,150 C880,180 1000,260 1060,250"
+                fill="none" stroke="#1fb6ff" stroke-width="2" stroke-dasharray="10 8" filter="url(#f-glow)"/>
+          <path class="route-path route-path--second" d="M180,330 C320,300 420,150 640,130 C860,110 980,150 1040,220"
+                fill="none" stroke="#7b5cff" stroke-width="1.6" stroke-dasharray="4 10" filter="url(#f-glow)"/>
+
+          <!-- 航行光标 -->
+          <circle class="route-commet" r="6" filter="url(#f-glow)">
+            <animateMotion dur="9s" repeatCount="indefinite"
+              path="M180,330 C340,180 520,120 700,150 C880,180 1000,260 1060,250"/>
+          </circle>
+          <circle class="route-commet" r="4" fill="#7b5cff" filter="url(#f-glow)">
+            <animateMotion dur="12s" repeatCount="indefinite"
+              path="M180,330 C320,300 420,150 640,130 C860,110 980,150 1040,220"/>
+          </circle>
+
+          <!-- 行星节点 -->
+          <g class="route-planet">
+            <circle cx="180" cy="470" r="34" fill="url(#g-earth)" filter="url(#f-glow)"/>
+            <text x="180" y="516" text-anchor="middle" class="route-label">地球 · SOL-3</text>
+          </g>
+          <g class="route-planet">
+            <circle cx="345" cy="120" r="22" fill="url(#g-venus)" filter="url(#f-glow)"/>
+            <text x="345" y="90" text-anchor="middle" class="route-label">金星 · 借力点</text>
+          </g>
+          <g class="route-planet">
+            <circle cx="610" cy="95" r="19" fill="url(#g-mars)" filter="url(#f-glow)"/>
+            <text x="610" y="66" text-anchor="middle" class="route-label">火星 · SOL-4</text>
+          </g>
+          <g class="route-planet">
+            <circle cx="1040" cy="250" r="52" fill="url(#g-jupiter)" filter="url(#f-glow)"/>
+            <text x="1040" y="196" text-anchor="middle" class="route-label">木星 · SOL-5</text>
+            <circle cx="1068" cy="272" r="10" fill="url(#g-europa)" filter="url(#f-glow)"/>
+            <text x="1112" y="288" class="route-label route-label--small">木卫二 · 终点站</text>
+          </g>
+
+          <!-- 距离标注 -->
+          <g class="route-note">
+            <line x1="640" y1="180" x2="640" y2="222" stroke="#ff9e3d" stroke-width="1" stroke-opacity="0.6"/>
+            <text x="640" y="210" text-anchor="middle" class="route-note-text">小行星带</text>
+          </g>
+          <text x="600" y="330" text-anchor="middle" class="route-note-text">总航程 6.28 亿公里 · 6-14 个月</text>
+        </svg>
+        <div class="route-map__legend" aria-hidden="true">
+          <span><i class="legend-dot legend-dot--blue"></i>主航线</span>
+          <span><i class="legend-dot legend-dot--purple"></i>快速线</span>
+          <span><i class="legend-dot legend-dot--orange"></i>引力弹弓</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 船队名录 ===== -->
+    <section class="section" id="fleet" aria-labelledby="fleet-title">
+      <div class="section__head">
+        <p class="section__tag">FLEET REGISTRY</p>
+        <h2 class="section__title" id="fleet-title">在港船队名录</h2>
+        <p class="section__lede">深空船坞内正在整备的殖民运输舰。每艘舰船均搭载独立生态循环系统。</p>
+      </div>
+      <div class="fleet">
+        <article class="fleet__card hud-panel">
+          <div class="ship" aria-hidden="true"><div class="ship__hull"></div><div class="ship__engine"></div></div>
+          <p class="fleet__class">COLONY TRANSPORT · CLASS-A</p>
+          <h3 class="fleet__name">北落师门号</h3>
+          <ul class="fleet__specs">
+            <li><span>乘客</span><strong>1,200</strong></li>
+            <li><span>航速</span><strong>0.14c</strong></li>
+            <li><span>生态舱</span><strong>×8</strong></li>
+            <li><span>状态</span><strong class="text-blue">整备中</strong></li>
+          </ul>
+        </article>
+        <article class="fleet__card hud-panel">
+          <div class="ship ship--freight" aria-hidden="true"><div class="ship__hull"></div><div class="ship__engine"></div></div>
+          <p class="fleet__class">HEAVY FREIGHTER · CLASS-B</p>
+          <h3 class="fleet__name">牵牛星号</h3>
+          <ul class="fleet__specs">
+            <li><span>货载</span><strong>40万吨</strong></li>
+            <li><span>航速</span><strong>0.09c</strong></li>
+            <li><span>机械臂</span><strong>×6</strong></li>
+            <li><span>状态</span><strong class="text-orange">检修</strong></li>
+          </ul>
+        </article>
+        <article class="fleet__card hud-panel">
+          <div class="ship ship--sci" aria-hidden="true"><div class="ship__hull"></div><div class="ship__engine"></div></div>
+          <p class="fleet__class">RESEARCH VESSEL · CLASS-S</p>
+          <h3 class="fleet__name">瓦萨·笛卡尔号</h3>
+          <ul class="fleet__specs">
+            <li><span>科考员</span><strong>96</strong></li>
+            <li><span>航速</span><strong>0.21c</strong></li>
+            <li><span>冰钻</span><strong>×3</strong></li>
+            <li><span>状态</span><strong class="text-purple">巡逻中</strong></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== 科考日志 ===== -->
+    <section class="section section--log" id="log" aria-labelledby="log-title">
+      <div class="section__head">
+        <p class="section__tag">SCIENCE FEED</p>
+        <h2 class="section__title" id="log-title">深空科考日志</h2>
+      </div>
+      <div class="log">
+        <article class="log__feed hud-panel">
+          <div class="log__stream" id="log-stream" aria-live="polite"></div>
+        </article>
+        <article class="log__entry hud-panel">
+          <div class="log__entry-head">
+            <p class="log__entry-tag">STATION REPORT · Nº 0417</p>
+            <time class="log__entry-time" datetime="2026-08-02">SOL 2,436</time>
+          </div>
+          <h3 class="log__entry-title">冰层之下：木卫二的生命信号采样</h3>
+          <p class="log__entry-body">钻机「特提斯-7」在 9.2 公里冰壳处捕获到有机物波动信号。化学比对照显示，其结构特征与地球深海热泉菌落存在趋同演化痕迹。请勿在未经消杀流程的情况下打开样本舱。</p>
+          <blockquote class="log__quote">“我们并非孤独的旅人——我们携带整座海洋出发。”</blockquote>
+          <p class="log__entry-sig">——科考站主任 · 林栖迟</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== 报名表单 ===== -->
+    <section class="section section--apply" id="apply" aria-labelledby="apply-title">
+      <div class="apply">
+        <div class="apply__intro">
+          <p class="section__tag">CITIZEN REGISTRY</p>
+          <h2 class="section__title" id="apply-title">申请星际公民编号</h2>
+          <p class="section__lede">完成登记，你将获得 8 位星际公民编号、优先舱位锁与深空健康档案。二期名单将在发射前 90 日密封。</p>
+          <ul class="apply__steps">
+            <li><span class="apply__step-num" aria-hidden="true">01</span>提交公民档案</li>
+            <li><span class="apply__step-num" aria-hidden="true">02</span>生理适配评估</li>
+            <li><span class="apply__step-num" aria-hidden="true">03</span>领取出发编号</li>
+          </ul>
+        </div>
+
+        <form class="apply__form hud-panel" id="apply-form" novalidate>
+          <p class="apply__form-title">TRANSMISSION FORM</p>
+
+          <div class="field">
+            <label for="f-name">全名</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" placeholder="例：沈星阑" required>
+          </div>
+
+          <div class="field">
+            <label for="f-call">通讯代号</label>
+            <input id="f-call" name="callsign" type="text" autocomplete="nickname" placeholder="例：VEGA-88" maxlength="12">
+          </div>
+
+          <fieldset class="field field--radio">
+            <legend>申请席位</legend>
+            <div class="radio-row">
+              <label class="radio">
+                <input type="radio" name="seat" value="移民舱" checked>
+                <span class="radio__mark" aria-hidden="true"></span>移民舱
+              </label>
+              <label class="radio">
+                <input type="radio" name="seat" value="科考舱">
+                <span class="radio__mark" aria-hidden="true"></span>科考舱
+              </label>
+              <label class="radio">
+                <input type="radio" name="seat" value="货舱随行">
+                <span class="radio__mark" aria-hidden="true"></span>货舱随行
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="field">
+            <label for="f-msg">申请说明<span class="field__optional">（可选）</span></label>
+            <textarea id="f-msg" name="message" rows="3" placeholder="简述你的技能与动机，将提高适配评估通过率。"></textarea>
+          </div>
+
+          <label class="checkbox">
+            <input type="checkbox" name="consent" required>
+            <span class="checkbox__mark" aria-hidden="true"></span>
+            我已阅读《深空移民协议》并同意接受生理适配评估
+          </label>
+
+          <div class="apply__form-error" id="form-error" role="alert" aria-live="polite" hidden></div>
+
+          <button class="btn btn--primary btn--block" type="submit">建立通讯 · 提交申请</button>
+          <p class="apply__form-note">提交即代表信号已加密传输至星港指挥中心。</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <p class="footer__logo">NOVA<span class="logo__accent">PORT</span> · 星港</p>
+        <p class="footer__desc">面向木卫二的星际殖民运输与深空科考网络。轨道方舟、冰洋开拓、生态再生。</p>
+      </div>
+      <nav class="footer__nav" aria-label="页脚导航">
+        <p class="footer__heading">导航</p>
+        <ul>
+          <li><a href="#departure">出发计划</a></li>
+          <li><a href="#route">航线图</a></li>
+          <li><a href="#fleet">船队名录</a></li>
+          <li><a href="#log">科考日志</a></li>
+          <li><a href="#apply">星际公民报名</a></li>
+        </ul>
+      </nav>
+      <div class="footer__freq">
+        <p class="footer__heading">通讯频段</p>
+        <p class="footer__mono">UPLINK: 88.4 GHZ<br>BEACON: NOVA-07-EUR<br>STATION: 泰坦轨道中继</p>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <p>© 2026 NOVA PORT 星港集团 · 星际殖民计划</p>
+      <p class="footer__mono">COORD 10.3106°N / 79.4160°W</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+# Claude Code 配置与本地缓存
+.claude/
+__pycache__/
+*.pyc
+
+# 系统文件
+Thumbs.db
+.DS_Store
+desktop.ini

@@ -1,0 +1,197 @@
+/* 噪音工厂 · 新丑反设计 */
+:root{
+  --acid:#c8ff00;
+  --pink:#ff3fb3;
+  --blue:#1f5bff;
+  --black:#0c0c0c;
+  --white:#ffffff;
+  --line:#0c0c0c;
+  --font-loud:"Archivo Black","PingFang SC","Microsoft YaHei",sans-serif;
+  --font-serif:"Playfair Display","Noto Serif SC",serif;
+  --font-hand:"Caveat","PingFang SC","KaiTi",cursive;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Archivo Black","PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+  background:var(--white);color:var(--black);
+  overflow-x:hidden;line-height:1.5;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+.visually-hidden{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0)}
+.skip-link{
+  position:fixed;top:-60px;left:16px;z-index:9999;background:var(--acid);color:#000;
+  padding:8px 14px;border:3px solid #000;transition:top .2s;
+}
+.skip-link:focus{top:16px}
+
+/* 背景噪点 */
+.noise-bg{
+  position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+main,header,footer{position:relative;z-index:1}
+
+/* 顶栏 */
+.masthead{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  background:var(--acid);border-bottom:4px solid var(--black);padding:12px 20px;
+}
+.logo{display:flex;align-items:baseline;gap:6px;transform:rotate(-1deg)}
+.logo-loud{font-size:26px;letter-spacing:-1px}
+.logo-quiet{font-family:var(--font-hand);font-size:22px;color:var(--blue);transform:rotate(6deg) translateY(2px)}
+.nav{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav a{
+  display:inline-block;padding:6px 12px;border:3px solid var(--black);background:var(--white);
+  font-size:15px;transform:rotate(var(--rot,0deg));transition:transform .12s;
+  box-shadow:3px 3px 0 var(--black);
+}
+.nav a:hover{transform:rotate(calc(var(--rot,0deg) * -1)) translate(2px,-2px)}
+.nav-burger{display:none;font-size:28px;line-height:1;background:var(--pink);color:#fff;
+  border:3px solid #000;padding:2px 10px;box-shadow:3px 3px 0 #000}
+
+/* 移动菜单 */
+.mobile-menu{
+  display:none;position:fixed;inset:0;z-index:40;background:var(--blue);padding:80px 24px;
+  flex-direction:column;gap:10px;
+}
+.mobile-menu.is-open{display:flex}
+.mobile-menu a{color:#fff;font-size:26px;border-bottom:2px solid rgba(255,255,255,.4);padding:8px 0;
+  transform:rotate(calc(var(--rot,0deg) * -1))}
+@media (max-width:700px){ .nav{display:none} .nav-burger{display:block} }
+
+/* HERO */
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;
+  padding:70px 22px 40px;position:relative}
+.hero-kicker{
+  font-family:var(--font-hand);font-size:26px;color:var(--blue);
+  background:var(--acid);display:inline-block;padding:2px 12px;border:3px solid #000;
+  transform:rotate(var(--rot,0deg));align-self:flex-start;box-shadow:4px 4px 0 #000;
+}
+.hero-title{font-size:clamp(44px,11vw,120px);line-height:.98;letter-spacing:-3px;
+  margin:18px 0 20px;display:flex;flex-wrap:wrap;gap:2px 18px}
+.hero-title span{display:inline-block;transform:rotate(var(--rot,0deg))}
+.t2{transform-origin:bottom left}
+.t4{transform-origin:bottom right}
+.hero-sub{
+  font-family:"Archivo Black",sans-serif;font-weight:400;font-size:clamp(15px,1.8vw,19px);
+  max-width:560px;background:var(--white);padding:14px 16px;border:3px solid var(--black);
+  box-shadow:6px 6px 0 var(--pink);transform:rotate(var(--rot,0deg));line-height:1.7;
+}
+.hero-actions{display:flex;align-items:center;gap:16px;margin-top:26px;flex-wrap:wrap}
+.btn-loud{
+  display:inline-flex;align-items:center;gap:10px;background:var(--black);color:var(--acid);
+  padding:14px 22px;border:3px solid #000;font-size:18px;transform:rotate(var(--rot,0deg));
+  box-shadow:5px 5px 0 var(--pink);transition:transform .1s;
+}
+.btn-loud:hover{transform:rotate(calc(var(--rot,0deg) * -1)) scale(1.05)}
+.btn-loud b{color:var(--pink);font-size:20px}
+.btn-trap{
+  background:var(--pink);color:#fff;padding:14px 22px;border:3px solid #000;font-size:16px;
+  transform:rotate(var(--rot,0deg));box-shadow:5px 5px 0 var(--blue);
+}
+.btn-now{background:#fff;padding:14px 20px;border:3px dashed var(--blue);font-size:15px;
+  transform:rotate(var(--rot,0deg))}
+.hero-note{font-family:var(--font-hand);font-size:22px;color:var(--blue);margin-top:16px;
+  transform:rotate(-1deg);min-height:28px}
+.hero-marquee{
+  position:absolute;left:0;right:0;bottom:16px;overflow:hidden;white-space:nowrap;
+  border-top:3px solid #000;border-bottom:3px solid #000;background:var(--blue);
+  padding:6px 0;color:#fff;font-size:14px;
+}
+.hero-marquee span{display:inline-block;animation:scrollx 14s linear infinite;padding-right:8px}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* 区块通用 */
+.section{padding:64px 22px;position:relative}
+.sec-badge{
+  display:inline-block;font-family:var(--font-hand);font-size:24px;background:var(--acid);
+  border:3px solid #000;padding:2px 14px;transform:rotate(var(--rot,0deg));
+  box-shadow:4px 4px 0 #000;margin-bottom:14px;
+}
+.sec-title{font-size:clamp(30px,6vw,54px);letter-spacing:-1px;transform:rotate(var(--rot,0deg));
+  margin-bottom:26px}
+.sec-title .hi{color:var(--pink);background:var(--acid);padding:0 6px}
+
+/* 宣言 */
+.manifesto-body{display:flex;flex-direction:column;gap:18px;max-width:720px}
+.manifesto-body p{
+  font-family:"Archivo Black",sans-serif;font-size:clamp(16px,2vw,21px);line-height:1.75;
+  border-left:8px solid var(--blue);padding-left:16px;
+}
+.manifesto-body .hand{font-family:var(--font-hand);color:var(--pink);font-size:26px;display:block;text-align:right}
+.manifesto-mess{
+  cursor:pointer;background:var(--acid);display:inline-block;padding:10px 16px;
+  border:3px solid #000;transform:rotate(var(--rot,0deg));box-shadow:5px 5px 0 var(--pink);
+  transition:transform .12s;
+}
+
+/* 艺术家 */
+.artist-list{list-style:none;display:grid;gap:14px}
+.artist{
+  display:flex;align-items:center;gap:18px;background:var(--white);
+  border:3px solid #000;padding:14px 18px;transform:rotate(var(--rot,0deg));
+  box-shadow:6px 6px 0 var(--blue);transition:transform .12s;
+}
+.artist:nth-child(2n){background:var(--acid)}
+.artist:nth-child(3n){background:var(--pink);color:#fff}
+.artist:hover{transform:rotate(calc(var(--rot,0deg) * -1)) translate(3px,-3px)}
+.artist b{font-size:22px;color:var(--blue)}
+.artist h3{font-size:20px;letter-spacing:-.5px;flex:1}
+.artist span{font-family:var(--font-hand);font-size:20px}
+
+/* 唱片 */
+.record-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:22px}
+.record{
+  background:var(--white);border:3px solid #000;padding:14px;transform:rotate(var(--rot,0deg));
+  box-shadow:7px 7px 0 var(--shadow-c);transition:transform .12s;
+}
+.record:hover{transform:rotate(calc(var(--rot,0deg) * -1)) scale(1.03)}
+.rec-cover{aspect-ratio:1;border:3px solid #000;margin-bottom:12px;display:grid;place-items:center;
+  font-size:34px;color:#fff;mix-blend-mode:normal}
+.record h3{font-size:17px;letter-spacing:-.3px}
+.record p{font-family:var(--font-hand);font-size:19px;color:var(--blue);margin:2px 0 6px}
+.rec-price{display:inline-block;background:var(--black);color:var(--acid);padding:2px 10px;
+  border:2px solid #000;transform:rotate(-2deg)}
+
+/* 演出 */
+.show-list{display:flex;flex-direction:column;gap:12px}
+.show{
+  display:flex;align-items:center;gap:18px;background:var(--acid);border:3px solid #000;
+  padding:14px 18px;transform:rotate(var(--rot,0deg));box-shadow:6px 6px 0 var(--pink);
+}
+.show .date{font-size:22px;background:#000;color:#fff;padding:4px 10px;transform:rotate(-2deg)}
+.show h3{font-size:18px;letter-spacing:-.3px}
+.show em{font-family:var(--font-hand);font-style:normal;font-size:20px;color:var(--blue);margin-left:10px}
+
+/* 加入 */
+.join-sub{max-width:520px;margin-bottom:20px;font-family:"Archivo Black",sans-serif;line-height:1.7}
+.join-form{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.join-form input{
+  font:inherit;padding:13px 16px;border:3px solid #000;font-size:16px;flex:1;min-width:240px;
+  box-shadow:4px 4px 0 var(--pink);
+}
+.join-form button{
+  background:var(--blue);color:#fff;padding:13px 20px;border:3px solid #000;font-size:16px;
+  transform:rotate(var(--rot,0deg));box-shadow:4px 4px 0 var(--acid);
+}
+.join-msg{font-family:var(--font-hand);font-size:24px;color:var(--pink);margin-top:14px}
+
+/* 页脚 */
+.footer{background:var(--black);color:var(--white);padding:40px 22px;text-align:center}
+.foot-loud{font-size:clamp(34px,8vw,90px);color:var(--acid);letter-spacing:-2px;
+  -webkit-text-stroke:1px var(--pink);line-height:1}
+.footer p{font-family:var(--font-hand);font-size:22px;transform:rotate(var(--rot,0deg));margin-top:10px}
+.foot-note{color:var(--acid)}
+
+@media (max-width:640px){
+  .hero{padding-top:60px}
+  .artist{flex-wrap:wrap}
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .hero-marquee span{animation:none}
+}

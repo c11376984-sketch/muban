@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>玻璃拟态 · 云端创意协作平台</title>
+<meta name="description" content="璃想 —— 一块透明的云端画板，让团队的想法像浮在玻璃上的光点一样清晰、轻盈、随时可触碰。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-blobs" aria-hidden="true">
+  <span class="blob blob-1"></span>
+  <span class="blob blob-2"></span>
+  <span class="blob blob-3"></span>
+  <span class="blob blob-4"></span>
+  <span class="blob blob-5"></span>
+</div>
+
+<a class="skip-link" href="#main">跳到主要内容</a>
+
+<header class="site-header" id="siteHeader">
+  <nav class="nav" aria-label="主导航">
+    <a class="logo" href="#hero">
+      <span class="logo-mark" aria-hidden="true">
+        <i></i><i></i><i></i>
+      </span>
+      <span class="logo-text">璃想<span class="logo-dot">.</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu" aria-label="打开菜单">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-list" id="navMenu">
+      <li><a href="#features" data-nav>功能</a></li>
+      <li><a href="#flow" data-nav>流程</a></li>
+      <li><a href="#templates" data-nav>模板</a></li>
+      <li><a href="#voices" data-nav>评价</a></li>
+      <li><a class="nav-cta" href="#download">免费开始</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <p class="hero-tag reveal">轻 · 透 · 实时 · 一块会呼吸的玻璃画板</p>
+    <h1 class="hero-title reveal">
+      把灵感放进<br>
+      <span class="grad-text">一块透明的玻璃。</span>
+    </h1>
+    <p class="hero-desc reveal">
+      璃想让创意团队把想法、画面与评论悬浮在同一片云端。
+      拖一拖、贴一贴、碰一下——所有内容像浮在玻璃上的光点，清晰、轻盈、随时可触碰。
+    </p>
+    <div class="hero-actions reveal">
+      <a class="btn btn-primary" href="#download">免费开始使用</a>
+      <a class="btn btn-ghost" href="#flow">看看它是怎么工作的</a>
+    </div>
+
+    <!-- hero floating glass mockup -->
+    <div class="hero-stage reveal" id="heroStage">
+      <div class="glass-panel mock-board" id="mockBoard">
+        <div class="board-head">
+          <span class="board-title">周末产品冲刺</span>
+          <span class="board-live"><i aria-hidden="true"></i> 3 人在线</span>
+        </div>
+        <div class="board-note note-a">新首页动线草图</div>
+        <div class="board-note note-b">把 CTA 提到首屏</div>
+        <div class="board-chart" aria-hidden="true">
+          <span class="bar" style="height:38%"></span>
+          <span class="bar" style="height:62%"></span>
+          <span class="bar" style="height:48%"></span>
+          <span class="bar" style="height:80%"></span>
+          <span class="bar" style="height:58%"></span>
+          <span class="bar" style="height:92%"></span>
+          <span class="bar" style="height:70%"></span>
+        </div>
+      </div>
+
+      <div class="glass-card float-card fc-chat" aria-hidden="true">
+        <span class="fc-avatar" style="--av:linear-gradient(135deg,#8EA2FF,#5B5BD6)">林</span>
+        <span class="fc-line"></span>
+        <span class="fc-line short"></span>
+      </div>
+
+      <div class="glass-card float-card fc-avatars" aria-hidden="true">
+        <span class="mini-avatar" style="--av:linear-gradient(135deg,#FFA8D2,#FF7BA9)"></span>
+        <span class="mini-avatar" style="--av:linear-gradient(135deg,#7FE0C3,#2BC48D)"></span>
+        <span class="mini-avatar" style="--av:linear-gradient(135deg,#FFE29A,#FFC24B)"></span>
+        <span class="mini-avatar" style="--av:linear-gradient(135deg,#9BE1FF,#4FB3FF)"></span>
+      </div>
+
+      <div class="glass-card float-card fc-badge" aria-hidden="true">
+        <span class="badge-check">✓</span>
+        <span>已同步到云端</span>
+      </div>
+    </div>
+
+    <ul class="hero-trust reveal" aria-label="合作方">
+      <li>· 星岸出版社</li>
+      <li>· 南山实验室</li>
+      <li>· 山海工作室</li>
+      <li>· 潮汐文创</li>
+    </ul>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section features" id="features">
+    <header class="section-head reveal">
+      <p class="section-eyebrow">功能 / FEATURES</p>
+      <h2 class="section-title">像玻璃一样轻，<br>像网格一样稳。</h2>
+      <p class="section-desc">我们打磨的不是按钮，而是「手感」——让每一次拖动、缩放与同步都安静而自然。</p>
+    </header>
+
+    <div class="feature-grid">
+      <article class="glass-card feature-card reveal">
+        <span class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>
+        </span>
+        <h3 class="feature-title">无限画布</h3>
+        <p class="feature-text">画布没有边界。缩到能俯瞰全局，放到能看见一个像素。每一层内容都悬浮在独立的玻璃片上。</p>
+      </article>
+
+      <article class="glass-card feature-card reveal">
+        <span class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3.2 2.8-5 5.5-5s4.9 1.8 5.5 5"/><circle cx="17" cy="9" r="2.4"/><path d="M15.5 14.4c2.1.3 3.8 1.8 4.3 4.1"/></svg>
+        </span>
+        <h3 class="feature-title">实时协作</h3>
+        <p class="feature-text">光标可见，评论跟随内容移动。十个人同时画，也不会互相踩脚。延迟低到你几乎感觉不到距离。</p>
+      </article>
+
+      <article class="glass-card feature-card reveal">
+        <span class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3.2 2"/></svg>
+        </span>
+        <h3 class="feature-title">时间回溯</h3>
+        <p class="feature-text">每一个操作都被记入时间轴。随时回到三小时前、三天前，甚至上一次迭代的任意一刻。</p>
+      </article>
+
+      <article class="glass-card feature-card reveal">
+        <span class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 12h8M8 8h5M8 16h7"/><path d="M4 6a2 2 0 0 1 2-2h9l3 3v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/></svg>
+        </span>
+        <h3 class="feature-title">一键分享</h3>
+        <p class="feature-text">生成一条透明链接，对方无需注册即可查看或留言。权限精确到「只看 / 可评 / 可画」。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="section flow" id="flow">
+    <header class="section-head reveal">
+      <p class="section-eyebrow">流程 / HOW IT WORKS</p>
+      <h2 class="section-title">三步，把想法变成可见。</h2>
+    </header>
+
+    <div class="flow-tabs reveal" role="tablist" aria-label="使用流程">
+      <button class="flow-tab is-active" type="button" role="tab" aria-selected="true" data-step="0">01 · 建板</button>
+      <button class="flow-tab" type="button" role="tab" aria-selected="false" data-step="1">02 · 摆放</button>
+      <button class="flow-tab" type="button" role="tab" aria-selected="false" data-step="2">03 · 交付</button>
+    </div>
+
+    <div class="flow-panels">
+      <div class="flow-panel is-active reveal" data-panel="0">
+        <div class="flow-visual glass-panel" aria-hidden="true">
+          <span class="flow-chip">＋ 新建一块画布</span>
+          <span class="flow-chip small">从空白开始</span>
+          <span class="flow-chip small">或选用模板</span>
+        </div>
+        <div class="flow-copy">
+          <h3 class="flow-title">建板：给想法一个容器</h3>
+          <p class="flow-text">点击「新建」，选择画布尺寸或直接拖入一张参考图。璃想会自动建立网格与图层，一切内容默认悬浮在最合适的玻璃层上。</p>
+        </div>
+      </div>
+
+      <div class="flow-panel reveal" data-panel="1">
+        <div class="flow-visual glass-panel" aria-hidden="true">
+          <span class="flow-note note-a">第一版标题</span>
+          <span class="flow-note note-b">图片素材</span>
+          <span class="flow-comment">这里再往左一点？</span>
+        </div>
+        <div class="flow-copy">
+          <h3 class="flow-title">摆放：像在桌上摊开纸</h3>
+          <p class="flow-text">拖动卡片、贴便签、圈重点。所有内容都带着各自的玻璃片，重叠也不会糊成一团。评论直接钉在画布上，跟着内容一起移动。</p>
+        </div>
+      </div>
+
+      <div class="flow-panel reveal" data-panel="2">
+        <div class="flow-visual glass-panel" aria-hidden="true">
+          <span class="flow-done">✓ 已交付</span>
+          <span class="flow-line"></span>
+          <span class="flow-line"></span>
+          <span class="flow-chip">下载源文件</span>
+        </div>
+        <div class="flow-copy">
+          <h3 class="flow-title">交付：整理成一份档案</h3>
+          <p class="flow-text">一键生成交付包：标注图、说明文档、时间轴记录，全部收进一张可归档的玻璃面板。客户看到的永远是干净的最终稿。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEMPLATES -->
+  <section class="section templates" id="templates">
+    <header class="section-head reveal">
+      <p class="section-eyebrow">模板 / TEMPLATES</p>
+      <h2 class="section-title">别从零开始，从「差不多」开始。</h2>
+    </header>
+    <div class="template-grid">
+      <a class="glass-card template-card reveal" href="#download" aria-label="模板：产品发布计划">
+        <span class="tm-preview tm-preview-a" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="tm-name">产品发布计划</span>
+        <span class="tm-count">12,840 次使用</span>
+      </a>
+      <a class="glass-card template-card reveal" href="#download" aria-label="模板：品牌情绪板">
+        <span class="tm-preview tm-preview-b" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="tm-name">品牌情绪板</span>
+        <span class="tm-count">9,310 次使用</span>
+      </a>
+      <a class="glass-card template-card reveal" href="#download" aria-label="模板：内容日历">
+        <span class="tm-preview tm-preview-c" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="tm-name">内容日历</span>
+        <span class="tm-count">7,026 次使用</span>
+      </a>
+      <a class="glass-card template-card reveal" href="#download" aria-label="模板：用户旅程地图">
+        <span class="tm-preview tm-preview-d" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="tm-name">用户旅程地图</span>
+        <span class="tm-count">5,472 次使用</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section stats" id="stats">
+    <ul class="stat-list reveal">
+      <li class="stat-item">
+        <span class="stat-num grad-text" data-count="128">0</span>
+        <span class="stat-label">万位创作者</span>
+      </li>
+      <li class="stat-item">
+        <span class="stat-num grad-text" data-count="4600" data-suffix="万">0</span>
+        <span class="stat-label">张画布被点亮</span>
+      </li>
+      <li class="stat-item">
+        <span class="stat-num grad-text" data-count="99" data-suffix="%">0</span>
+        <span class="stat-label">开箱即用的好评</span>
+      </li>
+      <li class="stat-item">
+        <span class="stat-num grad-text" data-count="38" data-suffix="ms">0</span>
+        <span class="stat-label">平均同步延迟</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- VOICES -->
+  <section class="section voices" id="voices">
+    <header class="section-head reveal">
+      <p class="section-eyebrow">评价 / VOICES</p>
+      <h2 class="section-title">他们说，想法终于浮出水面。</h2>
+    </header>
+
+    <div class="voices-track reveal" id="voicesTrack">
+      <figure class="glass-card voice-card">
+        <blockquote>「用了璃想之后，每周的评审会从两小时缩到四十分钟。所有人的意见都钉在画布上，不再散落在三个聊天软件里。」</blockquote>
+        <figcaption><span class="voice-avatar" style="--av:linear-gradient(135deg,#8EA2FF,#5B5BD6)">周</span><span class="voice-name">周漾<span class="voice-role"> · 山海工作室 创意总监</span></span></figcaption>
+      </figure>
+      <figure class="glass-card voice-card">
+        <blockquote>「最打动我的是那份轻盈。它不像一个软件，更像一块真的玻璃——你摸不到边界，却知道一切都被稳稳托住。」</blockquote>
+        <figcaption><span class="voice-avatar" style="--av:linear-gradient(135deg,#7FE0C3,#2BC48D)">陈</span><span class="voice-name">陈屿<span class="voice-role"> · 潮汐文创 联合创始人</span></span></figcaption>
+      </figure>
+      <figure class="glass-card voice-card">
+        <blockquote>「时间回溯救了我们整个团队。改了十版方案之后还能轻轻滑回第一版，那种安全感是其他工具给不了的。」</blockquote>
+        <figcaption><span class="voice-avatar" style="--av:linear-gradient(135deg,#FFE29A,#FFC24B)">许</span><span class="voice-name">许言<span class="voice-role"> · 南山实验室 产品经理</span></span></figcaption>
+      </figure>
+    </div>
+    <div class="voices-dots reveal" id="voicesDots" role="tablist" aria-label="评价切换">
+      <button class="voice-dot is-active" type="button" data-v="0" aria-label="第 1 条评价"></button>
+      <button class="voice-dot" type="button" data-v="1" aria-label="第 2 条评价"></button>
+      <button class="voice-dot" type="button" data-v="2" aria-label="第 3 条评价"></button>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta" id="download">
+    <div class="glass-panel cta-panel reveal">
+      <p class="cta-eyebrow">现在开始 / START NOW</p>
+      <h2 class="cta-title">把你的下一个想法，<br>放进一块玻璃。</h2>
+      <p class="cta-desc">免费版可以无限建画布，功能无隐藏限制。等你准备好，再一键升级专业版。</p>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="mailto:hello@lixiang.app">免费创建账号</a>
+        <a class="btn btn-ghost dark" href="#features">先看看功能</a>
+      </div>
+      <p class="cta-note">无需信用卡 · 2 分钟上手 · 支持 macOS / Windows / iPad</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="#hero">
+        <span class="logo-mark" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="logo-text">璃想<span class="logo-dot">.</span></span>
+      </a>
+      <p class="footer-desc">一块透明的云端画板，让想法像光点一样清晰可碰。</p>
+    </div>
+    <ul class="footer-nav" aria-label="页脚导航">
+      <li><a href="#features">功能</a></li>
+      <li><a href="#flow">流程</a></li>
+      <li><a href="#templates">模板</a></li>
+      <li><a href="#voices">评价</a></li>
+    </ul>
+    <div class="footer-note">
+      <p>© <span id="year">2026</span> 璃想科技 · 沪ICP备20260088号</p>
+      <p class="mono">hello@lixiang.app</p>
+    </div>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" type="button" aria-label="回到顶部">
+  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>

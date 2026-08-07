@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>青野 GREEN FIELD · 有机生态农场</title>
+  <meta name="description" content="青野有机生态农场——无农药、可溯源、从田野到餐桌。四季耕耘，为会员家庭提供新鲜有机蔬果与乡村自然体验。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+
+  <!-- ===== 顶部导航 ===== -->
+  <header class="site-header" id="siteHeader">
+    <nav class="nav container" aria-label="主导航">
+      <a class="brand" href="#hero" aria-label="青野农场，回到顶部">
+        <svg class="brand-leaf" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+          <path d="M24 4c8.8 0 16 8 16 18 0 11-7.2 20-16 20S8 33 8 22C8 12 15.2 4 24 4Z" fill="#7a9450" opacity=".9"/>
+          <path d="M24 14c5 6.5 5 15 0 24-5-9-5-17.5 0-24Z" fill="#4a6b3f"/>
+          <path d="M24 14c-5 6.5-5 15 0 24" stroke="#cfe4f0" stroke-width="2.4" fill="none" opacity=".85" stroke-linecap="round"/>
+        </svg>
+        <span class="brand-text">青野<span class="brand-en"> GREEN FIELD</span></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMenu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="visually-hidden">打开菜单</span>
+      </button>
+
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#about">认识农场</a></li>
+        <li><a href="#products">有机产品</a></li>
+        <li><a href="#seasons">种植四季</a></li>
+        <li><a href="#csa">CSA 会员</a></li>
+        <li><a href="#reviews">会员声音</a></li>
+        <li><a class="nav-cta" href="#visit">预约参观</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <!-- ===== Hero · 晨光田野 ===== -->
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <div class="hero-sky" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="cloud cloud-a"></div>
+        <div class="cloud cloud-b"></div>
+      </div>
+
+      <div class="hero-content container">
+        <p class="hero-kicker">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c5 6 5 14 0 22-5-8-5-16 0-22Z" fill="currentColor" opacity=".5"/></svg>
+          <span class="hand">from field to table</span>
+          从田野到餐桌
+        </p>
+        <h1 id="heroTitle">青野<span class="accent">有机</span>生态农场</h1>
+        <p class="hero-sub">阳光、土壤与四时手作的心意——<br class="only-lg">
+        我们在山谷里种菜，也种下一种慢慢生活的可能。</p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#visit">预约参观</a>
+          <a class="btn btn-ghost" href="#about">认识青野</a>
+        </div>
+
+        <ul class="hero-chips" aria-label="农场亮点">
+          <li><span class="chip-num">3</span>项有机认证</li>
+          <li><span class="chip-num">12</span>公顷生态田</li>
+          <li><span class="chip-num">320+</span>会员家庭</li>
+        </ul>
+      </div>
+
+      <div class="hero-land" aria-hidden="true">
+        <div class="hills hills-back">
+          <svg viewBox="0 0 1440 220" preserveAspectRatio="none" focusable="false">
+            <path d="M0,150 C240,60 480,120 720,90 C960,60 1200,130 1440,80 L1440,220 L0,220 Z" fill="#4a6b3f" opacity=".55"/>
+          </svg>
+        </div>
+        <div class="hills hills-front">
+          <svg viewBox="0 0 1440 200" preserveAspectRatio="none" focusable="false">
+            <path d="M0,120 C220,60 520,140 760,100 C1000,60 1260,130 1440,90 L1440,200 L0,200 Z" fill="#2e5d3a" opacity=".9"/>
+          </svg>
+        </div>
+        <div class="hero-wave">
+          <svg viewBox="0 0 1440 110" preserveAspectRatio="none" focusable="false">
+            <path d="M0,62 C240,104 480,18 720,46 C960,74 1200,96 1440,54 L1440,110 L0,110 Z" fill="#f6f1e4"/>
+          </svg>
+        </div>
+      </div>
+      <div class="leaf-layer" id="leafLayer" aria-hidden="true"></div>
+    </section>
+
+    <!-- ===== 农场介绍 ===== -->
+    <section class="section about" id="about" aria-labelledby="aboutTitle">
+      <div class="container about-grid">
+        <div class="about-copy" data-reveal>
+          <p class="section-kicker">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c5 6 5 14 0 22-5-8-5-16 0-22Z" fill="currentColor"/></svg>
+            <span class="hand">about the farm</span> 认识青野
+          </p>
+          <h2 id="aboutTitle">一座山谷，<br>一群慢下来的人</h2>
+          <p>青野农场地处云雾山北麓，建园十年，始终坚持<b>不施化肥、不用农药、不打除草剂</b>的朴素原则。我们用绿肥养地、以虫治虫，让每一寸土壤都保有呼吸的能力。</p>
+          <p>田里的作物跟着节气走，蔬菜箱里装着的，是当周最新鲜的应季收获。我们希望每一个家庭，都能尝到真正属于土地的味道。</p>
+
+          <dl class="about-stats">
+            <div class="stat"><dt>2016</dt><dd>建园年份</dd></div>
+            <div class="stat"><dt>12 公顷</dt><dd>生态田</dd></div>
+            <div class="stat"><dt>320+ 户</dt><dd>会员家庭</dd></div>
+            <div class="stat"><dt>4 项</dt><dd>有机相关认证</dd></div>
+          </dl>
+
+          <a class="btn btn-primary btn-sm" href="#products">看看本周的菜</a>
+        </div>
+
+        <figure class="farm-scene" data-reveal>
+          <div class="farm-card">
+            <svg class="farm-svg" viewBox="0 0 420 300" role="img" aria-label="青野农场插画：晨光下的田垄、小屋与果树">
+              <defs>
+                <linearGradient id="fSky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#dcecf5"/>
+                  <stop offset="1" stop-color="#eef3df"/>
+                </linearGradient>
+                <linearGradient id="fHoney" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#f4d58d"/>
+                  <stop offset="1" stop-color="#e8b75c"/>
+                </linearGradient>
+              </defs>
+
+              <rect width="420" height="300" fill="url(#fSky)"/>
+              <circle cx="352" cy="52" r="26" fill="#f7e3ae"/>
+              <g class="farm-sun" fill="none" stroke="#f4d58d" stroke-width="3" stroke-linecap="round">
+                <path d="M352 8v10M352 86v10M308 52h10M386 52h10M321 21l7 7M383 83l-7-7M383 21l-7 7M321 83l7-7"/>
+              </g>
+              <g class="farm-sun halo" fill="#f4d58d"><circle cx="352" cy="52" r="14" opacity=".9"/></g>
+
+              <path d="M0 210 C90 160 180 220 260 190 C320 168 380 200 420 180 L420 300 L0 300 Z" fill="#b9cf8e"/>
+              <path d="M0 236 C100 196 210 246 300 220 C360 202 400 230 420 218 L420 300 L0 300 Z" fill="#8fae6b"/>
+              <path d="M0 258 C110 228 230 268 320 248 C370 238 400 252 420 246 L420 300 L0 300 Z" fill="#6e8f54"/>
+
+              <g class="farm-crops">
+                <path d="M40 300 C60 250 60 220 40 196" fill="none" stroke="#3f6b44" stroke-width="3" opacity=".8"/>
+                <path d="M110 300 C130 250 130 220 110 196" fill="none" stroke="#3f6b44" stroke-width="3" opacity=".8"/>
+                <path d="M180 300 C200 250 200 220 180 196" fill="none" stroke="#3f6b44" stroke-width="3" opacity=".8"/>
+                <path d="M250 300 C270 250 270 220 250 196" fill="none" stroke="#3f6b44" stroke-width="3" opacity=".8"/>
+                <path d="M320 300 C340 250 340 220 320 196" fill="none" stroke="#3f6b44" stroke-width="3" opacity=".8"/>
+                <path d="M390 300 C410 250 410 220 390 196" fill="none" stroke="#3f6b44" stroke-width="3" opacity=".8"/>
+              </g>
+
+              <g transform="translate(120 120)">
+                <rect x="6" y="22" width="60" height="52" rx="4" fill="#f6f1e4"/>
+                <path d="M0 26 L36 0 L72 26 Z" fill="#8a4a3a"/>
+                <rect x="26" y="42" width="20" height="32" rx="3" fill="#8a6a4b"/>
+                <rect x="12" y="52" width="10" height="14" rx="2" fill="#7a9450" opacity=".85"/>
+                <rect x="50" y="52" width="10" height="14" rx="2" fill="#7a9450" opacity=".85"/>
+                <circle cx="18" cy="70" r="3" fill="#2e5d3a" opacity=".8"/>
+              </g>
+
+              <g transform="translate(298 168)">
+                <path d="M20 0 C18 26 18 46 22 58" fill="none" stroke="#6b4f3a" stroke-width="6" stroke-linecap="round"/>
+                <ellipse cx="12" cy="6" rx="16" ry="13" fill="#5f8a4a" transform="rotate(-28 12 6)"/>
+                <ellipse cx="34" cy="2" rx="16" ry="13" fill="#6e9c52" transform="rotate(24 34 2)"/>
+                <ellipse cx="24" cy="-4" rx="15" ry="12" fill="#4a7538"/>
+              </g>
+
+              <g class="farm-hive" transform="translate(232 168)">
+                <ellipse cx="12" cy="22" rx="13" ry="9" fill="url(#fHoney)"/>
+                <ellipse cx="12" cy="6" rx="9" ry="6" fill="url(#fHoney)"/>
+                <circle cx="12" cy="16" r="2.4" fill="#6b4f3a"/>
+              </g>
+            </svg>
+            <figcaption class="farm-caption">
+              <span class="farm-dot" aria-hidden="true"></span>
+              早晨 6:40 · 田垄正被露水打湿
+            </figcaption>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== 有机产品 ===== -->
+    <section class="section products" id="products" aria-labelledby="productsTitle">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="section-kicker">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c5 6 5 14 0 22-5-8-5-16 0-22Z" fill="currentColor"/></svg>
+            <span class="hand">this week's harvest</span> 本周收获
+          </p>
+          <h2 id="productsTitle">直接从田里，<br class="only-lg">寄到你家门口</h2>
+          <p class="section-lead">每份产品都标注采摘日期与地块编号，随箱附赠手写节气小卡，吃得到，也看得见来处。</p>
+        </header>
+
+        <ul class="product-grid">
+          <li class="product-card" data-reveal>
+            <div class="product-veg" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <ellipse cx="32" cy="42" rx="20" ry="17" fill="#e0533d"/>
+                <ellipse cx="32" cy="42" rx="20" ry="17" fill="none" stroke="#c2432f" stroke-width="2" opacity=".5"/>
+                <path d="M32 26 C38 22 46 22 50 26 C46 32 38 32 32 26 Z" fill="#3f6b44"/>
+                <path d="M32 26 C26 22 18 22 14 26 C18 32 26 32 32 26 Z" fill="#4a7538"/>
+                <path d="M32 26 L32 32" stroke="#3f6b44" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>沙瓤番茄</h3>
+            <p>自然成熟，一咬开就是阳光的味道。</p>
+            <div class="product-meta"><span class="tag">今日采摘</span><span class="price">¥18 / 500g</span></div>
+          </li>
+
+          <li class="product-card" data-reveal>
+            <div class="product-veg" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <path d="M32 58 C18 54 12 42 14 30 C16 18 24 12 32 10 C40 12 48 18 50 30 C52 42 46 54 32 58 Z" fill="#3f8f4e"/>
+                <path d="M32 58 C20 52 16 42 18 32 C26 38 32 40 32 58 Z" fill="#2f7a40"/>
+                <path d="M32 58 C44 52 48 42 46 32 C38 38 32 40 32 58 Z" fill="#2f7a40"/>
+                <path d="M32 10 L32 2" stroke="#3f6b44" stroke-width="3" stroke-linecap="round"/>
+                <path d="M32 6 C24 4 22 0 24 -2 M32 6 C40 4 42 0 40 -2" stroke="#3f6b44" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>时令青菜</h3>
+            <p>清晨带露采摘，叶脉里都透着鲜。</p>
+            <div class="product-meta"><span class="tag">当季限定</span><span class="price">¥12 / 把</span></div>
+          </li>
+
+          <li class="product-card" data-reveal>
+            <div class="product-veg" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <ellipse cx="32" cy="38" rx="17" ry="21" fill="#f0e7d0"/>
+                <ellipse cx="32" cy="38" rx="17" ry="21" fill="none" stroke="#d8c8a8" stroke-width="2"/>
+                <circle cx="26" cy="32" r="2.4" fill="#c9b48a"/>
+                <circle cx="35" cy="42" r="1.8" fill="#c9b48a"/>
+                <circle cx="30" cy="48" r="2" fill="#c9b48a"/>
+                <path d="M32 17 L32 8" stroke="#8a6a4b" stroke-width="3" stroke-linecap="round"/>
+                <ellipse cx="26" cy="8" rx="8" ry="5" fill="#e8b75c"/>
+                <path d="M32 20 C28 22 28 30 32 30 C36 30 36 22 32 20 Z" fill="#2f7a40"/>
+              </svg>
+            </div>
+            <h3>散养土鸡蛋</h3>
+            <p>山间自由觅食的走地鸡，蛋黄橙黄饱满。</p>
+            <div class="product-meta"><span class="tag">每日拾蛋</span><span class="price">¥26 / 盒</span></div>
+          </li>
+
+          <li class="product-card" data-reveal>
+            <div class="product-veg" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <circle cx="24" cy="40" r="11" fill="#5b6fa8"/>
+                <circle cx="42" cy="38" r="11" fill="#6d82c0"/>
+                <circle cx="33" cy="26" r="10" fill="#7d92cc"/>
+                <circle cx="24" cy="40" r="4" fill="#4a5d96"/>
+                <circle cx="42" cy="38" r="4" fill="#5668a6"/>
+                <circle cx="33" cy="26" r="4" fill="#5b6fa8"/>
+                <path d="M33 16 L33 8" stroke="#8a6a4b" stroke-width="3" stroke-linecap="round"/>
+                <path d="M33 10 C26 8 24 4 25 1 M33 10 C40 8 42 4 41 1" stroke="#3f6b44" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>高原蓝莓</h3>
+            <p>酸甜爆汁，富含花青素的高山小精灵。</p>
+            <div class="product-meta"><span class="tag">冷链直达</span><span class="price">¥38 / 盒</span></div>
+          </li>
+
+          <li class="product-card" data-reveal>
+            <div class="product-veg" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <ellipse cx="32" cy="42" rx="20" ry="17" fill="#e07b3a"/>
+                <path d="M32 25 C20 25 16 34 18 44 C32 46 32 42 32 25 Z" fill="#c9622b"/>
+                <path d="M32 25 C44 25 48 34 46 44 C32 46 32 42 32 25 Z" fill="#d06a2e"/>
+                <path d="M32 25 L32 20 M32 20 C24 16 22 12 24 10 M32 20 C40 16 42 12 40 10" stroke="#6b4f3a" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>山地南瓜</h3>
+            <p>粉糯香甜，秋天最暖的一口。</p>
+            <div class="product-meta"><span class="tag">储存佳品</span><span class="price">¥9 / kg</span></div>
+          </li>
+
+          <li class="product-card" data-reveal>
+            <div class="product-veg" aria-hidden="true">
+              <svg viewBox="0 0 64 64">
+                <path d="M26 58 L26 30 Q26 18 38 14 Q50 18 50 30 L50 58 Z" fill="#f4d58d"/>
+                <path d="M26 40 Q38 34 50 40" fill="none" stroke="#e8b75c" stroke-width="2"/>
+                <rect x="24" y="12" width="28" height="10" rx="4" fill="#8a6a4b"/>
+                <rect x="28" y="14" width="20" height="6" rx="3" fill="#f6f1e4"/>
+                <circle cx="44" cy="48" r="3.4" fill="#2e5d3a"/>
+                <circle cx="52" cy="42" r="2.4" fill="#7a9450"/>
+              </svg>
+            </div>
+            <h3>野花蜜</h3>
+            <p>山谷百花蜜，蜂箱就藏在果林边。</p>
+            <div class="product-meta"><span class="tag">限量</span><span class="price">¥68 / 瓶</span></div>
+          </li>
+        </ul>
+
+        <p class="products-note" data-reveal>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c5 6 5 14 0 22-5-8-5-16 0-22Z" fill="#7a9450"/></svg>
+          以上均为示意展示。蔬菜箱内容每周随节气变化，实际以当周配送到家的“时鲜组合”为准。
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== 种植四季 · 节气时间线 ===== -->
+    <section class="section seasons" id="seasons" aria-labelledby="seasonsTitle">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="section-kicker">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c5 6 5 14 0 22-5-8-5-16 0-22Z" fill="currentColor"/></svg>
+            <span class="hand">growing with the seasons</span> 与四季一起生长
+          </p>
+          <h2 id="seasonsTitle">一年四幕，<br class="only-lg">农事自有时节</h2>
+          <p class="section-lead">青野不催熟、不反季。田里的每一件事，都排在节气表上——我们把这些时令，画成四季的样子。</p>
+        </header>
+
+        <ol class="season-timeline">
+          <li class="season-card spring" data-season="spring" data-reveal>
+            <span class="season-badge">春 · 生</span>
+            <div class="season-plant">
+              <svg viewBox="0 0 120 160" aria-hidden="true">
+                <g class="plant">
+                  <path class="plant-stem" d="M60 158 C58 130 62 100 60 40" fill="none" stroke="#3f6b44" stroke-width="5" stroke-linecap="round"/>
+                  <g class="leaf l1"><path d="M60 118 C40 112 26 94 30 76 C48 76 62 92 60 118 Z" fill="#5f8a4a"/></g>
+                  <g class="leaf l2"><path d="M60 96 C80 92 94 74 90 56 C72 56 60 72 60 96 Z" fill="#6e9c52"/></g>
+                  <g class="leaf l3"><path d="M60 74 C44 70 34 58 36 44 C52 44 62 56 60 74 Z" fill="#7aab58"/></g>
+                  <circle class="bloom" cx="60" cy="32" r="9" fill="#f6d49a"/>
+                </g>
+              </svg>
+            </div>
+            <h3>播种与萌芽</h3>
+            <p>惊蛰雷响，翻土沤肥；谷雨前后，把番茄、黄瓜的秧苗移进温床。</p>
+            <ul class="solar-chips" aria-label="春季节气">
+              <li>立春</li><li>惊蛰</li><li>谷雨</li>
+            </ul>
+          </li>
+
+          <li class="season-card summer" data-season="summer" data-reveal>
+            <span class="season-badge">夏 · 长</span>
+            <div class="season-plant">
+              <svg viewBox="0 0 120 160" aria-hidden="true">
+                <g class="plant">
+                  <path class="plant-stem" d="M60 158 C58 130 62 100 60 40" fill="none" stroke="#3f6b44" stroke-width="5" stroke-linecap="round"/>
+                  <g class="leaf l1"><path d="M60 118 C40 112 26 94 30 76 C48 76 62 92 60 118 Z" fill="#5f8a4a"/></g>
+                  <g class="leaf l2"><path d="M60 96 C80 92 94 74 90 56 C72 56 60 72 60 96 Z" fill="#6e9c52"/></g>
+                  <g class="leaf l3"><path d="M60 74 C44 70 34 58 36 44 C52 44 62 56 60 74 Z" fill="#7aab58"/></g>
+                  <circle class="fruit f1" cx="42" cy="112" r="7" fill="#e0533d"/>
+                  <circle class="fruit f2" cx="80" cy="88" r="6" fill="#e0533d"/>
+                  <circle class="fruit f3" cx="46" cy="60" r="6" fill="#e0533d"/>
+                  <circle class="bloom" cx="60" cy="28" r="10" fill="#f6d49a"/>
+                </g>
+              </svg>
+            </div>
+            <h3>生长与结实</h3>
+            <p>芒种锄草，夏至牵藤；酷暑里给瓜果搭遮阳棚，清晨五点半浇水。</p>
+            <ul class="solar-chips" aria-label="夏季节气">
+              <li>芒种</li><li>夏至</li><li>大暑</li>
+            </ul>
+          </li>
+
+          <li class="season-card autumn" data-season="autumn" data-reveal>
+            <span class="season-badge">秋 · 收</span>
+            <div class="season-plant">
+              <svg viewBox="0 0 120 160" aria-hidden="true">
+                <g class="plant">
+                  <path class="plant-stem" d="M60 158 C58 130 62 100 60 40" fill="none" stroke="#3f6b44" stroke-width="5" stroke-linecap="round"/>
+                  <g class="leaf l1"><path d="M60 118 C40 112 26 94 30 76 C48 76 62 92 60 118 Z" fill="#b3814a"/></g>
+                  <g class="leaf l2"><path d="M60 96 C80 92 94 74 90 56 C72 56 60 72 60 96 Z" fill="#c9935a"/></g>
+                  <g class="leaf l3"><path d="M60 74 C44 70 34 58 36 44 C52 44 62 56 60 74 Z" fill="#7aab58"/></g>
+                  <circle class="fruit f1" cx="40" cy="110" r="8" fill="#e0533d"/>
+                  <circle class="fruit f2" cx="82" cy="84" r="7" fill="#f4b400"/>
+                  <circle class="fruit f3" cx="44" cy="56" r="7" fill="#e0533d"/>
+                  <circle class="fruit f4" cx="76" cy="34" r="6" fill="#f4b400"/>
+                  <circle class="fruit f5" cx="52" cy="26" r="5" fill="#e0533d"/>
+                </g>
+              </svg>
+            </div>
+            <h3>收获与贮存</h3>
+            <p>处暑摘瓜，白露打枣；秋分前后最忙，把南瓜、红薯晒满一院子。</p>
+            <ul class="solar-chips" aria-label="秋季节气">
+              <li>处暑</li><li>白露</li><li>秋分</li>
+            </ul>
+          </li>
+
+          <li class="season-card winter" data-season="winter" data-reveal>
+            <span class="season-badge">冬 · 藏</span>
+            <div class="season-plant">
+              <svg viewBox="0 0 120 160" aria-hidden="true">
+                <g class="plant">
+                  <path class="plant-stem" d="M60 158 C58 130 62 100 60 40" fill="none" stroke="#5a7a4f" stroke-width="5" stroke-linecap="round"/>
+                  <g class="leaf l1"><path d="M60 118 C40 112 26 94 30 76 C48 76 62 92 60 118 Z" fill="#5f8a4a"/></g>
+                  <g class="leaf l2"><path d="M60 96 C80 92 94 74 90 56 C72 56 60 72 60 96 Z" fill="#6e9c52"/></g>
+                  <g class="leaf l3"><path d="M60 74 C44 70 34 58 36 44 C52 44 62 56 60 74 Z" fill="#7aab58"/></g>
+                  <circle class="snow s1" cx="42" cy="110" r="6" fill="#f2efe6"/>
+                  <circle class="snow s2" cx="80" cy="84" r="5" fill="#f2efe6"/>
+                  <circle class="snow s3" cx="48" cy="54" r="4" fill="#f2efe6"/>
+                </g>
+              </svg>
+            </div>
+            <h3>休养与蓄力</h3>
+            <p>立冬窖藏萝卜，大雪给土地盖上麦秆被；我们围着炉子，做明年春天的种子计划。</p>
+            <ul class="solar-chips" aria-label="冬季节气">
+              <li>立冬</li><li>小雪</li><li>冬至</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===== CSA 会员订阅 ===== -->
+    <section class="section csa" id="csa" aria-labelledby="csaTitle">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="section-kicker">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c5 6 5 14 0 22-5-8-5-16 0-22Z" fill="currentColor"/></svg>
+            <span class="hand">community supported agriculture</span> CSA 社区支持农业
+          </p>
+          <h2 id="csaTitle">认领一份四季，<br class="only-lg">把餐桌交给土地</h2>
+          <p class="section-lead">我们与会员家庭共同承担丰歉、分享收成。您预缴一份心意，我们按周送回时鲜，彼此都知道菜从哪里来、去向哪里。</p>
+        </header>
+
+        <div class="csa-grid">
+          <div class="csa-plans" data-reveal>
+            <div class="plan-card is-active" data-plan data-price="168" data-period="每月" data-name="绿苗月卡">
+              <div class="plan-top">
+                <h3>绿苗月卡</h3>
+                <p class="plan-price"><span class="hand">¥</span>168<span class="plan-unit">/ 月</span></p>
+              </div>
+              <ul class="plan-features">
+                <li>每周 1 份当季蔬菜箱（6–8 种）</li>
+                <li>农场自提或每周配送</li>
+                <li>会员专属节气食单</li>
+                <li>新会员赠种子礼包一份</li>
+              </ul>
+            </div>
+            <div class="plan-card" data-plan data-price="920" data-period="半年" data-name="丰收半年卡">
+              <div class="plan-top">
+                <span class="plan-flag">人气之选</span>
+                <h3>丰收半年卡</h3>
+                <p class="plan-price"><span class="hand">¥</span>920<span class="plan-unit">/ 半年</span></p>
+              </div>
+              <ul class="plan-features">
+                <li>每周蔬菜箱 + 每月蛋品礼盒</li>
+                <li>专属小菜地一块（可命名）</li>
+                <li>全年农场活动优先报名</li>
+                <li>每月随箱附节气手作食盒</li>
+              </ul>
+            </div>
+            <div class="plan-card" data-plan data-price="1680" data-period="年" data-name="全家福年卡">
+              <div class="plan-top">
+                <h3>全家福年卡</h3>
+                <p class="plan-price"><span class="hand">¥</span>1680<span class="plan-unit">/ 年</span></p>
+              </div>
+              <ul class="plan-features">
+                <li>每周双份蔬菜箱 + 全年蛋品、蜂蜜</li>
+                <li>周末亲子自然课全年免费</li>
+                <li>每年赠田舍小木屋住宿一晚</li>
+                <li>专属农场管家一对一服务</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="csa-quote" data-reveal>
+            <div class="csa-quote-inner">
+              <svg class="csa-quote-leaf" viewBox="0 0 64 64" aria-hidden="true">
+                <path d="M32 4 C46 10 56 24 56 40 C56 54 44 60 32 60 C20 60 8 54 8 40 C8 24 18 10 32 4 Z" fill="#7a9450" opacity=".16"/>
+                <path d="M32 14 C40 22 44 34 44 46 C44 52 38 55 32 55 C26 55 20 52 20 46 C20 34 24 22 32 14 Z" fill="#7a9450"/>
+                <path d="M32 20 C30 30 32 40 36 48" stroke="#f6f1e4" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+              </svg>
+              <p class="csa-note hand">we share the harvest</p>
+              <h3>我们一起承担四季的丰与歉</h3>
+              <p>CSA 不只是一种配送，更是一纸“与土地的约定”。每一个菜箱背后，都有一个家庭的餐桌，和一片被认真对待的土地。</p>
+              <p class="csa-pay">首期合计 <strong id="payTotal">¥168</strong></p>
+              <div class="csa-meta"><span>配送方式</span></div>
+              <div class="delivery-choice" role="radiogroup" aria-label="选择配送方式">
+                <label class="delivery-opt is-active">
+                  <input type="radio" name="delivery" value="自提" data-fee="0" checked>
+                  <span class="opt-name">农场自提</span><span class="opt-fee">免费</span>
+                </label>
+                <label class="delivery-opt">
+                  <input type="radio" name="delivery" value="配送到家" data-fee="20">
+                  <span class="opt-name">配送到家</span><span class="opt-fee">+¥20</span>
+                </label>
+              </div>
+              <button class="btn btn-primary btn-block" type="button" id="csaApply">申请加入会员</button>
+              <p class="csa-hint" id="csaHint" role="status">已选择：绿苗月卡 · 农场自提 · ¥168</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 会员声音 ===== -->
+    <section class="section reviews" id="reviews" aria-labelledby="reviewsTitle">
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="section-kicker">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c5 6 5 14 0 22-5-8-5-16 0-22Z" fill="currentColor"/></svg>
+            <span class="hand">voices from the field</span> 田野的回声
+          </p>
+          <h2 id="reviewsTitle">会员们这样说</h2>
+        </header>
+
+        <ul class="review-grid">
+          <li class="review-card" data-reveal>
+            <svg class="stars" viewBox="0 0 100 20" aria-hidden="true">
+              <path d="M10 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L10 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+              <path d="M30 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L30 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+              <path d="M50 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L50 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+              <path d="M70 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L70 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+              <path d="M90 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L90 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+            </svg>
+            <p>每周的蔬菜箱像一封来自田野的信，青菜叶子上还带着早晨的露水。孩子第一次知道，原来胡萝卜是长在土里的。</p>
+            <footer class="review-who">
+              <span class="avatar" aria-hidden="true">林</span>
+              <div><strong>林晓芸</strong><span>童书编辑 · 会员 3 年</span></div>
+            </footer>
+          </li>
+
+          <li class="review-card" data-reveal>
+            <svg class="stars" viewBox="0 0 100 20" aria-hidden="true">
+              <path d="M10 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L10 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+              <path d="M30 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L30 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+              <path d="M50 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L50 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+              <path d="M70 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L70 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+              <path d="M90 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L90 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c" opacity=".3"/>
+            </svg>
+            <p>下班回来拆开青野的菜箱，一股泥土的香气就把整天的疲惫赶走了。莴笋炒出来是脆的，是菜市场买不到的那种脆。</p>
+            <footer class="review-who">
+              <span class="avatar" aria-hidden="true">陈</span>
+              <div><strong>陈嘉树</strong><span>软件工程师 · 会员 1 年</span></div>
+            </footer>
+          </li>
+
+          <li class="review-card" data-reveal>
+            <svg class="stars" viewBox="0 0 100 20" aria-hidden="true">
+              <path d="M10 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L10 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+              <path d="M30 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L30 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+              <path d="M50 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L50 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+              <path d="M70 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L70 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+              <path d="M90 1l2.5 5.5 6 .6-4.5 4 1.3 5.9L90 14l-5.3 3 1.3-5.9-4.5-4 6-.6Z" fill="#e8b75c"/>
+            </svg>
+            <p>种了半辈子菜，青野的土壤和用心，我信得过。番茄一咬开，就是小时候外婆家菜园里的味道。</p>
+            <footer class="review-who">
+              <span class="avatar" aria-hidden="true">苏</span>
+              <div><strong>苏慧珍</strong><span>退休教师 · 会员 5 年</span></div>
+            </footer>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== 参观预约 ===== -->
+    <section class="section visit" id="visit" aria-labelledby="visitTitle">
+      <div class="container visit-wrap">
+        <div class="visit-copy" data-reveal>
+          <p class="section-kicker">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1c5 6 5 14 0 22-5-8-5-16 0-22Z" fill="currentColor"/></svg>
+            <span class="hand">come say hello</span> 来山谷里走走
+          </p>
+          <h2 id="visitTitle">预约一次<br>农场里的慢时光</h2>
+          <p>周末的田埂漫步、亲子采摘、柴火灶午餐，都欢迎您提前预约。园内一次最多接待 40 位访客，请记得把日子先占下来。</p>
+          <ul class="visit-info">
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              开放时间：周二至周日 9:00 – 17:00，周一休园养地
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+              地址：云雾市北山乡 · 青野山谷 1 号（导航搜“青野有机农场”）
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h4l1.5 4.5-2 1.4a13 13 0 0 0 5.6 5.6l1.4-2L21 14v4a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+              电话 / 微信：<a href="tel:13800001234">138-0000-1234</a>
+            </li>
+          </ul>
+        </div>
+
+        <form class="visit-form" id="visitForm" data-reveal novalidate>
+          <h3>填写预约信息</h3>
+          <div class="form-row">
+            <label class="field">
+              <span>称呼 <em>*</em></span>
+              <input type="text" name="name" autocomplete="name" placeholder="怎么称呼您" required>
+            </label>
+            <label class="field">
+              <span>联系电话 <em>*</em></span>
+              <input type="tel" name="phone" autocomplete="tel" placeholder="手机号或座机" required>
+            </label>
+          </div>
+          <div class="form-row">
+            <label class="field">
+              <span>预约日期 <em>*</em></span>
+              <input type="date" name="date" required>
+            </label>
+            <label class="field">
+              <span>来访人数</span>
+              <input type="number" name="guests" min="1" max="40" value="2">
+            </label>
+          </div>
+          <label class="field">
+            <span>想体验什么（可多写）</span>
+            <textarea name="message" rows="3" placeholder="例如：想带孩子摘草莓、做一份柴火灶午餐……"></textarea>
+          </label>
+          <button class="btn btn-primary btn-block" type="submit">提交预约申请</button>
+          <p class="form-hint">提交后，农场管家会在 24 小时内与您电话确认。</p>
+          <p class="form-success" id="formSuccess" role="status" hidden>
+            收到啦！青野欢迎您来。管家会在 24 小时内致电确认具体安排。
+          </p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== 页脚 ===== -->
+  <footer class="site-footer" id="footer">
+    <div class="footer-wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none" focusable="false">
+        <path d="M0,54 C240,88 480,16 720,40 C960,64 1200,84 1440,46 L1440,90 L0,90 Z" fill="#2e5d3a"/>
+      </svg>
+    </div>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a class="brand brand-light" href="#hero">
+          <svg class="brand-leaf" viewBox="0 0 48 48" aria-hidden="true">
+            <path d="M24 4c8.8 0 16 8 16 18 0 11-7.2 20-16 20S8 33 8 22C8 12 15.2 4 24 4Z" fill="#7a9450" opacity=".9"/>
+            <path d="M24 14c5 6.5 5 15 0 24-5-9-5-17.5 0-24Z" fill="#4a6b3f"/>
+          </svg>
+          <span class="brand-text">青野<span class="brand-en"> GREEN FIELD</span></span>
+        </a>
+        <p>一座把诚实和温柔都种进土里的农场。无农药、可溯源，从田野到餐桌。</p>
+        <p class="footer-cert">已通过中国有机认证（GB/T 19630）审核 · 认证编号 QY-2016-0311</p>
+      </div>
+
+      <nav class="footer-col" aria-label="页脚导航">
+        <h3>快速前往</h3>
+        <ul>
+          <li><a href="#about">认识农场</a></li>
+          <li><a href="#products">本周收获</a></li>
+          <li><a href="#seasons">种植四季</a></li>
+          <li><a href="#csa">CSA 会员</a></li>
+          <li><a href="#visit">参观预约</a></li>
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <h3>联系我们</h3>
+        <ul>
+          <li>云雾市北山乡 · 青野山谷 1 号</li>
+          <li><a href="tel:13800001234">138-0000-1234</a></li>
+          <li><a href="mailto:hello@qingye.farm">hello@qingye.farm</a></li>
+          <li>周二至周日 9:00 – 17:00</li>
+        </ul>
+      </div>
+
+      <div class="footer-col footer-season">
+        <h3>今日物候</h3>
+        <p class="footer-season-line hand" id="seasonLine">八月，玉米正鼓着穗</p>
+        <p id="solarLine">今日节气 · 立秋将至，蝉鸣渐疏，晚风开始有了凉意。</p>
+      </div>
+    </div>
+    <div class="footer-bottom container">
+      <p>© 2026 青野 GREEN FIELD 有机生态农场 · 用四季的时间，换一口诚实的味道</p>
+      <p class="footer-made">手作网站 · 与土壤一样，慢慢生长</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
