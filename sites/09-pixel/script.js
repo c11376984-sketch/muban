@@ -669,7 +669,8 @@
     var LEVEL_W = 1280, GROUND_Y = 200, GRASS = 4;
     var COYOTE = 8, JUMP_BUF = 10; /* 宽容帧：离开地面后仍可跳 / 提前按跳也响应 */
 
-    var player = { x: 20, y: 0, vx: 0, vy: 0, w: 12, h: 14, onGround: false, facing: 1, anim: 0, coyote: 0, jumpBuf: 0 };
+    /* 碰撞盒 = 视觉精灵尺寸（32×34），否则大精灵会明显"穿"进平台 */
+    var player = { x: 20, y: 0, vx: 0, vy: 0, w: 32, h: 34, onGround: false, facing: 1, anim: 0, coyote: 0, jumpBuf: 0 };
     var camera = 0, tick = 0;
     var platforms = [], coins = [], spikes = [], goal = { x: 0, y: 0 };
     var coinsCollected = 0, totalCoins = 0;
