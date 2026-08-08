@@ -669,7 +669,7 @@
     var LEVEL_W = 1280, GROUND_Y = 200, GRASS = 4;
     var COYOTE = 8, JUMP_BUF = 10; /* 宽容帧：离开地面后仍可跳 / 提前按跳也响应 */
 
-    var player = { x: 20, y: 0, px: 20, py: 0, vx: 0, vy: 0, w: 12, h: 14, onGround: false, facing: 1, anim: 0, coyote: 0, jumpBuf: 0 };
+    var player = { x: 20, y: 0, vx: 0, vy: 0, w: 12, h: 14, onGround: false, facing: 1, anim: 0, coyote: 0, jumpBuf: 0 };
     var camera = 0, tick = 0;
     var platforms = [], coins = [], spikes = [], goal = { x: 0, y: 0 };
     var coinsCollected = 0, totalCoins = 0;
@@ -732,13 +732,40 @@
 
     function resetPlayer() {
       player.x = 20; player.y = GROUND_Y - player.h;
-      player.px = player.x; player.py = player.y;
       player.vx = 0; player.vy = 0; player.onGround = false; player.facing = 1; player.anim = 0;
       player.coyote = 0; player.jumpBuf = 0;
     }
 
     function aabb(a, b) {
       return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
+    }
+
+    /* 扫掠碰撞：玩家 AABB 从 (x,y) 以 (dx,dy) 移动，对静态平台做连续碰撞检测。
+       把玩家当质点、平台按玩家尺寸做 Minkowski 膨胀，求最早相交时刻 t(0..1) 与碰撞轴。
+       t<0 表示起点已相交（穿模兜底）；返回 null 表示本步不相交。 */
+    function sweepHit(pl, x, y, w, h, dx, dy) {
+      var ex = pl.x - w / 2, ew = pl.w + w;
+      var ey = pl.y - h / 2, eh = pl.h + h;
+      var cx = x + w / 2, cy = y + h / 2;
+      var tnx, tfx, tny, tfy, tp;
+      if (dx === 0) {
+        if (cx < ex || cx > ex + ew) return null;
+        tnx = -1e9; tfx = 1e9;
+      } else {
+        tnx = (ex - cx) / dx; tfx = (ex + ew - cx) / dx;
+        if (tnx > tfx) { tp = tnx; tnx = tfx; tfx = tp; }
+      }
+      if (dy === 0) {
+        if (cy < ey || cy > ey + eh) return null;
+        tny = -1e9; tfy = 1e9;
+      } else {
+        tny = (ey - cy) / dy; tfy = (ey + eh - cy) / dy;
+        if (tny > tfy) { tp = tny; tny = tfy; tfy = tp; }
+      }
+      var tEnter = Math.max(tnx, tny);
+      var tExit = Math.min(tfx, tfy);
+      if (tEnter > tExit || tExit < 0 || tEnter > 1) return null;
+      return { pl: pl, t: tEnter, axis: tEnter === tnx ? 'x' : 'y', dx: dx, dy: dy };
     }
 
     return {
@@ -763,10 +790,6 @@
         for (var st = 0; st < steps; st++) {
           tick++;
 
-          /* 记录上一帧位置，用于碰撞方向判定（防穿模） */
-          player.px = player.x;
-          player.py = player.y;
-
           var dir = 0;
           if (keys.left) { dir = -1; player.facing = -1; }
           if (keys.right) { dir = 1; player.facing = 1; }
@@ -781,42 +804,62 @@
           player.vy += GRAV * s;
           if (player.vy > 16) player.vy = 16;
 
-          /* ---- Y 轴移动 + 碰撞 ---- */
-          player.y += player.vy * s;
+          /* ---- 扫掠碰撞：整步积分 + 连续碰撞解析（替代原来分开的 Y/X 碰撞） ---- */
+          var mx = player.x + player.vx * s;
+          var my = player.y + player.vy * s;
           player.onGround = false;
-          for (var j = 0; j < platforms.length; j++) {
-            var pl = platforms[j];
-            if (!aabb(player, pl)) continue;
-            var prevBottom = player.py + player.h;
-            var prevTop = player.py;
-            if (player.vy >= 0 && prevBottom <= pl.y + 1) {
-              /* 从上方落下 → 站到平台顶 */
-              player.y = pl.y - player.h;
-              player.vy = 0;
-              player.onGround = true;
-            } else if (player.vy < 0 && prevTop >= pl.y + pl.h - 1) {
-              /* 从下方撞顶 → 推到平台底 */
-              player.y = pl.y + pl.h;
-              player.vy = 0;
-            } else {
-              /* 玩家在平台内部（穿模）：按上一帧位置推出 */
-              if (prevBottom <= pl.y) {
-                /* 上一帧在平台上方 → 站到顶 */
-                player.y = pl.y - player.h;
-                player.vy = 0;
-                player.onGround = true;
-              } else if (prevTop >= pl.y + pl.h) {
-                /* 上一帧在平台下方 → 推到底 */
-                player.y = pl.y + pl.h;
-                player.vy = 0;
+          var guard = 5;
+          while (guard-- > 0) {
+            var best = null;
+            for (var j = 0; j < platforms.length; j++) {
+              var pl = platforms[j];
+              var h = sweepHit(pl, player.x, player.y, player.w, player.h, mx - player.x, my - player.y);
+              if (!h) continue;
+              if (h.t < 0 && !aabb(player, pl)) continue; /* 起点贴边/贴在顶上不算撞，只有真正相交才兜底 */
+              if (!best || h.t < best.t) best = h;
+            }
+            if (!best) break;
+            var pb = best.pl;
+            if (best.t >= 0) {
+              /* 先移到接触点，再按碰撞轴推出 */
+              player.x += (mx - player.x) * best.t;
+              player.y += (my - player.y) * best.t;
+              if (best.axis === 'x') {
+                var sideHit = (player.y + player.h) > pb.y + 4;
+                if (sideHit) {
+                  /* 脚底真正压进平台（>4px）→ 侧面挡停 */
+                  if (best.dx > 0) player.x = pb.x - player.w;
+                  else if (best.dx < 0) player.x = pb.x + pb.w;
+                  player.vx = 0;
+                  mx = player.x;
+                } else {
+                  /* 跑上/斜切进平台顶面 → 落在顶上（不挡水平） */
+                  player.y = pb.y - player.h;
+                  player.vy = 0;
+                  player.onGround = true;
+                  my = player.y;
+                }
               } else {
-                /* 上一帧就在平台内部：强制往上推出（站在顶）防止下沉 */
-                player.y = pl.y - player.h;
+                if (best.dy > 0) { player.y = pb.y - player.h; player.onGround = true; }
+                else if (best.dy < 0) { player.y = pb.y + pb.h; }
                 player.vy = 0;
-                player.onGround = true;
+                my = player.y;
               }
+            } else {
+              /* 穿模兜底：沿穿透最浅的轴推出，绝不强行吸到顶上 */
+              var pR = (pb.x + pb.w) - player.x, pL = (player.x + player.w) - pb.x;
+              var pD = (pb.y + pb.h) - player.y, pU = (player.y + player.h) - pb.y;
+              var minP = Math.min(pR, pL, pD, pU);
+              if (minP === pU) { player.y = pb.y - player.h; player.vy = 0; player.onGround = true; my = player.y; }
+              else if (minP === pD) { player.y = pb.y + pb.h; player.vy = 0; my = player.y; }
+              else if (minP === pL) { player.x = pb.x - player.w; player.vx = 0; mx = player.x; }
+              else { player.x = pb.x + pb.w; player.vx = 0; mx = player.x; }
             }
           }
+          player.x = mx;
+          player.y = my;
+          if (player.x < 0) player.x = 0;
+          if (player.x + player.w > LEVEL_W) player.x = LEVEL_W - player.w;
 
           /* 地面窗口（coyote）：刚离开平台顶部一小段时间仍可跳 */
           if (player.onGround) player.coyote = COYOTE;
@@ -829,26 +872,6 @@
             player.coyote = 0;
             player.jumpBuf = 0;
             FX.beep(660, 0.06, 'square', 0.07);
-          }
-
-          /* ---- X 轴移动 + 碰撞 ---- */
-          player.x += player.vx * s;
-          if (player.x < 0) player.x = 0;
-          if (player.x + player.w > LEVEL_W) player.x = LEVEL_W - player.w;
-          for (var i = 0; i < platforms.length; i++) {
-            var p = platforms[i];
-            if (!aabb(player, p)) continue;
-            /* 侧面碰撞：垂直重叠 > 4px 才算挡（站在平台上走不算） */
-            var overlapBottom = (player.y + player.h) - p.y;
-            var overlapTop = (p.y + p.h) - player.y;
-            if (overlapBottom > 4 && overlapTop > 4) {
-              if (player.px + player.w <= p.x) player.x = p.x - player.w;
-              else if (player.px >= p.x + p.w) player.x = p.x + p.w;
-              else {
-                /* 玩家上一帧就在平台 x 范围内（从顶/底穿入）→ 不挡水平，交给 Y 碰撞处理 */
-              }
-              player.vx = 0;
-            }
           }
 
           /* 掉入深渊 */
