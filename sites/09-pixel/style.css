@@ -2,6 +2,13 @@
    像素方糖 ARCADE BIT · 8-bit 像素游戏厅
    ============================================================ */
 
+/* 全站彻底清除手机端点击蓝色高亮（安卓 Chrome 整页蓝闪根因） */
+*, *::before, *::after {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none;
+}
+button { -webkit-appearance: none; }
+
 :root {
   --black: #000000;
   --white: #ffffff;
@@ -1154,9 +1161,9 @@ body.cabinet-locked { overflow: hidden; }
   background: #000;
   image-rendering: pixelated;
   outline: none;
+  -webkit-tap-highlight-color: transparent !important;
 }
-
-#gameCanvas:focus { outline: 3px solid var(--yellow); outline-offset: -6px; }
+#gameCanvas:focus, #gameCanvas:focus-visible { outline: none !important; }
 
 .cabinet-status {
   font-family: var(--font-title);
