@@ -1086,14 +1086,15 @@
   GAMES.ghost = (function () {
     /* ---- 常量 ---- */
     var COLS = 10, ROWS = 8, CELL = 24, OX = 40, OY = 24;
-    var R = 2.3;                 // 手电筒半径（格）
-    var GHOST_STEP = 380;        // 幽灵移动间隔 ms
+    var R = 3.5;                 // 手电筒半径（格）
+    var GHOST_STEP = 520;        // 幽灵移动间隔 ms
+    var CHASE_RANGE = 3;         // 幽灵只在 3 格内追击，其余时间游荡
 
-    /* ---- 迷宫：0=地板 1=墙（手绘走廊+死胡同） ---- */
+    /* ---- 迷宫：0=地板 1=墙（手绘走廊+死胡同，上下双通道避免单点堵死） ---- */
     var MAZE = [
       [1,1,1,1,1,1,1,1,1,1],
       [1,0,0,0,1,0,0,0,0,1],
-      [1,0,1,0,1,0,1,1,0,1],
+      [1,0,1,0,0,0,1,1,0,1],
       [1,0,1,0,0,0,1,0,0,1],
       [1,0,1,1,1,1,1,0,1,1],
       [1,0,0,0,0,0,0,0,0,1],
@@ -1177,8 +1178,7 @@
     function reset() {
       player.col = 1; player.row = 1; player.dir = 1; player.free = true;
       ghosts = [
-        { col: 4, row: 5, dir: 1, t: 0, interval: GHOST_STEP, chase: false },
-        { col: 7, row: 3, dir: 2, t: GHOST_STEP / 2, interval: GHOST_STEP, chase: false }
+        { col: 6, row: 1, dir: 1, t: 0, interval: GHOST_STEP, chase: false }
       ];
       /* 散布 8 个宝藏于地板格（避开起点、出口、幽灵起点） */
       treasures = [];
@@ -1246,9 +1246,10 @@
         if (g.t < iv) continue;
         g.t -= iv;
 
-        /* 同行/同列且无墙遮挡 → 追击一步 */
+        /* 同行/同列、无墙遮挡且在追击范围内 → 追一步 */
         var moved = false;
-        if ((g.col === player.col || g.row === player.row) && lineClear(g, player)) {
+        var dist = Math.max(Math.abs(g.col - player.col), Math.abs(g.row - player.row));
+        if ((g.col === player.col || g.row === player.row) && lineClear(g, player) && dist <= CHASE_RANGE) {
           g.chase = true;
           var dc = Math.sign(player.col - g.col), dr = Math.sign(player.row - g.row);
           if (g.col === player.col) { if (tryStep(g, 0, dr)) { g.dir = dr > 0 ? 2 : 0; moved = true; } }
@@ -1360,6 +1361,12 @@
       grad.addColorStop(1, 'rgba(0,0,0,0.93)');
       c.fillStyle = grad;
       c.fillRect(0, 0, W, H);
+
+      /* 出口在黑暗中发光指引（收齐宝藏后更亮） */
+      c.globalAlpha = unlocked ? 0.55 : 0.28;
+      c.fillStyle = unlocked ? '#0c9c23' : '#9a2020';
+      c.fillRect(ex + 6, ey + 6, CELL - 12, CELL - 12);
+      c.globalAlpha = 1;
 
       /* 顶部步骤提示条（小字） */
       c.fillStyle = 'rgba(255,255,255,0.5)';
