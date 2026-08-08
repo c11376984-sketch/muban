@@ -1726,24 +1726,48 @@
     if (!cabinetTouch) return;
     cabinetTouch.innerHTML = '';
     var btns = currentGame.touchButtons();
-    btns.forEach(function (b) {
+
+    /* 把按钮按 act 分成方向键与动作键两组 */
+    var dirMap = { up: 'tp-up', down: 'tp-down', left: 'tp-left', right: 'tp-right' };
+    var dirBtns = btns.filter(function (b) { return dirMap[b.act]; });
+    var actBtns = btns.filter(function (b) { return !dirMap[b.act]; });
+
+    function makeBtn(b, extraCls) {
       var btn = document.createElement('button');
       btn.type = 'button';
-      btn.className = 'touch-btn' + (b.cls ? ' ' + b.cls : '');
+      btn.className = 'touch-btn' + (b.cls ? ' ' + b.cls : '') + (extraCls ? ' ' + extraCls : '');
       btn.textContent = b.label;
       function down(e) {
         e.preventDefault();
         FX.unlock();
+        btn.classList.add('is-down');
         currentGame.onTouch(b.act, true);
         if (state === 'ready' || state === 'gameover' || state === 'win') startPlaying();
       }
-      function up() { currentGame.onTouch(b.act, false); }
+      function up() { btn.classList.remove('is-down'); currentGame.onTouch(b.act, false); }
       btn.addEventListener('pointerdown', down);
       btn.addEventListener('pointerup', up);
       btn.addEventListener('pointercancel', up);
       btn.addEventListener('pointerleave', up);
-      cabinetTouch.appendChild(btn);
-    });
+      return btn;
+    }
+
+    /* 有方向键的游戏：十字方向键 + 动作键（手柄布局） */
+    if (dirBtns.length) {
+      var pad = document.createElement('div');
+      pad.className = 'touch-pad';
+      /* 中心占位 */
+      var mid = document.createElement('span');
+      mid.className = 'touch-btn tp-mid';
+      mid.textContent = '•';
+      pad.appendChild(mid);
+      dirBtns.forEach(function (b) { pad.appendChild(makeBtn(b, dirMap[b.act])); });
+      cabinetTouch.appendChild(pad);
+      actBtns.forEach(function (b) { cabinetTouch.appendChild(makeBtn(b)); });
+    } else {
+      /* 无方向键的游戏（如 invaders）：线性排列 */
+      btns.forEach(function (b) { cabinetTouch.appendChild(makeBtn(b)); });
+    }
   }
 
   function applyGameChrome() {

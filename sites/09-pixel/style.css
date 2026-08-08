@@ -1168,24 +1168,44 @@ body.cabinet-locked { overflow: hidden; }
 
 .cabinet-touch {
   display: none;
-  gap: 12px;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 6px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.touch-pad {
+  display: grid;
+  grid-template-columns: repeat(3, 56px);
+  grid-template-rows: repeat(3, 56px);
+  gap: 6px;
   justify-content: center;
 }
+.touch-pad .touch-btn { padding: 0; }
+.touch-pad .tp-up    { grid-column: 2; grid-row: 1; }
+.touch-pad .tp-left  { grid-column: 1; grid-row: 2; }
+.touch-pad .tp-right { grid-column: 3; grid-row: 2; }
+.touch-pad .tp-down  { grid-column: 2; grid-row: 3; }
+.touch-pad .tp-mid   { grid-column: 2; grid-row: 2; background: var(--black); color: var(--white); cursor: default; box-shadow: 0 0 0 4px var(--white); }
 
 .touch-btn {
   font-family: var(--font-title);
-  font-size: 14px;
+  font-size: 16px;
   background: var(--blue);
   color: var(--black);
   border: 0;
-  padding: 16px 24px;
+  padding: 16px 22px;
   box-shadow: 0 0 0 4px var(--black), 0 0 0 8px var(--white);
   user-select: none;
   -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
   touch-action: none;
+  cursor: pointer;
 }
-
-.touch-btn:active { transform: translateY(3px); }
+.touch-btn:active,
+.touch-btn.is-down { transform: translateY(3px); background: var(--yellow); }
 
 .touch-fire { background: var(--red); color: var(--white); }
 
