@@ -315,6 +315,7 @@
 
   /* ---------- 暴露音效引擎给游戏模块 ---------- */
   window.ArcadeFX = AudioFX;
+  window.ArcadeToast = showToast;
 })();
 
 /* ============================================================
@@ -695,39 +696,54 @@
     var CROWN = { c: '#ffcc00', g: ['#.#..#.#', '########'] };
     var EYE = { c: '#ffffff', g: ['..#.#...', '..#.#...'] };
 
+    /* 多关卡数据：segs 地面段 / fp 漂浮平台 / sp 尖刺 / cl 金币 / sky 天空渐变色 */
+    var LEVELS = [
+      { /* 第 1 关：初入草原 */
+        segs: [[0, 260], [300, 160], [500, 120], [660, 140], [840, 180], [1060, 60], [1180, 100]],
+        fp: [[210, 150, 56], [340, 120, 48], [470, 150, 56], [640, 130, 56], [760, 100, 48], [880, 140, 56], [980, 110, 64], [1100, 150, 56]],
+        sp: [[272, 28], [460, 28], [624, 28], [800, 24], [1040, 20], [1124, 24]],
+        cl: [[90, 160], [130, 160], [170, 150], [210, 120], [240, 120], [350, 90], [380, 90], [410, 100], [470, 120], [510, 120], [600, 110], [640, 90], [680, 90], [760, 70], [800, 70], [880, 100], [920, 100], [980, 80], [1020, 80], [1100, 120], [1140, 120], [1200, 150], [1230, 150]],
+        sky: ['#5fc6f0', '#7fd0f2', '#a7e2f8', '#cdeefb']
+      },
+      { /* 第 2 关：落日连跳（纯地面缺口 + 尖刺） */
+        segs: [[0, 200], [240, 140], [420, 140], [600, 140], [780, 140], [960, 140], [1140, 140]],
+        fp: [],
+        sp: [[212, 28], [392, 28], [572, 28], [752, 28], [932, 28], [1112, 28]],
+        cl: [[50, 160], [90, 150], [140, 160], [270, 150], [320, 160], [360, 150], [460, 150], [520, 160], [650, 150], [710, 160], [840, 150], [900, 160], [1030, 150], [1080, 160], [1230, 160]],
+        sky: ['#ffb36b', '#ff9e6b', '#f58b6b', '#e87a6b']
+      },
+      { /* 第 3 关：云端阶梯（漂浮平台向上攀爬） */
+        segs: [[0, 160], [780, 200], [1020, 120], [1180, 100]],
+        fp: [[170, 150, 56], [270, 120, 48], [350, 150, 56], [440, 120, 48], [520, 150, 56], [600, 120, 48], [680, 150, 56]],
+        sp: [[992, 28], [1152, 28]],
+        cl: [[60, 160], [110, 150], [198, 130], [294, 100], [378, 130], [464, 100], [548, 130], [624, 100], [708, 130], [820, 160], [880, 150], [930, 160], [1050, 150], [1100, 160], [1230, 160]],
+        sky: ['#3a4a7a', '#4a5a8a', '#5a6a9a', '#6b7aaa']
+      },
+      { /* 第 4 关：尖刺险径（密集平台 + 多尖刺） */
+        segs: [[0, 220], [600, 120], [760, 120], [920, 130], [1090, 120], [1210, 70]],
+        fp: [[170, 150, 48], [260, 120, 48], [340, 150, 48], [430, 120, 48], [510, 150, 56]],
+        sp: [[732, 28], [892, 28], [1062, 28]],
+        cl: [[60, 160], [110, 150], [160, 150], [194, 130], [284, 100], [364, 130], [454, 100], [538, 130], [640, 160], [690, 150], [810, 160], [960, 160], [1010, 150], [1150, 160], [1250, 160]],
+        sky: ['#6b7b7b', '#5f6f6f', '#546363', '#4a5656']
+      }
+    ];
+    var levelIndex = 0, totalLevels = LEVELS.length;
+
     function buildLevel() {
-      platforms = []; coins = []; spikes = []; goal = { x: LEVEL_W - 48, y: GROUND_Y - 28 };
-      /* 地面段（含缺口） */
-      var segs = [
-        [0, 260], [300, 160], [500, 120], [660, 140], [840, 180], [1060, 60], [1180, 100]
-      ];
-      for (var i = 0; i < segs.length; i++) {
-        platforms.push({ x: segs[i][0], y: GROUND_Y, w: segs[i][1], h: H - GROUND_Y });
+      platforms = []; coins = []; spikes = [];
+      var L = LEVELS[levelIndex];
+      goal = { x: LEVEL_W - 48, y: GROUND_Y - 28 };
+      for (var i = 0; i < L.segs.length; i++) {
+        platforms.push({ x: L.segs[i][0], y: GROUND_Y, w: L.segs[i][1], h: H - GROUND_Y });
       }
-      /* 漂浮平台 */
-      var fp = [
-        [210, 150, 56], [340, 120, 48], [470, 150, 56],
-        [640, 130, 56], [760, 100, 48], [880, 140, 56],
-        [980, 110, 64], [1100, 150, 56]
-      ];
-      for (var j = 0; j < fp.length; j++) {
-        platforms.push({ x: fp[j][0], y: fp[j][1], w: fp[j][2], h: 14 });
+      for (var j = 0; j < L.fp.length; j++) {
+        platforms.push({ x: L.fp[j][0], y: L.fp[j][1], w: L.fp[j][2], h: 14 });
       }
-      /* 尖刺行（放在缺口边缘或地面上） */
-      var sp = [[272, 28], [460, 28], [624, 28], [800, 24], [1040, 20], [1124, 24]];
-      for (var s = 0; s < sp.length; s++) {
-        var sw = sp[s][1], sx = sp[s][0];
+      for (var s = 0; s < L.sp.length; s++) {
+        var sw = L.sp[s][1], sx = L.sp[s][0];
         for (var k = 0; k < sw; k += 8) spikes.push({ x: sx + k, y: GROUND_Y - 8, w: 8, h: 8 });
       }
-      /* 金币弧线/散点 */
-      var cl = [
-        [90, 160], [130, 160], [170, 150], [210, 120], [240, 120],
-        [350, 90], [380, 90], [410, 100], [470, 120], [510, 120],
-        [600, 110], [640, 90], [680, 90], [760, 70], [800, 70],
-        [880, 100], [920, 100], [980, 80], [1020, 80], [1100, 120],
-        [1140, 120], [1200, 150], [1230, 150]
-      ];
-      for (var c = 0; c < cl.length; c++) coins.push({ x: cl[c][0], y: cl[c][1], got: false, phase: c * 0.5 });
+      for (var c = 0; c < L.cl.length; c++) coins.push({ x: L.cl[c][0], y: L.cl[c][1], got: false, phase: c * 0.5 });
       totalCoins = coins.length;
     }
 
@@ -773,8 +789,9 @@
       id: 'blocky',
       title: '★ 方块王历险记 ★',
       hint: '← → / A D 移动 · 空格/↑ 跳跃 · 收金币到终点 · P 暂停 · Esc 退出',
-      labels: ['金币', '进度'],
+      labels: ['金币', '关卡'],
       reset: function () {
+        if (levelIndex >= totalLevels) levelIndex = 0; /* 全通后重开 → 回到第 1 关 */
         buildLevel(); resetPlayer();
         camera = 0; tick = 0; coinsCollected = 0;
         ended = false; winFlash = 0;
@@ -899,10 +916,19 @@
           }
         }
 
-        /* 到达旗帜 → 胜利 */
+        /* 到达旗帜 → 下一关 / 全通 */
         if (player.x + player.w >= goal.x) {
+          score += 100; updateHud(); FX.powerUp();
+          if (levelIndex < totalLevels - 1) {
+            levelIndex++;
+            buildLevel(); resetPlayer();
+            camera = 0; tick = 0; coinsCollected = 0; winFlash = 0;
+            updateHud();
+            window.ArcadeToast('第 ' + (levelIndex + 1) + '/' + totalLevels + ' 关');
+            return;
+          }
           ended = true; winFlash = 1;
-          score += 100; updateHud();
+          levelIndex = totalLevels; /* 全通标记：reset() 检测到后回第 1 关 */
           winGame();
           return;
         }
@@ -913,8 +939,9 @@
         if (camera > LEVEL_W - W) camera = LEVEL_W - W;
       },
       draw: function (c) {
-        /* 天空渐变带 */
-        var bands = ['#5fc6f0', '#7fd0f2', '#a7e2f8', '#cdeefb'];
+        /* 天空渐变带（每关不同配色；全通后 levelIndex=totalLevels，需钳制） */
+        var li = Math.min(levelIndex, totalLevels - 1);
+        var bands = LEVELS[li].sky;
         var bh = H / bands.length;
         for (var b = 0; b < bands.length; b++) { c.fillStyle = bands[b]; c.fillRect(0, b * bh, W, bh + 1); }
         /* 远景云朵（视差） */
@@ -1005,6 +1032,16 @@
 
         c.restore();
 
+        /* 关卡角标 */
+        c.save();
+        c.fillStyle = 'rgba(0,0,0,0.45)';
+        c.fillRect(4, 4, 64, 14);
+        c.fillStyle = '#fff';
+        c.font = '8px "Press Start 2P", monospace';
+        c.textAlign = 'left';
+        c.fillText('STAGE ' + Math.min(levelIndex + 1, totalLevels), 8, 14);
+        c.restore();
+
         /* 胜利闪光 */
         if (winFlash > 0) {
           c.fillStyle = 'rgba(255,255,255,' + (winFlash * 0.5) + ')';
@@ -1016,7 +1053,7 @@
       updateHud: function () {
         setHud3('金币', coinsCollected + '/' + totalCoins);
         var prog = Math.min(100, Math.floor((player.x / (LEVEL_W - 48)) * 100));
-        setHud4('进度', prog + '%');
+        setHud4('关卡', (levelIndex + 1) + '/' + totalLevels + ' ' + prog + '%');
       },
       onKey: function (e, down) {
         var k = e.key;
