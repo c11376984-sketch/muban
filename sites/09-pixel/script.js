@@ -665,10 +665,11 @@
      游戏 2：方块王历险记（横版跳跃平台）
      ============================================================ */
   GAMES.blocky = (function () {
-    var GRAV = 0.55, JUMP = -7.6, MOVE = 1.7;
+    var GRAV = 0.55, JUMP = -7.8, MOVE = 1.7;
     var LEVEL_W = 1280, GROUND_Y = 200, GRASS = 4;
+    var COYOTE = 6, JUMP_BUF = 8; /* 宽容帧：离开地面后仍可跳 / 提前按跳也响应 */
 
-    var player = { x: 20, y: 0, vx: 0, vy: 0, w: 12, h: 14, onGround: false, facing: 1, anim: 0 };
+    var player = { x: 20, y: 0, px: 20, py: 0, vx: 0, vy: 0, w: 12, h: 14, onGround: false, facing: 1, anim: 0, coyote: 0, jumpBuf: 0 };
     var camera = 0, tick = 0;
     var platforms = [], coins = [], spikes = [], goal = { x: 0, y: 0 };
     var coinsCollected = 0, totalCoins = 0;
@@ -731,7 +732,9 @@
 
     function resetPlayer() {
       player.x = 20; player.y = GROUND_Y - player.h;
+      player.px = player.x; player.py = player.y;
       player.vx = 0; player.vy = 0; player.onGround = false; player.facing = 1; player.anim = 0;
+      player.coyote = 0; player.jumpBuf = 0;
     }
 
     function aabb(a, b) {
@@ -755,56 +758,77 @@
         if (reduced) s *= 0.7;
         tick++;
 
+        /* 记录上一帧位置，用于碰撞方向判定（防穿模） */
+        player.px = player.x;
+        player.py = player.y;
+
         var dir = 0;
         if (keys.left) { dir = -1; player.facing = -1; }
         if (keys.right) { dir = 1; player.facing = 1; }
-        /* X 速度：直接驱动，带轻微阻尼 */
         player.vx = dir * MOVE;
         if (dir === 0 && player.onGround) player.vx *= 0.6;
 
-        /* 跳跃 */
-        if ((keys.fire || keys.up) && player.onGround) {
-          player.vy = JUMP;
-          player.onGround = false;
-          FX.beep(660, 0.06, 'square', 0.07);
-        }
+        /* 跳跃缓冲：按下时记下，落地或仍在地面窗口内时消费 */
+        if ((keys.fire || keys.up)) player.jumpBuf = JUMP_BUF;
+        else if (player.jumpBuf > 0) player.jumpBuf -= s;
 
         /* 重力 */
         player.vy += GRAV * s;
         if (player.vy > 14) player.vy = 14;
 
-        /* Y 移动 + 碰撞（先于 X，以便站立时 onGround 已置位） */
+        /* ---- Y 轴移动 + 碰撞 ---- */
         player.y += player.vy * s;
+        var wasOnGround = player.onGround;
         player.onGround = false;
         for (var j = 0; j < platforms.length; j++) {
           var pl = platforms[j];
-          if (aabb(player, pl)) {
-            if (player.vy > 0) {
+          if (!aabb(player, pl)) continue;
+          if (player.vy >= 0) {
+            /* 下落/站立：仅当上一帧底面在平台顶之上（从上方落下）才吸附，避免侧穿 */
+            var prevBottom = player.py + player.h;
+            if (prevBottom <= pl.y + 6) {
               player.y = pl.y - player.h;
               player.vy = 0;
               player.onGround = true;
-            } else if (player.vy < 0) {
+            }
+          } else if (player.vy < 0) {
+            /* 上跳撞顶：仅当上一帧顶面在平台底之下（从下方撞）才挡 */
+            var prevTop = player.py;
+            if (prevTop >= pl.y + pl.h - 6) {
               player.y = pl.y + pl.h;
               player.vy = 0;
             }
           }
         }
 
-        /* X 移动 + 碰撞：只挡"侧面"撞击，站立其上时不卡 */
+        /* 地面窗口（coyote）：刚离开平台顶部一小段时间仍可跳 */
+        if (player.onGround) player.coyote = COYOTE;
+        else if (player.coyote > 0) player.coyote -= s;
+
+        /* 消费跳跃缓冲：地面窗口内 + 有跳跃缓冲 → 起跳 */
+        if (player.jumpBuf > 0 && player.coyote > 0) {
+          player.vy = JUMP;
+          player.onGround = false;
+          player.coyote = 0;
+          player.jumpBuf = 0;
+          FX.beep(660, 0.06, 'square', 0.07);
+        }
+
+        /* ---- X 轴移动 + 碰撞 ---- */
         player.x += player.vx * s;
         if (player.x < 0) player.x = 0;
         if (player.x + player.w > LEVEL_W) player.x = LEVEL_W - player.w;
         for (var i = 0; i < platforms.length; i++) {
           var p = platforms[i];
-          if (aabb(player, p)) {
-            /* 玩家底面与平台顶面的垂直重叠 > 2px 才算侧面碰撞 */
-            var overlapBottom = (player.y + player.h) - p.y;
-            var overlapTop = (p.y + p.h) - player.y;
-            if (overlapBottom > 2 && overlapTop > 2) {
-              if (player.vx > 0) player.x = p.x - player.w;
-              else if (player.vx < 0) player.x = p.x + p.w;
-              player.vx = 0;
-            }
+          if (!aabb(player, p)) continue;
+          /* 侧面碰撞：玩家中心 y 在平台 y 范围内，且垂直重叠足够才算挡 */
+          var overlapBottom = (player.y + player.h) - p.y;
+          var overlapTop = (p.y + p.h) - player.y;
+          if (overlapBottom > 4 && overlapTop > 4) {
+            /* 用上一帧 x 决定从哪侧撞入 */
+            if (player.px + player.w <= p.x) player.x = p.x - player.w;
+            else if (player.px >= p.x + p.w) player.x = p.x + p.w;
+            player.vx = 0;
           }
         }
 

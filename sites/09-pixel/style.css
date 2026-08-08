@@ -1056,6 +1056,14 @@ body.egg-mode::after {
 /* hidden 属性必须压过 display:flex，否则覆盖层会一直挡住页面 */
 .arcade-cabinet[hidden] { display: none !important; }
 
+/* 游戏舱内所有元素：彻底清除手机端点击蓝色高亮闪烁 */
+.arcade-cabinet,
+.arcade-cabinet *,
+.arcade-cabinet #gameCanvas {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
 body.cabinet-locked { overflow: hidden; }
 
 .cabinet-frame {
