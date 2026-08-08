@@ -787,18 +787,33 @@
           for (var j = 0; j < platforms.length; j++) {
             var pl = platforms[j];
             if (!aabb(player, pl)) continue;
-            if (player.vy >= 0) {
-              /* 下落/站立：仅当上一帧底面在平台顶之上或齐平（从上方落下）才吸附 */
-              if (player.py + player.h <= pl.y + 1) {
+            var prevBottom = player.py + player.h;
+            var prevTop = player.py;
+            if (player.vy >= 0 && prevBottom <= pl.y + 1) {
+              /* 从上方落下 → 站到平台顶 */
+              player.y = pl.y - player.h;
+              player.vy = 0;
+              player.onGround = true;
+            } else if (player.vy < 0 && prevTop >= pl.y + pl.h - 1) {
+              /* 从下方撞顶 → 推到平台底 */
+              player.y = pl.y + pl.h;
+              player.vy = 0;
+            } else {
+              /* 玩家在平台内部（穿模）：按上一帧位置推出 */
+              if (prevBottom <= pl.y) {
+                /* 上一帧在平台上方 → 站到顶 */
                 player.y = pl.y - player.h;
                 player.vy = 0;
                 player.onGround = true;
-              }
-            } else if (player.vy < 0) {
-              /* 上跳撞顶：仅当上一帧顶面在平台底之下才挡 */
-              if (player.py >= pl.y + pl.h - 1) {
+              } else if (prevTop >= pl.y + pl.h) {
+                /* 上一帧在平台下方 → 推到底 */
                 player.y = pl.y + pl.h;
                 player.vy = 0;
+              } else {
+                /* 上一帧就在平台内部：强制往上推出（站在顶）防止下沉 */
+                player.y = pl.y - player.h;
+                player.vy = 0;
+                player.onGround = true;
               }
             }
           }
@@ -829,6 +844,9 @@
             if (overlapBottom > 4 && overlapTop > 4) {
               if (player.px + player.w <= p.x) player.x = p.x - player.w;
               else if (player.px >= p.x + p.w) player.x = p.x + p.w;
+              else {
+                /* 玩家上一帧就在平台 x 范围内（从顶/底穿入）→ 不挡水平，交给 Y 碰撞处理 */
+              }
               player.vx = 0;
             }
           }
@@ -1779,7 +1797,7 @@
       btn.addEventListener('pointerdown', down);
       btn.addEventListener('pointerup', up);
       btn.addEventListener('pointercancel', up);
-      btn.addEventListener('pointerleave', up);
+      /* 不用 pointerleave：多指触控时第二指落下会让第一指触发 leave，误取消移动 */
       return btn;
     }
 
