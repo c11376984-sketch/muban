@@ -1193,21 +1193,28 @@ body.cabinet-locked { overflow: hidden; }
 .touch-btn {
   font-family: var(--font-title);
   font-size: 16px;
-  background: var(--blue);
-  color: var(--black);
+  background: var(--black);
+  color: var(--white);
   border: 0;
   padding: 16px 22px;
-  box-shadow: 0 0 0 4px var(--black), 0 0 0 8px var(--white);
+  box-shadow: 0 0 0 4px var(--white), 0 0 0 8px var(--black);
   user-select: none;
   -webkit-user-select: none;
   -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
   touch-action: none;
   cursor: pointer;
 }
 .touch-btn:active,
-.touch-btn.is-down { transform: translateY(3px); background: var(--yellow); }
+.touch-btn.is-down {
+  transform: translateY(3px);
+  background: var(--yellow);
+  color: var(--black);
+  box-shadow: 0 0 0 4px var(--red), 0 0 0 8px var(--black);
+}
 
-.touch-fire { background: var(--red); color: var(--white); }
+.touch-fire { background: var(--red); color: var(--white); box-shadow: 0 0 0 4px var(--yellow), 0 0 0 8px var(--black); }
+.touch-fire:active, .touch-fire.is-down { background: var(--yellow); color: var(--black); box-shadow: 0 0 0 4px var(--red), 0 0 0 8px var(--black); }
 
 /* 触屏设备显示触控键 */
 @media (hover: none), (pointer: coarse) {

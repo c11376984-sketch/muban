@@ -665,7 +665,7 @@
      游戏 2：方块王历险记（横版跳跃平台）
      ============================================================ */
   GAMES.blocky = (function () {
-    var GRAV = 0.5, JUMP = -6.2, MOVE = 1.6;
+    var GRAV = 0.55, JUMP = -7.6, MOVE = 1.7;
     var LEVEL_W = 1280, GROUND_Y = 200, GRASS = 4;
 
     var player = { x: 20, y: 0, vx: 0, vy: 0, w: 12, h: 14, onGround: false, facing: 1, anim: 0 };
@@ -771,22 +771,9 @@
 
         /* 重力 */
         player.vy += GRAV * s;
-        if (player.vy > 12) player.vy = 12;
+        if (player.vy > 14) player.vy = 14;
 
-        /* X 移动 + 碰撞 */
-        player.x += player.vx * s;
-        if (player.x < 0) player.x = 0;
-        if (player.x + player.w > LEVEL_W) player.x = LEVEL_W - player.w;
-        for (var i = 0; i < platforms.length; i++) {
-          var p = platforms[i];
-          if (aabb(player, p)) {
-            if (player.vx > 0) player.x = p.x - player.w;
-            else if (player.vx < 0) player.x = p.x + p.w;
-            player.vx = 0;
-          }
-        }
-
-        /* Y 移动 + 碰撞 */
+        /* Y 移动 + 碰撞（先于 X，以便站立时 onGround 已置位） */
         player.y += player.vy * s;
         player.onGround = false;
         for (var j = 0; j < platforms.length; j++) {
@@ -799,6 +786,24 @@
             } else if (player.vy < 0) {
               player.y = pl.y + pl.h;
               player.vy = 0;
+            }
+          }
+        }
+
+        /* X 移动 + 碰撞：只挡"侧面"撞击，站立其上时不卡 */
+        player.x += player.vx * s;
+        if (player.x < 0) player.x = 0;
+        if (player.x + player.w > LEVEL_W) player.x = LEVEL_W - player.w;
+        for (var i = 0; i < platforms.length; i++) {
+          var p = platforms[i];
+          if (aabb(player, p)) {
+            /* 玩家底面与平台顶面的垂直重叠 > 2px 才算侧面碰撞 */
+            var overlapBottom = (player.y + player.h) - p.y;
+            var overlapTop = (p.y + p.h) - player.y;
+            if (overlapBottom > 2 && overlapTop > 2) {
+              if (player.vx > 0) player.x = p.x - player.w;
+              else if (player.vx < 0) player.x = p.x + p.w;
+              player.vx = 0;
             }
           }
         }
